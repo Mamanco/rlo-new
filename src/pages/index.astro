@@ -1,0 +1,273 @@
+---
+import { useTranslations } from '@/i18n/utils';
+import Layout from '@/layouts/Layout.astro';
+
+const { title, lang="en", slug } = Astro.props;
+const t = useTranslations(lang);
+---
+<Layout lang={lang}>
+<!-- Banner -->
+  <section id="home">
+    <div class="banner_wrap">
+      <div class="banner">
+        <div class="banner_content">
+          <h1>
+            {t('Omar Al-Rasheed & Partners Law Firm')} <br />
+            <span class="banner_content_subtitle">{t('Leading Independent Law Firm')}</span>
+          </h1>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Local Dept -->
+  <section>
+    <div class="local_wrap">
+      <div class="team_img">
+        <img src="/static/assets/images/team1.jpg" />
+      </div>
+      <div class="local">
+        <div class="title">
+          <h2 style="font-size: revert;">
+            {t('Local Depth. International Expertise')}
+          </h2>
+        </div>
+        <p>
+          {t('We are a full-service independent law firm with international expertise.')}
+          {t("We offer a broad multi-disciplinary practice, led by internationally trained experts.")}
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="leading_transactional_law">
+        <div class="leading_content">
+          <div class="title">
+            <h2 style="font-size: revert;">{t("Strong Capabilities on Litigation and Transactions")}</h2>
+          </div>
+          <div class="l_details">
+            <p>
+              {t("Our team is able to structure, draft, negotiate and execute litigation and transactions.")}
+              {t("The combination of our international qualifications and local legal knowledge provides us with an edge over any international/local combination of firms.")}
+            </p>
+          </div>
+          <a href="/about-us">
+            <div class="arrow_btn">
+              <!-- <div class="arrow_img">
+                <img src="/static/assets/images/arrowRight.png" alt="arrow" />
+              </div> -->
+              <span>{t("About Us")}</span>
+            </div>
+          </a>
+        </div>
+        <div class="leading_img">
+          <img src="/static/assets/images/law.png" alt="law" />
+        </div>
+      </div>
+  </section>
+
+  <!-- Awarded -->
+  <section id="aboutUs">
+    <div class="awarded">
+      <div class="awarded_img" style="margin-top: 35px;">
+        <img src="/static/assets/images/g20-3.png" alt="img" style="width: 100%" />
+      </div>
+      <div class="awarded_content">
+        <h3>{t("Awarded for our Legal")} <br />{t("Services Role in the")}<br />
+				{t("Saudi Arabia")} <br />{t("Presidency of the G20")}</h3>
+      </div>
+    </div>
+  </section>
+  <!-- Expertise -->
+  <section id="expertise">
+    <div class="expertise_wrap">
+      <div class="expertise">
+        <div class="ex_img">
+          <img src="/static/assets/images/omar-alrasheed-2.png" alt="imt" />
+        </div>
+        <div class="ex_content">
+          <div class="ex_header">
+            <div class="ex_title">
+              <h1>{t("Expertise")}</h1>
+            </div>
+            <div class="ex_details">
+              <p>{t("We have a deep bench with a strong multidisciplinary team of lawyers, professionals, and specialists covering")}:</p>
+            </div>
+            <div class="ex_items">
+              <!-- {{range $index, $element := .Practices}} -->
+              <a
+                href="/{{if eq $element.Type 1}}practices{{else if eq $element.Type 2}}sectors{{end}}/{{$element.Slug}}">
+                <div class="ex_item cp justify-between pe-2">
+                  <div class="ex_name"><span>
+										<!-- {{translate $.Lang $element.Name}} -->
+										 XXXXX
+									</span></div>
+                  <div class="h-8 w-8 invert"><img src="/static/assets/images/icons/chevron-right.svg" /></div>
+                </div>
+              </a>
+              <!-- {{end}} -->
+              <div class="arrow_btn">
+                <!-- <div class="arrow_img">
+                <img src="/static/assets/images/arrowRight.png" alt="arrow" />
+              </div> -->
+                <a href="/practices/"><span>{t("All practice areas")}</span></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Media -->
+  <section id="media">
+    <div class="media_wrap">
+      <div class="media">
+        <div class="media_header">
+          <div class="m_title">
+            <h1>{t("Updates")}</h1>
+          </div>
+          <!-- Remove Temporarily -->
+          <!-- <div class="m_details">
+            <p>{{Tf "ui/v1" .Lang "We exhibit thought leadership by publicly issuing opinions and bulletins that help elucidate complex issues of Saudi Arabian law, often becoming the source for our competitors and clients."}}</p>
+          </div> -->
+        </div>
+        <div class="media_items">
+          <!-- {{range .Articles}} -->
+          <a href="/articles/{{.Slug}}"  class="m_item pe-8 duration-500 hover:shadow-xl">
+            <div class="m_item_title ">
+              <h5 class="">
+								<!-- {{translate $.Lang .Title}} -->
+								 XXXXX
+							</h5>
+            </div>
+            <div class="m_date">
+              <span>
+								<!-- {{formatDate .Date}} -->
+								 XXXXX
+							</span>
+            </div>
+            <div class="m_image">
+              <img class="aspect-3/2 object-conver" src="{{.Image}}" />
+            </div>
+          </a>
+        
+          <!-- {{end}} -->
+        </div>
+        <a href="/articles/" class="arrow_btn flex justify-end items-center align-middle my-10 gap-4">
+          <span class="">{t("Read more")}</span>
+          <!-- <img class="h-10 w-12" src="static/assets/images/arrow.svg" alt=""> -->
+        </a>
+      </div>
+    </div>
+  </section>
+  <!-- Our Team -->
+  <section>
+    <div class="our_team_wrap">
+      <div class="our_team">
+        <div class="ot_content">
+          <div class="ot_header">
+            <div class="ot_title">
+              <h1>{t("Our Team")}</h1>
+            </div>
+          </div>
+          <div class="ot_details">
+            <p>{t("In AlRasheed Law Firm we seek, attract, and celebrate only the leading lawyers and specialists of their respective fields.")}</p>
+          </div>
+          <!-- <div class="ot_img_slider">
+            <div class="ots">
+              <div class="ots_item">
+                <img src="/static/assets/images/sliderImage.png" />
+              </div>
+            </div>
+          </div>
+          <div class="slider_arrow">
+            <div class="sa_wrap">
+              <div class="sal">
+                <img src="/static/assets/images/saLeft.png" alt="img" />
+              </div>
+              <div class="sar">
+                <img src="static/assets/images/saRight.png" alt="img" />
+              </div>
+            </div>
+          </div> -->
+        </div>
+        <div class="ot_img">
+          <div class="ot_img_wrap">
+            <img src="/static/assets/images/walid-reed.png" />
+            <div class="ot_arrow">
+              <a href="/team/">
+                <div class="arrow_btn">
+                  <!-- <div class="arrow_img">
+                    <img src="/static/assets/images/arrowRight.png" alt="arrow" />
+                  </div> -->
+                  <span>{t("Meet Our Team")}</span>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="mobile_our_team_wrap">
+      <div class="our_team">
+        <div class="ot_content">
+          <div class="ot_header">
+            <div class="ot_title">
+              <h1>{t("Our Team")}</h1>
+            </div>
+          </div>
+          <div class="ot_details">
+            <p>
+              {t("In Al-Rasheed Law Firm we seek, attract, and celebrate only the leading lawyers and specialists of their respective fields.")}</p>
+          </div>
+
+          <div class="ot_img">
+            <div class="ot_img_wrap">
+              <img src="/static/assets/images/walid-reed.png" />
+              <div class="ot_arrow">
+                <div class="arrow_btn">
+                  <!-- <div class="arrow_img">
+                    <img src="/static/assets/images/arrowRight.png" alt="arrow" />
+                  </div> -->
+                  <span>{t("Meet Our Team")}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- at your service -->
+  <section class="mb-40">
+    <div
+      class="relative flex items-center flex-col md:flex-row justify-between lg:justify-center p-6 mx-auto space-y-5">
+      <img class="md:order-last w-full md:scale-125 xl:scale-100 lg:w-6/12 max-w-[800px]" src={
+				lang == "en"
+				? "/static/assets/images/rlo-multilaw-en.svg"
+				: "/static/assets/images/rlo-multilaw-ar.svg"
+				} alt="">
+      <div class="text-lg lg:text-3xl w-full md:max-w-xl">
+        <h6 class="font-bold text-[32px] text-2xl md:text-4xl lg:text-5xl text-black px-7 py-4 md:p-7">{t("At your service")}</h6>
+        <ul class="space-y-3 font-light ms-12">
+          <li class="flex gap-x-3 items-center text-[24px] lg:text-3xl font-light">
+            <!-- <img class="w-6 h-6" src="static/assets/images/law-scale.png" alt=""> -->
+            {t("Transactions")}
+          </li>
+          <li class="flex gap-x-3 items-center text-[24px] lg:text-3xl  font-light">
+            <!-- <img class="w-6 h-6" src="static/assets/images/law-scale.png" alt=""> -->
+            {t("Litigation and Arbitration")}
+          </li>
+          <li class="flex gap-x-3 items-center text-[24px] lg:text-3xl  font-light">
+            <!-- <span class="font-bold text-[#D0222B]">+</span> -->
+            {t("Consultancy")}
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</Layout>
+

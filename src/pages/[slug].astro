@@ -1,0 +1,21 @@
+---
+import { getCollection } from 'astro:content';
+import HomePage from '@/pages/index.astro'
+import { defaultLang } from '@/i18n/ui';
+
+// This function tells Astro to build a page for every entry in your content collection
+export async function getStaticPaths() {
+	const pageEntries = await getCollection("pages");
+
+	let finalList = pageEntries.filter(entry => entry.slug.indexOf("/") == -1).map((entry) => ({
+		params: { slug: entry.slug },
+		props: { entry },
+	}));
+
+	return finalList;
+}
+
+const lang = Astro.currentLocale || defaultLang;
+---
+<HomePage lang={lang}>
+</HomePage>

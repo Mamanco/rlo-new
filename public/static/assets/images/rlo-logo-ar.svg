@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="1019"
+   height="429"
+   viewBox="0 0 1019 429"
+   fill="none"
+   version="1.1"
+   id="svg2210"
+   sodipodi:docname="rlo-logo-ar.svg"
+   inkscape:version="1.2.2 (732a01da63, 2022-12-09, custom)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs2214" />
+  <sodipodi:namedview
+     id="namedview2212"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     showgrid="false"
+     inkscape:zoom="0.94512212"
+     inkscape:cx="486.70959"
+     inkscape:cy="131.72901"
+     inkscape:window-width="1848"
+     inkscape:window-height="1016"
+     inkscape:window-x="72"
+     inkscape:window-y="27"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg2210" />
+  <path
+     fill-rule="evenodd"
+     clip-rule="evenodd"
+     d="M300.576 299.142C328.058 368.806 392.388 429 504.594 429C605.879 429 679.786 376.283 712.274 299.142H646.045C623.301 389.35 558.699 401.703 527.524 401.703C456.801 401.703 405.215 360.697 379.137 299.142H300.576ZM292.783 155.12C314.324 77.0477 380.006 0.979004 510.053 0.979004C626.831 0.979004 705.739 59.3964 725.664 155.12H645.445C623.951 74.6981 565.068 27.1844 494.221 27.1844C438.649 27.1844 376.233 54.5592 362.627 155.12H292.783Z"
+     fill="black"
+     id="path2160" />
+  <line
+     x1="696.666"
+     y1="258.6"
+     x2="1018.2"
+     y2="258.6"
+     stroke="black"
+     stroke-width="0.7"
+     id="line2202" />
+  <line
+     x1="3.0598e-08"
+     y1="258.6"
+     x2="318.189"
+     y2="258.6"
+     stroke="black"
+     stroke-width="0.7"
+     id="line2204" />
+  <line
+     x1="4.37114e-08"
+     y1="154.62"
+     x2="1018.2"
+     y2="154.62"
+     stroke="black"
+     id="line2206" />
+  <line
+     x1="4.37114e-08"
+     y1="298.642"
+     x2="1018.2"
+     y2="298.642"
+     stroke="black"
+     id="line2208" />
+  <text
+     xml:space="preserve"
+     style="font-style:normal;font-weight:normal;font-size:77.3912px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1.93511811;stroke-dasharray:none"
+     x="165.03499"
+     y="213.03932"
+     id="text2428"><tspan
+       sodipodi:role="line"
+       id="tspan2426"
+       x="165.03499"
+       y="213.03932"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:KacstLetter;-inkscape-font-specification:KacstLetter;stroke-width:1.93511811;stroke-dasharray:none">مكتب عمر بن ناصر الرشيد</tspan></text>
+  <text
+     xml:space="preserve"
+     style="font-style:normal;font-weight:normal;font-size:54.8723px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1.37181"
+     x="328.35675"
+     y="263.71021"
+     id="text2428-3"><tspan
+       sodipodi:role="line"
+       id="tspan2426-7"
+       x="328.35675"
+       y="263.71021"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:KacstLetter;-inkscape-font-specification:KacstLetter;stroke-width:1.37181">محامون ومستشارون</tspan></text>
+</svg>

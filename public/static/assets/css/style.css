@@ -1,0 +1,98 @@
+html,
+body {
+  background: #e5e5e5;
+  font-family: "Roboto", "Tajawal";
+}
+p {
+  color: #555555;
+}
+
+.dark {
+  background: #343434;
+  color: whitesmoke;
+}
+.light {
+  background: #e7e7e7;
+  color: #343434;
+}
+input:focus {
+  outline: none;
+}
+
+iframe {
+  width: "100%";
+  height: fit-content;
+  background: transparent;
+  padding: 0;
+  margin: 0;
+}
+
+label {
+  color: black;
+  font-weight: 300;
+}
+
+.navbar.active {
+  border-bottom: solid;
+}
+
+.bio-left p {
+  color: #eee;
+  padding-bottom: 25px;
+}
+
+.clients > ul > li {
+  display: block;
+  border-bottom: solid #777 1px;
+  font-size: 24px;
+  padding: 5px 0px;
+}
+
+.footerContracts {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.footerContracts .footerRow {
+  display: flex;
+  width: 41.67%;
+}
+
+.footerContracts .footerRow .secondaryItem {
+  margin-left: 100px;
+}
+
+@media screen and (max-width: 768px) {
+  .footerContracts {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .footerContracts .footerRow {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+  }
+  .footerContracts .footerRow .secondaryItem {
+    margin-left: 0px;
+  }
+}
+
+@media screen and (max-width: 1080px) {
+  .footerContracts {
+    display: flex;
+    width: 100%;
+  }
+
+  .footerContracts .footerRow {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .footerContracts .footerRow .secondaryItem {
+    margin-left: 0px;
+  }
+}

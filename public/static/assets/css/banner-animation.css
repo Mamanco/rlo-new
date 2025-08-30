@@ -1,0 +1,26 @@
+@keyframes banner-animation {
+    0% {background-position-x: -80px}
+    100% {background-position-x: -0px}
+
+}
+
+.banner {
+    animation-name: banner-animation;
+    animation-duration: 20s;
+    background-position-x: 0px;
+    animation-timing-function: linear;
+    /* animation-iteration-count: infinite; */
+}
+
+@keyframes banner_content-animation {
+    0% {opacity: 0;padding-top: 100px}
+    100% {opacity: 1;padding-top: 0px}
+}
+
+.banner_content h1 {
+    animation-name: banner_content-animation;
+    animation-duration: 2s;
+    opacity: 1;
+    padding-top: 0px;
+    /* animation-timing-function: linear; */
+}

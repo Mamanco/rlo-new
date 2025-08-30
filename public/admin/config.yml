@@ -1,0 +1,276 @@
+backend:
+  name: github
+  repo: mamanco/rlo
+  branch: main
+  base_url: https://oauth-crm.ngrok.io/
+  auth_endpoint: /auth
+  structure: multiple_folders
+  i18n: true
+i18n:
+  locales: [en, ar]
+  default_locale: en
+  structure: multiple_folders
+media_folder: "public/static/images/uploads"
+public_folder: "static/images/uploads"
+page_fields: &page_fields
+  - { name: 'title', label: 'Title for internal use only', widget: 'string', i18n: duplicate }
+  - { name: 'name', label: 'Name', widget: 'string', i18n: true }
+  - { name: 'subtitle', label: 'Subtitle', widget: 'string', required: false, i18n: duplicate }
+  - { name: "main_menu", label: "Show on Main Menu", widget: "boolean", i18n: duplicate }
+  - { name: "order", label: "Order in Menu", widget: "number", default: 0, required: false, i18n: duplicate }
+  # - name: 'features'
+  #   label: 'Features'
+  #   widget: 'relation'
+  #   collection: "features"
+  #   value_field: "{{slug}}"
+  #   search_fields: ["name"]
+  #   multiple: true
+  #   required: false
+  #   i18n: duplicate
+  # - name: 'top_components'
+  #   label: 'Top Components'
+  #   widget: 'relation'
+  #   collection: "components"
+  #   value_field: "{{slug}}"
+  #   search_fields: ["name"]
+  #   multiple: true
+  #   required: false
+  #   i18n: duplicate
+  # - name: 'bottom_components'
+  #   label: 'Bottom Components'
+  #   widget: 'relation'
+  #   collection: "components"
+  #   value_field: "{{slug}}"
+  #   search_fields: ["name"]
+  #   multiple: true
+  #   required: false
+  #   i18n: duplicate
+  - { name: 'body', label: 'Main Content', widget: 'markdown', i18n: true }
+collections:
+  - name: "pages"
+    label: "Website Pages"
+    folder: "src/content/pages"
+    create: true
+    i18n: true
+    fields: *page_fields
+
+
+
+
+
+
+
+
+
+# page_fields: &page_fields
+#   - { name: 'title', label: 'Title for internal use only', widget: 'string', i18n: duplicate }
+#   - { name: 'name', label: 'Name', widget: 'string', i18n: true }
+#   - { name: 'subtitle', label: 'Subtitle', widget: 'string', required: false, i18n: duplicate }
+#   - { name: "main_menu", label: "Show on Main Menu", widget: "boolean", i18n: duplicate }
+#   - { name: "last_updated", label: "Last Updated", widget: "datetime", required: false, i18n: true }
+#   - { name: "order", label: "Order in Menu", widget: "number", default: 0, required: false, i18n: duplicate }
+#   - name: 'features'
+#     label: 'Features'
+#     widget: 'relation'
+#     collection: "features"
+#     value_field: "{{slug}}"
+#     search_fields: ["name"]
+#     multiple: true
+#     required: false
+#     i18n: duplicate
+#   - name: 'top_components'
+#     label: 'Top Components'
+#     widget: 'relation'
+#     collection: "components"
+#     value_field: "{{slug}}"
+#     search_fields: ["name"]
+#     multiple: true
+#     required: false
+#     i18n: duplicate
+#   - name: 'bottom_components'
+#     label: 'Bottom Components'
+#     widget: 'relation'
+#     collection: "components"
+#     value_field: "{{slug}}"
+#     search_fields: ["name"]
+#     multiple: true
+#     required: false
+#     i18n: duplicate
+#   - { name: 'body', label: 'Main Content', widget: 'markdown', i18n: true }
+# collections:
+#   - name: "blog" # Used in routes, e.g., /admin/collections/blog
+#     label: "Blog" # Used in the UI
+#     folder: "src/content/blog"
+#     create: true # Allow users to create new documents in this collection
+#     slug: "{{year}}-{{month}}-{{day}}-{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
+#     fields: # The fields for each document, usually in front matter
+#       - { label: "Layout", name: "layout", widget: "hidden", default: "blog" }
+#       - { label: "Title", name: "title", widget: "string" }
+#       - { label: "Publish Date", name: "date", widget: "datetime" }
+#       - { label: "Featured Image", name: "thumbnail", widget: "image" }
+#       - { label: "Rating (scale of 1-5)", name: "rating", widget: "number" }
+#   - name: "support_articles" # Used in routes, e.g., /admin/collections/blog
+#     label: "Support Articles" # Used in the UI
+#     folder: "src/content/support_articles"
+#     create: true
+#     i18n: true
+#     fields: # The fields for each document, usually in front matter
+#       - { label: "Title", name: "title", widget: "string", i18n: true }
+#       - { label: "Last Updated Date", name: "date", widget: "datetime", i18n: duplicate }
+#       - { label: "Featured Image", name: "thumbnail", widget: "image", i18n: duplicate }
+#       - { label: "Featured", name: "featured", widget: "boolean", i18n: duplicate }
+#       - { label: "Abstract", name: "abstract", widget: "string", i18n: true }
+#       - label: "Related Articles"
+#         name: "related_articles"
+#         widget: "relation"
+#         collection: "support_articles"
+#         multiple: true
+#         value_field: "{{slug}}"
+#         search_fields: ["label"]
+#         display_fields: ["label"]
+#         i18n: "duplicate"
+#         required: false
+#       - label: "Category"
+#         name: "category"
+#         required: true
+#         widget: "relation"
+#         collection: "support_categories"
+#         multiple: false
+#         value_field: "{{slug}}"
+#         search_fields: ["label"]
+#         display_fields: ["label"]
+#         i18n: "duplicate"
+#       - { label: "Body", name: "body", widget: "markdown", i18n: true }
+#   - name: "support_categories"
+#     label: "Support Categories"
+#     i18n: true
+#     folder: "src/content/support_categories"
+#     create: true
+#     fields:
+#       - {name: "title", label: "Title", widget: "string", i18n: duplicate}
+#       - {name: "label", label: "Label", widget: "string", i18n: true}
+#       - {name: "abstract", label: "Abstract", widget: "string", i18n: true}
+#   - name: "products"
+#     label: "Products"
+#     folder: "src/content/products"
+#     create: true
+#     i18n: true
+#     fields:
+#       - { label: "Component Title (for internal reference)", name: "title", widget: "string", i18n: duplicate }
+#       - { label: "Name", name: "name", widget: "string", i18n: true }
+#       - { label: "Slogan", name: "slogan", widget: "string", required: false, i18n: true }
+#       - { label: "Price", name: "price", widget: "number", required: false, step: 0.01, value_type: float, i18n: duplicate }
+#       - { label: "DiscountedPrice", name: "discounted_price", widget: "number", required: false, step: 0.01, value_type: float, i18n: duplicate }
+#       - { label: "Rating", name: "rating", widget: "number", required: false, step: 0.1, value_type: float, min: 0, max: 5, i18n: duplicate }
+#       - { label: "Number of Ratings", name: "number_of_ratings", widget: "number", required: false, value_type: int, i18n: duplicate }
+#       - { label: "Available", name: "available", widget: "boolean", i18n: duplicate }
+#       - { label: "Order", name: "order", widget: "number", i18n: duplicate }
+#       - { label: "CheckoutLink", name: "checkout_link", widget: string, required: false, i18n: duplicate}
+#       - label: "Category"
+#         name: "category"
+#         widget: "select"
+#         i18n: duplicate
+#         options:
+#           - label: "Wallet"
+#             value: "wallet"
+#           - label: "App"
+#             value: "app"
+#           - label: "Accessory"
+#             value: "accessory"
+#           - label: "Other"
+#             value: "other"
+#       - label: "Status"
+#         name: "status"
+#         widget: "select"
+#         i18n: duplicate
+#         options:
+#           - label: "Active"
+#             value: "active"
+#           - label: "Under Development"
+#             value: "under-development"
+#           - label: "Obsolete"
+#             value: "obsolete"
+#           - label: "Pre-Order"
+#             value: "pre-order"
+#       - { label: "Image1", name: "image1", widget: "image", required: false, i18n: duplicate }
+#       - { label: "Image2", name: "image2", widget: "image", required: false, i18n: duplicate }
+#       - { label: "Image3", name: "image3", widget: "image", required: false, i18n: duplicate }
+#       - { label: "Image4", name: "image4", widget: "image", required: false, i18n: duplicate }
+#       - { label: "Image5", name: "image5", widget: "image", required: false, i18n: duplicate }
+#       - label: "Features"
+#         name: "features"
+#         widget: "relation"
+#         collection: "features"
+#         multiple: true
+#         value_field: "{{slug}}"
+#         search_fields: ["name"]
+#         display_fields: ["name"]
+#         i18n: "duplicate"
+#         required: false
+#       - { label: 'Main Content', name: 'body', widget: 'markdown', i18n: true }
+#   - name: "features"
+#     label: "Features"
+#     folder: "src/content/features"
+#     create: true
+#     i18n: true
+#     required: false
+#     fields:
+#       - { name: "title", label: "Component Title (for internal reference)", widget: "string", i18n: duplicate }
+#       - { name: "name", label: "Name", widget: "string", i18n: true }
+#       - label: "Icon"
+#         name: "icon"
+#         widget: "select"
+#         i18n: duplicate
+#         required: false
+#         options:
+#           - { label: "Shield", value: "shield-halved" }
+#           - { label: "Lock", value: "lock" }
+#           - { label: "Fingerprint", value: "fingerprint" }
+#           - { label: "Key", value: "key-skeleton" }
+#           - { label: "NFC", value: "nfc" }
+#           - { label: "Thumbs up", value: "thumbs-up" }
+#           - { label: "Lightning Bolt", value: "bolt-lightning" }
+#       - { label: "Main Content", name: "body", widget: "markdown", i18n: true }
+#       - label: "Or, Enter Custom Icon Name"
+#         name: "custom_icon"
+#         widget: "string"
+#         i18n: duplicate
+#         required: false
+#         hint: "Use this field ONLY if the icon you want is not in the list above."
+#   - name: "pages"
+#     label: "Website Pages"
+#     folder: "src/content/pages"
+#     create: true
+#     i18n: true
+#     fields: *page_fields
+#   - name: "components"
+#     label: "Reusable Components"
+#     description: "Content blocks like CTAs that can be embedded into other pages."
+#     folder: "src/content/components"
+#     create: true
+#     fields:
+#       - { name: "title", label: "Component Title (for internal reference)", widget: "string" }
+#       - { name: "name", label: "Name", widget: "string" }
+#   - name: "home_page_articles"
+#     label: "Home Page Articles"
+#     i18n: true
+#     folder: "src/content/home_page_articles"
+#     create: true
+#     fields:
+#       - {name: "title", label: "Title", widget: "string", i18n: duplicate}
+#       - {name: "name", label: "Name", widget: "string", i18n: true}
+#       - {name: "image", label: "Image", widget: "image", i18n: duplicate}
+#       - {name: "link", label: "Link", widget: "string", i18n: duplicate}
+#       - {name: "order", label: "order", widget: "number", i18n: duplicate}
+#       - {name: 'body', label: 'Main Content', widget: 'markdown', i18n: true}
+#   - name: "road_map"
+#     label: "Road Map"
+#     i18n: true
+#     folder: "src/content/road_map"
+#     create: true
+#     fields:
+#       - {name: "title", label: "Title", widget: "string", i18n: duplicate}
+#       - {name: "name", label: "Name", widget: "string", i18n: true}
+#       - {name: "date", label: "Date", widget: "string", required: true, i18n: duplicate}
+#       - {name: "done", label: "Done", widget: "boolean", required: true, i18n: duplicate}
+#       - {name: 'body', label: 'Main Content', widget: 'markdown', i18n: true}
