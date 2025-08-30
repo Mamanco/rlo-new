@@ -3,7 +3,7 @@ title: Anti-Bribery
 name: مكافحة الرشوة
 image: /static/images/uploads/image 1.svg
 type: practice
-featured: false
+featured: true
 featured_order: 0
 hidden: false
 ---
