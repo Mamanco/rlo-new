@@ -53,6 +53,28 @@ collections:
     create: true
     i18n: true
     fields: *page_fields
+  - name: "practices"
+    label: "Practices"
+    folder: "src/content/practices"
+    create: true
+    i18n: true
+    fields:
+      - {name: "title", label: "Title", widget: "string", i18n: duplicate}
+      - {name: "name", label: "Name", widget: "string", i18n: true}
+      - {name: "image", label: "Image", widget: "image", i18n: duplicate}
+      - label: "Type"
+        name: "type"
+        widget: "select"
+        i18n: duplicate
+        options:
+          - label: "Practice"
+            value: "practice"
+          - label: "Sector"
+            value: "sector"
+      - {name: "featured", label: "Featured", widget: "boolean", i18n: duplicate}
+      - {name: "featured_order", label: "Featured Order", widget: "number", required: false, i18n: duplicate}
+      - {name: "hidden", label: "Hidden", widget: "boolean", i18n: duplicate}
+      - {name: 'body', label: 'Main Content', widget: 'markdown', i18n: true}
 
 
 

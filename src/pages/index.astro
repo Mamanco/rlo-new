@@ -1,9 +1,14 @@
 ---
 import { useTranslations } from '@/i18n/utils';
 import Layout from '@/layouts/Layout.astro';
+import { getCollection } from 'astro:content';
 
 const { title, lang="en", slug } = Astro.props;
 const t = useTranslations(lang);
+
+const featuredPractices = await getCollection("practices");
+
+const listPractices = featuredPractices.filter(entry => entry.data.featured && entry.slug.split("/").includes(lang))
 ---
 <Layout lang={lang}>
 <!-- Banner -->
@@ -94,18 +99,19 @@ const t = useTranslations(lang);
               <p>{t("We have a deep bench with a strong multidisciplinary team of lawyers, professionals, and specialists covering")}:</p>
             </div>
             <div class="ex_items">
-              <!-- {{range $index, $element := .Practices}} -->
-              <a
-                href="/{{if eq $element.Type 1}}practices{{else if eq $element.Type 2}}sectors{{end}}/{{$element.Slug}}">
-                <div class="ex_item cp justify-between pe-2">
-                  <div class="ex_name"><span>
-										<!-- {{translate $.Lang $element.Name}} -->
-										 XXXXX
-									</span></div>
-                  <div class="h-8 w-8 invert"><img src="/static/assets/images/icons/chevron-right.svg" /></div>
-                </div>
-              </a>
-              <!-- {{end}} -->
+              {
+								listPractices.map(entry => (
+									<a
+										href={entry.slug}>
+										<div class="ex_item cp justify-between pe-2">
+											<div class="ex_name"><span>
+												{entry.data.name}
+											</span></div>
+											<div class="h-8 w-8 invert"><img src="/static/assets/images/icons/chevron-right.svg" /></div>
+										</div>
+									</a>
+								))
+							}
               <div class="arrow_btn">
                 <!-- <div class="arrow_img">
                 <img src="/static/assets/images/arrowRight.png" alt="arrow" />
