@@ -23,6 +23,11 @@ const svgAttributes = {
 	 "xmlns:sodipodi":"http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd",
 	 "xmlns:svg":"http://www.w3.org/2000/svg",
 }
+
+const slugParts = slug.split("/");
+const pageName = slugParts.length == 1 ? "index" : slugParts[1];
+
+console.log(slug);
 ---
 <!DOCTYPE html>
 <html class="scroll-smooth" lang={lang} dir={direction}>
@@ -154,46 +159,46 @@ const svgAttributes = {
         <div class="hidden w-full md:flex md:items-center md:w-auto" id="menu">
             <ul class="flex flex-col items-center pt-4 lg:text-2xl text-gray-700 md:flex-row md:text-lg md:justify-between md:pt-0">
                 <li class={
-									slug == "/" || slug == `/${lang}`
+									slug == "" || slug == `${lang}`
 									? "navbar active"
 									: "navbar"
 								}>
-                    <a class="md:p-3 py-2 block hover:text-red-400" href="/">{t("Home")}</a>
+                    <a class="md:p-3 py-2 block hover:text-red-400" href=`/${lang}`>{t("Home")}</a>
+                </li>
+                <li class={
+									slug == `${lang}/about-us`
+									? "navbar active"
+									: "navbar"
+								}>
+                    <a class="md:p-3 py-2 block hover:text-red-400" href=`/${lang}/about-us/`>{t("About Us")}</a>
+                </li>
+                <li class={
+									slug == `${lang}/practices`
+									? "navbar active"
+									: "navbar"
+								}>
+                    <a class="md:p-3 py-2 block hover:text-red-400" href=`/${lang}/practices/`>{t("Expertise")}</a>
                 </li>
                 <li class={
 									slug == "/" || slug == `/${lang}`
 									? "navbar active"
 									: "navbar"
 								}>
-                    <a class="md:p-3 py-2 block hover:text-red-400" href="/about-us/">{t("About Us")}</a>
+                    <a class="md:p-3 py-2 block hover:text-red-400" href=`/${lang}/team/`>{t("Team")}</a>
                 </li>
                 <li class={
 									slug == "/" || slug == `/${lang}`
 									? "navbar active"
 									: "navbar"
 								}>
-                    <a class="md:p-3 py-2 block hover:text-red-400" href="/practices/">{t("Expertise")}</a>
+                    <a class="md:p-3 py-2 block hover:text-red-400" href=`/${lang}/articles/`>{t("Updates")}</a>
                 </li>
                 <li class={
 									slug == "/" || slug == `/${lang}`
 									? "navbar active"
 									: "navbar"
 								}>
-                    <a class="md:p-3 py-2 block hover:text-red-400" href="/team/">{t("Team")}</a>
-                </li>
-                <li class={
-									slug == "/" || slug == `/${lang}`
-									? "navbar active"
-									: "navbar"
-								}>
-                    <a class="md:p-3 py-2 block hover:text-red-400" href="/articles/">{t("Updates")}</a>
-                </li>
-                <li class={
-									slug == "/" || slug == `/${lang}`
-									? "navbar active"
-									: "navbar"
-								}>
-                    <a class="md:p-3 py-2 block hover:text-red-400" href="/contact-us/">{t("Contact Us")}</a>
+                    <a class="md:p-3 py-2 block hover:text-red-400" href=`/${lang}/contact-us/`>{t("Contact Us")}</a>
                 </li>
                 <li class={
 									slug == "/" || slug == `/${lang}`
@@ -204,8 +209,8 @@ const svgAttributes = {
                 </li>
                 <li class="navbar" style="font-size: 18px;border: solid 1px;padding: 5px 10px;">
                     {lang == "en"
-										 ? <a href="/ar">العربية</a>
-										 : <a href="/en">English</a>
+										 ? <a href=`/ar/${pageName}`>العربية</a>
+										 : <a href=`/en/${pageName}`>English</a>
 										}
                 </li>
             </ul>

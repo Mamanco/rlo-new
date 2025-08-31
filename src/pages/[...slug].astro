@@ -1,0 +1,63 @@
+---
+import { getCollection } from 'astro:content';
+import HomePage from '@/pages/index.astro'
+import AboutUs from '@/pages/_about-us.astro'
+import Members from '@/pages/_members.astro'
+import Practices from '@/pages/_practices.astro'
+import { defaultLang, languages } from '@/i18n/ui';
+
+// This function tells Astro to build a page for every entry in your content collection
+export async function getStaticPaths() {
+	const pagesList = [
+		// "index",
+		"about-us",
+		"practices",
+		"team",
+	];
+
+	let finalList = [
+		{params: { slug: "en" }},
+		{params: { slug: "ar" }},
+	];
+
+	for (const language in languages) {
+		for (const i in pagesList) {
+			console.log(`/${language}/${pagesList[i]}`);
+			finalList.push(
+				{params: { slug: `/${language}/${pagesList[i]}` }}
+			)
+		}
+	}
+
+	return finalList;
+}
+
+const lang = Astro.currentLocale || defaultLang;
+const { slug } = Astro.params;
+const slugParts = slug.split("/");
+const pageName = slugParts.length == 1 ? "index" : slugParts[1];
+---
+{
+	pageName == "index"
+	? <HomePage lang={lang} slug={slug}>
+		</HomePage>
+	: ""
+}
+{
+	pageName == "about-us"
+	? <AboutUs lang={lang} slug={slug}>
+		</AboutUs>
+	: ""
+}
+{
+	pageName == "practices"
+	? <Practices lang={lang} slug={slug}>
+		</Practices>
+	: ""
+}
+{
+	pageName == "team"
+	? <Members lang={lang} slug={slug}>
+		</Members>
+	: ""
+}

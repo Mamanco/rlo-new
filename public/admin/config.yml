@@ -75,6 +75,79 @@ collections:
       - {name: "featured_order", label: "Featured Order", widget: "number", required: false, i18n: duplicate}
       - {name: "hidden", label: "Hidden", widget: "boolean", i18n: duplicate}
       - {name: 'body', label: 'Main Content', widget: 'markdown', i18n: true}
+  - name: "team"
+    label: "Team"
+    folder: "src/content/team"
+    create: true
+    i18n: true
+    fields:
+      - {name: "title", label: "Title", widget: "string", i18n: duplicate}
+      - {name: "name", label: "Name", widget: "string", i18n: true}
+      - {name: "job_title", label: "Job Title", widget: "string", i18n: true}
+      - {name: "image", label: "Image", widget: "image", i18n: duplicate}
+      - name: "education"
+        label: "Education"
+        widget: "relation"
+        i18n: duplicate
+        collection: "education"
+        value_field: "{{slug}}"
+        search_fields: ["name"]
+        multiple: true
+        required: false
+      - name: "clients"
+        label: "Clients"
+        widget: "relation"
+        i18n: duplicate
+        collection: "clients"
+        value_field: "{{slug}}"
+        search_fields: ["name"]
+        multiple: true
+        required: false
+      - name: "bars"
+        label: "Bars and Courts"
+        widget: "relation"
+        i18n: duplicate
+        collection: "bars"
+        value_field: "{{slug}}"
+        search_fields: ["name"]
+        multiple: true
+        required: false
+      - name: "practices"
+        label: "Practices"
+        widget: "relation"
+        i18n: duplicate
+        collection: "practices"
+        value_field: "{{slug}}"
+        search_fields: ["name"]
+        multiple: true
+        required: false
+      - {name: 'body', label: 'Description', widget: 'markdown', i18n: true}
+  - name: "education"
+    label: "Education"
+    folder: "src/content/education"
+    create: true
+    i18n: true
+    fields:
+      - {name: "title", label: "Title", widget: "string", i18n: duplicate}
+      - {name: "name", label: "Name", widget: "string", i18n: true}
+  - name: "clients"
+    label: "Clients"
+    folder: "src/content/clients"
+    create: true
+    i18n: true
+    fields:
+      - {name: "title", label: "Title", widget: "string", i18n: duplicate}
+      - {name: "name", label: "Name", widget: "string", i18n: true}
+  - name: "bars"
+    label: "Bar and Courts"
+    folder: "src/content/bars"
+    create: true
+    i18n: true
+    fields:
+      - {name: "title", label: "Title", widget: "string", i18n: duplicate}
+      - {name: "name", label: "Name", widget: "string", i18n: true}
+
+
 
 
 

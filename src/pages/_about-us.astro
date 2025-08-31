@@ -1,0 +1,110 @@
+---
+import { useTranslations } from '@/i18n/utils';
+import Layout from '@/layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+const { title, lang="en", slug } = Astro.props;
+const t = useTranslations(lang);
+---
+<Layout lang={lang} slug={slug}>
+<div class="p-6 md:p-12 max-w-7xl mx-auto">
+    <!-- Headlines -->
+    <div class="flex col-span-12 gap-x-1 md:col-span-4">
+      <div class="uppercase text-xl w-40 text-[#343434]" style="font-size: 30px;">{t("our goal")}</div>
+      <p class="md:text-3xl lg:text-4xl ml-auto w-11/12 md:w-9/12 lg:leading-10 md:px-10 overflow-hidden">
+        {t("Our principal goals are to provide the")}
+        <span class="md:font-semibold">{t("highest quality of legal services")}</span>
+        {t("that allow us to be an instrumental part in our clients' success,")}
+        <span class="md:font-semibold">{t("and to elevate the practice of law in Saudi Arabia")}</span>
+        {t("by recruiting, retaining and advancing the brightest professional talent.")}
+      </p>
+    </div>
+    <img class="w-full my-10" src="/static/assets/images/team1.jpg" />
+    <p>
+      {t("Law Office of Omar Al-Rasheed is a full-service Saudi Arabian law firm with international expertise. We deliver first class, efficient and integrated legal services. Our firm includes a team of veteran Saudi Arabian and internationally qualified lawyers who assist on a wide range of practice areas.")}
+    </p>
+
+    <div class="grid gap-x-3 grid-cols-3 w-full md:w-8/12 ml-auto my-10">
+      <!-- Stats -->
+      <div class="space-y-3">
+        <div class="text-4xl font-semibold text-[#D0222B] py-4 border-b border-[#AEAEAE]">15+</div>
+        <div class="">{t("Years of experience")}</div>
+      </div>
+      <div class="space-y-3">
+        <div class="text-4xl font-semibold text-[#D0222B] py-4 border-b border-[#AEAEAE]">80+</div>
+        <div class="">{t("Practice Areas")}</div>
+      </div class="space-y-3">
+      <div class="space-y-3">
+        <div class="text-4xl font-semibold text-[#D0222B] py-4 border-b border-[#AEAEAE]">2023</div>
+        <div class="">{t("Shaping Vision 2030 projects")}</div>
+      </div>
+    </div>
+
+
+    <!--Our leadership-->
+    <div class="flex items-center flex-col md:flex-row">
+      <img class="w-full md:w-1/2 my-10 md:order-last" src="/static/assets/images/omar-alrasheed-2.png" />
+      <div class="w-full md:w-1/2">
+        <div class="uppercase my-3 text-xl text-[#343434]">{t("our leadership")}</div>
+        <p>{t("Our team is led by leading lawyer Omar Al-Rasheed, the most awarded and highly regarded lawyer in Saudi Arabia. He is known for his")}
+          {t("“hands-on”")}
+          {t("delivery and who always strives for excellence.")}
+        </p>
+      </div>
+    </div>
+
+
+    <!-- Our mission statement -->
+    <div class="space-y-3 my-10 w-full md:w-11/12 md:ml-auto">
+      <div
+        class="uppercase md:border-t md:border-b-0 md:text-start py-5 font-normal text-[#555555] text-2xl text-center border-b border-[#555555]">
+        {t("our mission statement")}
+      </div>
+      <div class="pb-5 grid grid-cols-12 gap-y-4 border-b flex flex-col md:flex-row md:ml-14 border-[#555555]">
+        <div class="flex col-span-12 gap-x-3 md:col-span-4 relative">
+          <div class="font-thin" style="padding-top: 6px;">01</div>
+          <div class="pt-1.5 text-3xl font-bold text-[#555555]">{t("Depth")}</div>
+        </div>
+        <p class="col-span-12 md:col-span-7 ml-auto">
+          {t("Our lawyers, which include some of the industry's key partners, counsel and senior associates, are specialized in their respective disciplines and are able to apply such specialization in specific business sectors including specialization in Islamic finance structures, complex squeeze-out and hostile M&A processes, banking and finance legislation, energy and power regulation and privatization, bespoke foreign investment in private and public markets, banking and securities litigation, and telecommunication and media practices.")}
+        </p>
+      </div>
+      <div class="pb-5 grid grid-cols-12 gap-y-4 border-b flex flex-col md:flex-row gap-x-4 md:ml-14 border-[#555555]">
+        <div class="flex col-span-12 gap-x-3 md:col-span-4 relative">
+          <div class="font-thin" style="padding-top: 6px;">02</div>
+          <div class="pt-1.5 text-3xl font-bold text-[#555555]">{t("Trusted by Clients")}</div>
+        </div>
+        <p class="col-span-12 md:col-span-7 ml-auto">
+          {t("We take great pride in our clients' trust in us, which is manifested by our clients inviting us to their board rooms and management committees to assist them in making business critical decisions about their affairs. We routinely provide on-site legal expertise by making our lawyers available to work alongside our clients in their offices and to help them build their respective legal departments")}
+          
+        </p>
+      </div>
+      <div class="pb-5 grid grid-cols-12 gap-y-4 border-b flex flex-col md:flex-row gap-x-4 md:ml-14 border-[#555555]">
+        <div class="flex col-span-12 gap-x-3 md:col-span-4 relative">
+          <div class="font-thin" style="padding-top: 6px;">03</div>
+          <div class="pt-1.5 text-3xl font-bold text-[#555555]">{t("Market Recognition")}</div>
+        </div>
+        <p class="col-span-12 md:col-span-7 ml-auto">
+          {t("A well known household name in the legal sector in Saudi Arabia with attorneys and associates who specialized in a wide range of legal matters and market sectors.")}
+        </p>
+      </div>
+      <div class="pb-5 grid grid-cols-12 gap-y-4 border-b flex flex-col md:flex-row gap-x-4 md:ml-14 border-[#555555]">
+        <div class="flex col-span-12 gap-x-3 md:col-span-4 relative">
+          <div class="font-thin w-10" style="padding-top: 6px;">04</div>
+          <div class="pt-1.5 text-3xl font-bold text-[#555555]">{t("Our Work with international firms")}</div>
+        </div>
+        <p class="col-span-12 md:col-span-7 ml-auto">
+          {t("Our independence allows us to work with the right international law firm for any given matter. We are a part of Multilaw international legal network providing us access to thousands or the best law firms around the world. Thereby enhancing our ability to offer and deliver cross-border, multi-jurisdiction, and fast-paced advice to our respective clients.")}
+      </div>
+      <div class="pb-5 grid grid-cols-12 gap-y-4 border-b flex flex-col md:flex-row gap-x-4 md:ml-14 border-[#555555]">
+        <div class="flex col-span-12 gap-x-3 md:col-span-4 relative">
+          <div class="font-thin w-10" style="padding-top: 6px;">05</div>
+          <div class="pt-1.5 text-3xl font-bold text-[#555555]">{t("Our Ethical and Transparent Code of Conduct")}</div>
+        </div>
+        <p class="col-span-12 md:col-span-7 ml-auto">
+          {t("As part of advancing our goal of elevating the legal practice in Saudi Arabia, we ensure that our team members deal with one other and with our clients with the highest respect and with the utmost transparency and ethical conduct, and in compliance with all applicable professional rules of conduct. We view ourselves as the bastions of holding the Saudi Arabian legal practice to the highest level of professionalism.")}
+      </div>
+    </div>
+  </div>
+</Layout>
+

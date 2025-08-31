@@ -10,7 +10,7 @@ const featuredPractices = await getCollection("practices");
 
 const listPractices = featuredPractices.filter(entry => entry.data.featured && entry.slug.split("/").includes(lang))
 ---
-<Layout lang={lang}>
+<Layout lang={lang} slug={slug}>
 <!-- Banner -->
   <section id="home">
     <div class="banner_wrap">

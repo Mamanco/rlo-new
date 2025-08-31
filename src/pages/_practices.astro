@@ -1,0 +1,101 @@
+---
+import { useTranslations } from '@/i18n/utils';
+import Layout from '@/layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+const { title, lang="en", slug } = Astro.props;
+const t = useTranslations(lang);
+
+const featuredPractices = await getCollection("practices");
+
+const listPractices = featuredPractices.filter(entry => entry.slug.split("/").includes(lang) && entry.data.type == "practice");
+const listSectors = featuredPractices.filter(entry => entry.slug.split("/").includes(lang) && entry.data.type == "sector");
+---
+<Layout lang={lang} slug={slug}>
+<!-- Headlines or Hero -->
+    <div class="p-6 md:p-12 md:max-w-7xl mx-auto my-10">
+        <div class="uppercase w-full text-xl text-[#343434]">{t("Expertise")}</div>
+        <!-- <p class="md:text-3xl lg:text-4xl ml-auto w-full md:w-11/12 lg:leading-10 overflow-hidden">
+            {t("We have a strong,"}} <span class="md:font-bold">{t("multidisciplinary"}}</span>
+            {t("team comprising"}} <span class="md:font-bold">{t("lawyers, professionals and specialists"}}</span>
+            {t("organized across various key"}} <span class="md:font-bold">{t("practice areas"}}</span> {t("and"}} <span
+                class="md:font-bold">{t("sectors."}}</span>
+        </p> -->
+    </div>
+
+    <!-- Tab buttons -->
+    <div class="flex flex-col md:flex-row items-center justify-between p-6 md:p-12 md:max-w-7xl mx-auto">
+        <div class="flex-col ml-auto rounded-full overflow-hidden bg-white">
+            <button class="tab-button py-4 w-32 rounded-full focus:outline-none bg-[#555555] text-white"
+                onclick="openTab(event, 'practices')">
+                {t("Practices")}
+            </button>
+            <button class="tab-button py-4 w-32 rounded-full focus:outline-none" onclick="openTab(event,'sectors')">
+                {t("Sectors")}
+            </button>
+        </div>
+        <!-- Search inout -->
+        <div class="order-last md:order-first relative px-5 my-5 flex-1">
+            <img class="absolute w-6" src="/static/assets/images/search.svg" alt="">
+            <input id="search-practice" class="placeholder:text-black/50 text-black border-b
+                    border-black/30 w-full
+                    bg-transparent
+                    px-14
+                    py-1
+                    outline-none
+                    focus:outline-none" type="text" placeholder={t("Search")} />
+        </div>
+    </div>
+
+    <!-- Practices -->
+    <div id="practices"
+        class="grid tab-content mb-10 grid-cols-1 md:grid-cols-4 md:gap-16 px-10 gap-8 items-center text-[#555555] md:max-w-7xl mx-auto">
+				{
+					listPractices.map(entry => (
+						<a class="practice-container" href="/practices/anti-bribery">
+							<div class="flex items-center justify-start gap-3 md:flex-col break-words">
+								<img src={entry.data.image} class="w-8 h-8">
+								<p class="text-start md:text-center practice-name">{entry.data.name}</p>
+							</div>
+						</a>
+					))
+				}
+    </div>
+    <!-- Sectors -->
+    <div id="sectors"
+        class="grid tab-content mb-10 grid-cols-1 md:grid-cols-4 md:gap-16 px-10 gap-8 items-center text-[#555555] md:max-w-7xl mx-auto hidden">
+				{
+					listSectors.map(entry => (
+						<a class="practice-container" href="/practices/anti-bribery">
+							<div class="flex items-center justify-start gap-3 md:flex-col break-words">
+								<img src={entry.data.image} class="w-8 h-8">
+								<p class="text-start md:text-center practice-name">{entry.data.name}</p>
+							</div>
+						</a>
+					))
+				}
+    </div>
+
+    <script is:inline>
+        // Tabs
+        function openTab(evt, tabName) {
+            var i, tabContent, tabButton;
+            tabContent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabContent.length; i++) {
+                tabContent[i].classList.add("hidden")
+                console.log(tabContent[i])
+            }
+            tabButton = document.getElementsByClassName("tab-button");
+            for (i = 0; i < tabButton.length; i++) {
+                tabButton[i].classList.remove("bg-[#555555]", "text-white");
+            }
+            document.getElementById(tabName).classList.remove("hidden")
+            evt.currentTarget.classList.add("bg-[#555555]", "text-white");
+        }
+    </script>
+    <script is:inline src="/static/assets/js/jquery.min.js"></script>
+    <script is:inline src="/static/assets/js/search.js"></script>
+    <script>
+        searchUI("search-practice", "practice-container", [".practice-name"]);
+    </script>
+</Layout>

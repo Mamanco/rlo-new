@@ -1,0 +1,75 @@
+---
+import { useTranslations } from '@/i18n/utils';
+import Layout from '@/layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+const { title, lang="en", slug } = Astro.props;
+const t = useTranslations(lang);
+
+const membersList = await getCollection("team");
+
+const members = membersList.filter(entry => entry.slug.split("/").includes(lang))
+---
+<Layout lang={lang} slug={slug}>
+	<!-- Gallery -->
+  <div class="bg-[#343434] p-6 md:p-12 lg:p-20">
+    <div class="relative px-5 my-5">
+      <img class="absolute w-6" src="/static/assets/images/search.svg" alt="" />
+      <input id="search-input"
+        class="placeholder:text-white/50 text-white border-b border-white/30 w-full bg-transparent px-14 py-1 focus:outline-none"
+        type="text" placeholder={t("Search by Name, Title or Sector")} />
+    </div>
+    <div class="grid grid-cols-1 gap-4 md:grid-cols-4">
+      {
+				members.map(entry => (
+					<a href="/team/{{.Slug}}" class="member-container">
+						<div class="w-full" style=`background-image:url('${entry.data.image}'); height: 500px; background-size: cover; background-position: center;` alt="">
+							<div style="background: rgba(255,255,255,0.5);padding: 5px 20px; margin: 10px; top: 412px; position: relative;">
+								<div style="font-size: 20px; font-weight: bold;" class="member-name">{entry.data.name}</div>
+								<div style="font-size: 18px;" class="member-job">{entry.data.job_title}</div>
+								<div style="display:none"></div>
+							</div>
+						</div>
+					</a>
+				))
+			}
+    </div>
+  </div>
+
+  <!-- What they are saying -->
+    <!-- <div class="text-center my-20 p-6 md:p-12 lg:max-w-7xl mx-auto space-y-5">
+    <h2 class="uppercase text-[#D0222B] text-[32px]">{t("What they are saying"}}</h2>
+    <div class="text-center my-20 p-6 md:p-12 lg:max-w-7xl mx-auto space-y-5">
+      <p class="text-[32px]">
+        
+        {t("Lorem ipsum dolor sit amet, consectetur adipiscing elit. In ut dolor id massa malesuada ultrices id et urna. Aenean sollicitudin luctus sem, at lacinia neque malesuada rutrum."}}
+      </p>
+      <p><strong class="text-sm">{t("Chamber Partner"}}</strong></p>
+    </div>
+    <div class="p-6 md:p-12 lg:max-w-7xl mx-auto">
+      <p class="text-[24px] text-center md:text-left md:max-w-md">
+        {t("Send us your spontaneous application.We look forward to hearing from you."}}
+      </p>
+      <div class="flex flex-col md:flex-row justify-between">
+        <div class="flex flex-col justify-center items-center my-6">
+          <div class="capitalize text-[#2F343C] text-3xlfont-semibold">
+            {t("Join us"}}
+          </div>
+          <a href="/awards" class="flex items-center gap-x-3 text-sm text-[#FA636B]">
+            <img src="/static/assets/images/arrow.svg" alt="" />
+            
+            {t("Mobile Link"}}
+          </a>
+        </div>
+        <img class="w-full md:w-8/12 my-10" src="/static/assets/images//team-cover.png" />
+      </div>
+    </div>
+  </div> -->
+
+  <!-- Footer -->
+  <script is:inline src="/static/assets/js/jquery.min.js"></script>
+  <script is:inline src="/static/assets/js/search.js"></script>
+  <script>
+      searchUI("search-input", "member-container", [".member-name", ".member-job"]);
+  </script>
+</Layout>

@@ -28,9 +28,22 @@ const practicesCollection = defineCollection({
   }).passthrough(),
 });
 
+const teamCollection = defineCollection({
+  schema: z.object({
+    title: z.string(),
+    name: z.string(),
+		job_title: z.string(),
+    image: z.string(),
+		education: z.array(z.string()).optional(),
+		clients: z.array(z.string()).optional(),
+		bars: z.array(z.string()).optional(),
+  }).passthrough(),
+});
+
 
 // Export a `collections` object to register your new 'blog' collection
 export const collections = {
 	pages: pagesCollection,
 	practices: practicesCollection,
+	team: teamCollection,
 };
