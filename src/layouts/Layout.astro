@@ -24,8 +24,10 @@ const svgAttributes = {
 	 "xmlns:svg":"http://www.w3.org/2000/svg",
 }
 
+console.log(`Layout (slug): ${slug}`);
+
 const slugParts = slug.split("/");
-const pageName = slugParts.length == 1 ? "index" : slugParts[1];
+const pageName = slugParts.length == 1 ? "" : slugParts[1];
 
 console.log(slug);
 ---

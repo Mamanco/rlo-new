@@ -3,10 +3,16 @@ import { useTranslations } from '@/i18n/utils';
 import Layout from '@/layouts/Layout.astro';
 import { getCollection } from 'astro:content';
 
-const { title, lang="en", slug } = Astro.props;
+const { title, lang="en", slug="" } = Astro.props;
 const t = useTranslations(lang);
 
 const featuredPractices = await getCollection("practices");
+
+for (let i=0; i<featuredPractices.length;i++) {
+	console.log(featuredPractices[i].slug);
+}
+
+console.log(`index (slug): ${slug}`);
 
 const listPractices = featuredPractices.filter(entry => entry.data.featured && entry.slug.split("/").includes(lang))
 ---

@@ -3,7 +3,7 @@ import { useTranslations } from '@/i18n/utils';
 import Layout from '@/layouts/Layout.astro';
 import { getCollection } from 'astro:content';
 
-const { title, lang="en", slug } = Astro.props;
+const { title, lang="en", slug="members" } = Astro.props;
 const t = useTranslations(lang);
 
 const membersList = await getCollection("team");

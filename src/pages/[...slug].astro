@@ -34,6 +34,7 @@ export async function getStaticPaths() {
 
 const lang = Astro.currentLocale || defaultLang;
 const { slug } = Astro.params;
+console.log(`[...slug] (slug): ${slug}`);
 const slugParts = slug.split("/");
 const pageName = slugParts.length == 1 ? "index" : slugParts[1];
 ---
