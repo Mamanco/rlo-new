@@ -4,7 +4,7 @@ name: Anti-trust and Competition Counselling
 image: /static/images/uploads/image 2.svg
 type: practice
 featured: true
-featured_order: null
+featured_order: 13
 hidden: false
 ---
 Anti-trust law is becoming more contentious, and the penalties are becoming potentially huge.

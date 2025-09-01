@@ -4,7 +4,7 @@ name: Litigation
 image: /static/images/uploads/image 36.svg
 type: practice
 featured: false
-featured_order: null
+featured_order: 1
 hidden: false
 ---
 We provide you with qualified litigators who walk with you step by step to resolve any disputes you may encounter. 

@@ -3,8 +3,8 @@ title: Privacy and Data Protection
 name: Privacy and Data Protection
 image: /static/images/uploads/image 21.svg
 type: practice
-featured: false
-featured_order: null
+featured: true
+featured_order: 12
 hidden: false
 ---
 Further to Vision 2030, the Kingdom of Saudi Arabia has issued numerous new regulations regarding cybersecurity.

@@ -3,8 +3,8 @@ title: Privacy and Data Protection
 name: الخصوصية وحماية البيانات
 image: /static/images/uploads/image 21.svg
 type: practice
-featured: false
-featured_order: null
+featured: true
+featured_order: 12
 hidden: false
 ---
 تزامنًا مع النهضة التنظيمية في المملكة وتماشيًا مع مستهدفات رؤية المملكة 2030، أصدرت المملكة العربية السعودية العديد من التنظيمات الجديدة بشأن الأمن السيبراني.

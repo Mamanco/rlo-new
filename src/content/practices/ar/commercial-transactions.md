@@ -4,7 +4,7 @@ name: المعاملات التجارية
 image: /static/images/uploads/image 12.svg
 type: practice
 featured: true
-featured_order: null
+featured_order: 2
 hidden: false
 ---
 نستفيد من خبراتنا المتكاملة في عدة مجالات لتقديم خبرة واسعة إلى العملاء وتقديم المشورة بشأن مجموعة كاملة من العقود التجارية، وتشمل:

@@ -3,7 +3,7 @@ title: Islamic Finance
 name: Islamic Finance
 image: /static/images/uploads/image 46.svg
 type: practice
-featured: true
+featured: false
 featured_order: null
 hidden: false
 ---

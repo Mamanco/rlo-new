@@ -3,7 +3,7 @@ title: Anti-Bribery
 name: Anti-Bribery
 image: /static/images/uploads/image 1.svg
 type: practice
-featured: true
+featured: false
 featured_order: 0
 hidden: false
 ---

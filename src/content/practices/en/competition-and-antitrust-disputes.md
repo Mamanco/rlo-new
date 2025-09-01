@@ -1,6 +1,6 @@
 ---
 title: Competition and Antitrust Disputes
-name: يجمع فريق العمل ذو الخبرة العميقة في هذا المجال بين الخبرة في مجال التقاضي مع المشورة الإستراتيجية لتمكين عملائنا من متابعة الدعاوى بطريقة فعالة والدفاع عنهم بنجاح أمام الجهات التنظيمية السعودية والمحاكم واللجان القضائية والهيئات ذات الصلة.
+name: Competition and Antitrust Disputes
 image: /static/images/uploads/image 13.svg
 type: practice
 featured: false

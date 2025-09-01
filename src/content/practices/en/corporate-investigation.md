@@ -3,8 +3,8 @@ title: Corporate Investigation
 name: Corporate Investigation
 image: /static/images/uploads/image 42.svg
 type: practice
-featured: false
-featured_order: null
+featured: true
+featured_order: 14
 hidden: false
 ---
 Saudi Arabian government regulators and criminal prosecutors continue to increase their focus on the activities of banks and corporations, along with their senior officers, directors, and outside advisors.

@@ -3,7 +3,7 @@ title: Fintech
 name: Fintech
 image: /static/images/uploads/fintech.svg
 type: practice
-featured: true
+featured: false
 featured_order: null
 hidden: false
 ---

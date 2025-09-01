@@ -3,7 +3,7 @@ title: Environmental, Social, and Corporate Governance (ESG) disclosures
 name: Environmental, Social, and Corporate Governance (ESG) disclosures
 image: /static/images/uploads/image 29.svg
 type: practice
-featured: true
+featured: false
 featured_order: null
 hidden: false
 ---

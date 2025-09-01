@@ -4,7 +4,7 @@ name: التقاضي
 image: /static/images/uploads/image 36.svg
 type: practice
 featured: false
-featured_order: null
+featured_order: 1
 hidden: false
 ---
 ستجد لدينا العديد من الخبراء المؤهلين في هذا المجال الذين يسيرون معك خطوة بخطوة لحل أي نزاعات قد تواجهها.

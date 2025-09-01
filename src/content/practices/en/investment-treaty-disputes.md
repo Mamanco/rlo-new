@@ -3,7 +3,7 @@ title: Investment Treaty Disputes
 name: Investment Treaty Disputes
 image: /static/images/uploads/image 44.svg
 type: practice
-featured: true
+featured: false
 featured_order: null
 hidden: false
 ---

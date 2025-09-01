@@ -3,7 +3,7 @@ title: Leasing
 name: التأجير
 image: /static/images/uploads/image 49.svg
 type: practice
-featured: true
+featured: false
 featured_order: null
 hidden: false
 ---

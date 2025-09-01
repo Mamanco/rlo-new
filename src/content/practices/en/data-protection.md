@@ -3,7 +3,7 @@ title: Data Protection
 name: Data Protection
 image: /static/images/uploads/image 22.svg
 type: practice
-featured: true
+featured: false
 featured_order: null
 hidden: false
 ---

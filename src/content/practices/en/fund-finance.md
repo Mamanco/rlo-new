@@ -3,7 +3,7 @@ title: Fund Finance
 name: Fund Finance
 image: /static/images/uploads/image 34.svg
 type: practice
-featured: true
+featured: false
 featured_order: null
 hidden: false
 ---

@@ -3,8 +3,8 @@ title: Corporate Investigation
 name: التحقيق للشركات
 image: /static/images/uploads/image 42.svg
 type: practice
-featured: false
-featured_order: null
+featured: true
+featured_order: 14
 hidden: false
 ---
 تواصل الجهات الرقابية في المملكة مكافحة الفساد والتركيز على الجرائم المالية المتعلقة بأنشطة البنوك والشركات وكبار المسؤولين والمستشارين الخارجيين.
