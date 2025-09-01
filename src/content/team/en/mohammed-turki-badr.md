@@ -3,6 +3,7 @@ title: Mohammed Turki Badr
 name: Mohammed Turki Badr
 job_title: Junior Associate, Jeddah
 image: /static/images/uploads/Mohammed Turki Badr.jpeg
+order: 14
 education:
   - university-of-business-and-technology-bachelor-of-laws
 clients: []

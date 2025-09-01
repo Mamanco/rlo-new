@@ -27,9 +27,16 @@ const svgAttributes = {
 console.log(`Layout (slug): ${slug}`);
 
 const slugParts = slug.split("/");
-const pageName = slugParts.length == 1 ? "" : slugParts[1];
 
-console.log(slug);
+const X = "s";
+
+const langSlug = slugParts.length == 1
+?	`${lang}/`
+: slug;
+
+const arSlug = "/" + langSlug.replace(`${lang}/`, "ar/", 1);
+const enSlug = "/" + langSlug.replace(`${lang}/`, "en/", 1);
+
 ---
 <!DOCTYPE html>
 <html class="scroll-smooth" lang={lang} dir={direction}>
@@ -175,14 +182,14 @@ console.log(slug);
                     <a class="md:p-3 py-2 block hover:text-red-400" href=`/${lang}/about-us/`>{t("About Us")}</a>
                 </li>
                 <li class={
-									slug == `${lang}/practices`
+									slug == `${lang}/practices` || slug.startsWith("practices")
 									? "navbar active"
 									: "navbar"
 								}>
                     <a class="md:p-3 py-2 block hover:text-red-400" href=`/${lang}/practices/`>{t("Expertise")}</a>
                 </li>
                 <li class={
-									slug == "/" || slug == `/${lang}`
+									slug == `${lang}/team` || slug.startsWith("team")
 									? "navbar active"
 									: "navbar"
 								}>
@@ -211,8 +218,8 @@ console.log(slug);
                 </li>
                 <li class="navbar" style="font-size: 18px;border: solid 1px;padding: 5px 10px;">
                     {lang == "en"
-										 ? <a href=`/ar/${pageName}`>العربية</a>
-										 : <a href=`/en/${pageName}`>English</a>
+										 ? <a href={arSlug}>العربية</a>
+										 : <a href={enSlug}>English</a>
 										}
                 </li>
             </ul>

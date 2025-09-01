@@ -1,8 +1,9 @@
 ---
 title: Muaath Al-Marashi
 name: Muaath Al-Marashi
-job_title: Muaath Al-Marashi
+job_title: Senior Associate, Jeddah
 image: /static/images/uploads/Muaath Al-Marashi.jpeg
+order: 6
 education:
   - king-abdulaziz-university-bachelor-of-laws
 clients:

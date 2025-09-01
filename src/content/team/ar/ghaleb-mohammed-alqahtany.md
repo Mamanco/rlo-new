@@ -3,6 +3,7 @@ title: Ghaleb Mohammed Alqahtany
 name: غالب القحطاني
 job_title: محامي و مستشار قانوني
 image: /static/images/uploads/Ghaleb Mohammed Alqahtany.jpeg
+order: 13
 education:
   - washington-university-master-of-laws
 clients:

@@ -3,6 +3,7 @@ title: Fahad Al Rasheed
 name: فهد الرشيد
 job_title: فهد الرشيد
 image: /static/images/uploads/Fahad Al Rasheed.jpg
+order: 7
 education:
   - taif-university-bachelor-of-laws
 clients:

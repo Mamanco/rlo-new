@@ -3,6 +3,7 @@ title: Mohammed Al-Ayeri
 name: محمد العييري
 job_title: محامي و مستشار قانوني
 image: /static/images/uploads/Mohammed Al-Ayeri.jpg
+order: 10
 education:
   - king-saud-university-bachelor-of-laws
 clients:

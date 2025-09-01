@@ -8,7 +8,9 @@ const t = useTranslations(lang);
 
 const membersList = await getCollection("team");
 
-const members = membersList.filter(entry => entry.slug.split("/").includes(lang))
+const members = membersList
+	.filter(entry => entry.slug.split("/").includes(lang))
+	.sort((a,b) => a.data.order - b.data.order);
 ---
 <Layout lang={lang} slug={slug}>
 	<!-- Gallery -->
@@ -22,7 +24,7 @@ const members = membersList.filter(entry => entry.slug.split("/").includes(lang)
     <div class="grid grid-cols-1 gap-4 md:grid-cols-4">
       {
 				members.map(entry => (
-					<a href="/team/{{.Slug}}" class="member-container">
+					<a href=`/team/${entry.slug}` class="member-container">
 						<div class="w-full" style=`background-image:url('${entry.data.image}'); height: 500px; background-size: cover; background-position: center;` alt="">
 							<div style="background: rgba(255,255,255,0.5);padding: 5px 20px; margin: 10px; top: 412px; position: relative;">
 								<div style="font-size: 20px; font-weight: bold;" class="member-name">{entry.data.name}</div>

@@ -3,6 +3,7 @@ title: Lyndon Nugent
 name: Lyndon Nugent
 job_title: Partner
 image: /static/images/uploads/Lyndon Nugent.png
+order: 4
 education:
   - texas-state-university
   - st.-mary’s-school-of-law-juris-doctor

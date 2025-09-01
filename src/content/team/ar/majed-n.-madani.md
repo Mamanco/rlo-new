@@ -3,6 +3,7 @@ title: Majed N. Madani
 name: ماجد ن. مدني
 job_title: المدير التنفيذي
 image: /static/images/uploads/Majed N. Madani.jpg
+order: 5
 education:
   - university-of-business-technology-mba
   - king-saud-university-bachelor-of-laws

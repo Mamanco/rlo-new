@@ -1,0 +1,100 @@
+---
+import { useTranslations } from '@/i18n/utils';
+import Layout from '@/layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+const { title, lang="en", slug="about-us" } = Astro.props;
+const t = useTranslations(lang);
+
+const articleList = await getCollection("articles");
+
+const articles = articleList.filter(entry => entry.slug.split("/").includes(lang)).sort((a,b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime());
+
+const testimonialList = await getCollection("testimonials");
+
+const testimonials = await Promise.all(testimonialList
+	.filter(entry => entry.slug.split("/").includes(lang) && entry.data.featured)
+	.sort((a,b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime())
+	.map(async entry => {
+		const { Content } = await entry.render()
+		return {
+			data: entry.data,
+			Content: Content,
+		};
+	})
+);
+---
+<Layout lang={lang} slug={slug}>
+	<!-- Gallery -->
+  <div class="bg-[#343434] p-6 md:p-12 lg:p-20">
+
+    <h2 class="text-3xl my-10 text-white">{t("Updates")}</h2>
+     <div class="relative px-5 my-5">
+      <img class="absolute w-6" src="/static/assets/images/search.svg" alt="" />
+      <input id="search-input"
+        class="placeholder:text-white/50 text-white border-b border-white/30 w-full bg-transparent px-14 py-1 focus:outline-none"
+        type="text" placeholder={t("Search by Title, Title")} />
+    </div>
+
+    <div class="grid grid-cols-1 mt-10 gap-8 md:grid-cols-4">
+			{
+				articles.map(entry => (
+					<a href=`/articles/${lang}/${entry.slug}` class="article-container my-10 h-100 border-s border-neutral-500 transition duration-700 hover:shadow-2xl shadow-gray-950">
+						<div class="flex flex-col gap-3 text-white px-8 justify-between">
+							<img class="w-full max-w-xs object-cover" src={entry.data.image} alt="">          
+							<h3 class="article-Title text-lg mt-10">{entry.data.name}</h3>
+							<p class="text-base">{new Date(entry.data.date).toISOString().slice(0, 10)}</p> 
+						</div>
+					</a>
+				))
+			}
+      
+    </div>
+  </div>
+  <div class="bg-neutral-100 p-6 md:p-12 lg:p-20">
+     <!-- What they are saying -->
+     <div class="text-center my-8 p-6 md:p-12 lg:max-w-7xl mx-auto">
+      <h2 class="uppercase text-[#D0222B] text-4xl overflow-hidden">{t("What they are saying")}</h2>
+      <p class=""><strong >{t("Collated independently by Legal 500 research team")}</strong></p>
+  </div> 
+  <div class="grid grid-cols-2 gap-8 justify-center">
+		{
+			testimonials.map(entry => (
+				<div class="w-md bg-neutral-200 p-8 rounded shadow">
+					<div class="flex-col items-center justify-center">
+						<svg class="h-12 mx-auto mb-2 text-[#D0222B] dark:text-[#D0222B]" viewBox="0 0 24 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<path d="M14.017 18L14.017 10.609C14.017 4.905 17.748 1.039 23 0L23.995 2.151C21.563 3.068 20 5.789 20 8H24V18H14.017ZM0 18V10.609C0 4.905 3.748 1.038 9 0L9.996 2.151C7.563 3.068 6 5.789 6 8H9.983L9.983 18L0 18Z" fill="currentColor"/>
+					</svg> 
+						<p>
+							<em>
+								<entry.Content />
+							</em>
+						</p>
+					</div>
+					<div class="flex justify-start gap-3 ms-2 mt-4">
+						<img class="rounded-full h-12 w12" src="{{.Image}}" alt="" >
+					
+						<div class="flex flex-col justify-center items-start text-sm">
+							<div class="text-neutral-700">
+								<h5>{entry.data.name}</h5>
+							</div>
+							<div class="text-neutral-600">
+								<span>{entry.data.position}</span>
+							</div>
+							<div class="text-orange-400">
+								<span>{entry.data.company}</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			))
+		}
+  </div>
+  </div>
+ 
+  <script is:inline src="/static/assets/js/jquery.min.js"></script>
+  <script is:inline src="/static/assets/js/search.js"></script>
+  <script>
+      searchUI("search-input", "article-container", [".article-Title"]);
+  </script>
+</Layout>

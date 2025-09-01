@@ -3,6 +3,7 @@ title: Muaath Al-Marashi
 name: معاذ المرعشي
 job_title: محامي و مستشار قانوني
 image: /static/images/uploads/Muaath Al-Marashi.jpeg
+order: 6
 education:
   - king-abdulaziz-university-bachelor-of-laws
 clients:

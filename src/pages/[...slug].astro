@@ -4,6 +4,7 @@ import HomePage from '@/pages/index.astro'
 import AboutUs from '@/pages/_about-us.astro'
 import Members from '@/pages/_members.astro'
 import Practices from '@/pages/_practices.astro'
+import Updates from '@/pages/_updates.astro'
 import { defaultLang, languages } from '@/i18n/ui';
 
 // This function tells Astro to build a page for every entry in your content collection
@@ -13,6 +14,7 @@ export async function getStaticPaths() {
 		"about-us",
 		"practices",
 		"team",
+		"articles",
 	];
 
 	let finalList = [
@@ -60,5 +62,11 @@ const pageName = slugParts.length == 1 ? "index" : slugParts[1];
 	pageName == "team"
 	? <Members lang={lang} slug={slug}>
 		</Members>
+	: ""
+}
+{
+	pageName == "articles"
+	? <Updates lang={lang} slug={slug}>
+		</Updates>
 	: ""
 }

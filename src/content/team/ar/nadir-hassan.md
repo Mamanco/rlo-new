@@ -3,6 +3,7 @@ title: Nadir Hassan
 name: نادر إبراهيم
 job_title: مستشار قانوني
 image: /static/images/uploads/Nadir Hassan.jpeg
+order: 12
 education:
   - university-of-south-wales-bachelor-of-laws
 clients:

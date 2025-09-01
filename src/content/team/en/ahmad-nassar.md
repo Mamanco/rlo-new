@@ -3,6 +3,7 @@ title: Ahmad Nassar
 name: Ahmad Nassar
 job_title: Finance Consultant, Director of Entity Establishments
 image: /static/images/uploads/Ahmad Nassar.jpg
+order: 15
 education:
   - al-al-bayt-university-bachelor-s-degree-in-accounting
 clients: []

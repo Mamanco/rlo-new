@@ -3,6 +3,7 @@ title: Mohammed Al-Ayeri
 name: Mohammed Al-Ayeri
 job_title: Senior Associate, Riyadh
 image: /static/images/uploads/Mohammed Al-Ayeri.jpg
+order: 10
 education:
   - king-saud-university-bachelor-of-laws
 clients:

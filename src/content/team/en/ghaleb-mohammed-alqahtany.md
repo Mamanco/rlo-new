@@ -3,6 +3,7 @@ title: Ghaleb Mohammed Alqahtany
 name: Ghaleb Mohammed Alqahtany
 job_title: Associate, Riyadh
 image: /static/images/uploads/Ghaleb Mohammed Alqahtany.jpeg
+order: 13
 education:
   - washington-university-master-of-laws
 clients:

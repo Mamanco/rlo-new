@@ -3,6 +3,7 @@ title: Mohammed Al-Attiyah
 name: محمد العطية
 job_title: محامي و مستشار قانوني
 image: /static/images/uploads/Mohammed Al-Attiyah.jpg
+order: 11
 education:
   - king-saud-university-bachelor-of-laws
 clients:

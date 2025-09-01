@@ -3,6 +3,7 @@ title: Walid Al Khalaf
 name: Walid Al Khalaf
 job_title: Partner
 image: /static/images/uploads/Walid Al Khalaf.jpg
+order: 3
 education:
   - king-saud-university-bachelor-of-laws
 clients:

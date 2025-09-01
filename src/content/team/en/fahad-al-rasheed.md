@@ -3,6 +3,7 @@ title: Fahad Al Rasheed
 name: Fahad Al Rasheed
 job_title: Senior Associate, Riyadh
 image: /static/images/uploads/Fahad Al Rasheed.jpg
+order: 7
 education:
   - taif-university-bachelor-of-laws
 clients:

@@ -3,6 +3,7 @@ title: Ahmad Nassar
 name: احمد نصار
 job_title: مستشار مالي، مدير تأسيس الشركات
 image: /static/images/uploads/Ahmad Nassar.jpg
+order: 15
 education:
   - al-al-bayt-university-bachelor-s-degree-in-accounting
 clients: []

@@ -1,0 +1,197 @@
+---
+import { defaultLang } from '@/i18n/ui';
+import { useTranslations } from '@/i18n/utils';
+import Layout from '@/layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+import { getEntry } from 'astro:content';
+
+export async function getStaticPaths() {
+	const teamList = await getCollection("team");
+
+	const finalList = teamList.map(entry => (
+		{
+			params: { slug: entry.slug },
+			props: { entry },
+		}
+	));
+			
+				
+			
+
+	return finalList;
+}
+
+const { slug } = Astro.params;
+const lang = Astro.currentLocale || defaultLang;
+const t = useTranslations(lang);
+
+const { entry } = Astro.props;
+
+const { Content } = await entry.render()
+
+const practices = await Promise.all(entry.data.practices!
+	.map(async entry => {
+		const practice = await getEntry("practices", `${lang}/${entry}`)
+		return {
+			data: practice!.data,
+		};
+	})
+);
+
+const education = await Promise.all(entry.data.education!
+	.map(async entry => {
+		const practice = await getEntry("education", `${lang}/${entry}`)
+		return {
+			data: practice!.data,
+		};
+	})
+);
+
+const bars = await Promise.all(entry.data.bars!
+	.map(async entry => {
+		const practice = await getEntry("bars", `${lang}/${entry}`)
+		return {
+			data: practice!.data,
+		};
+	})
+);
+
+const clients = await Promise.all(entry.data.clients!
+	.map(async entry => {
+		const practice = await getEntry("clients", `${lang}/${entry}`)
+		return {
+			data: practice!.data,
+		};
+	})
+);
+---
+<Layout lang={lang} slug=`team/${slug}`>
+	<div class="flex justify-center gap-14 flex-wrap dark p-6 lg:p-12">
+
+    <div class="w-full md:w-3/12 space-y-10">
+      <a href="/team" class="text-red-500 hover:text-red-400 hover:brightness-150">
+        <div class="flex gap-4 items-start items-center" >
+        <img class="h-4  w-10 rotate-180" src="/static/assets/images/arrow.svg" alt=""> 
+        <span class="text-base ">Back</span>
+      </div>
+      </a>
+      <!-- Avatar -->
+      <img class="order-1 col-span-4 row-span-auto" src={entry.data.image} alt="" />
+      <div class="order-3 col-span-3 row-span-auto">
+        <!-- Practices -->
+        <div class="order-5 col-span-4 space-y-3">
+          <h4 class="uppercase text-[24px] font-light">Practices</h4>
+					{
+						practices.map(entry => (
+							<a class="flex gap-x-3 items-center" href="/practices/{{.Slug}}">
+								<img class="invert h-6 w-6 " src="/static/assets/images/icons/chevron-right.svg" alt="" />{entry.data.name}
+							</a>
+						))
+					}
+        </div>
+        <!-- Education -->
+        <div class="order-6 col-span-4 space-y-3">
+          <h4 class="uppercase text-[24px] font-light" style="padding-top: 40px;">Education</h4>
+          <div class="bio-left text-white text-xl">
+            {
+							education.map(entry => (
+								<p>{entry.data.name}</p>
+							))
+						}
+          </div>
+        </div>
+        <!-- Qualification -->
+         <!-- hides Bars & Courts id Qualification is empty -->
+					{
+						bars.length == 0
+						? ""
+						: <div class="order-7 col-span-4 space-y-3">
+								<h4 class="uppercase text-[24px] font-light" style="padding-top: 40px;">Bars & Courts</h4>
+								<div class="bio-left text-white text-xl">
+									{
+										bars.map(entry => (
+											<p>{entry.data.name}</p>
+										))
+									}
+								</div>
+        			</div>
+
+					}
+      </div>
+
+    </div>
+    <div class="w-full md:w-6/12">
+      <!-- Description -->
+      <div class="order-2 hidden md:block col-span-7 row-span-3">
+        <div class="py-3">
+          <h3 class="text-3xl">{entry.data.name}</h3>
+          <h5 class="text-xl">{entry.data.job_title}</h5>
+        </div>
+        <div class="bio-left text-white">
+          <Content />
+        </div>
+      </div>
+
+      <div class="order-4 col-span-7 my-10 space-y-3">
+        <!-- Sector -->
+        <h4 class="uppercase text-[24px] font-light">Representative matters include:</h4>
+        <div class="clients">
+					<ul>
+						{
+							clients.map(entry => (
+								<li>{entry.data.name}</li>
+							))
+						}
+					</ul>
+        </div>
+      </div>
+
+      <!-- Blog -->
+      <!-- <div class="order-4 col-span-7 my-10 space-y-3">
+        <div class="flex gap-x-3">
+          <img class="h-12 w-12 rounded-full" src="/static/assets/images/2.png" alt="" />
+          <div class="">
+            <h5 class="uppercase font-light">CBB MEDIA</h5>
+            <h6 class="font-light">1d</h6>
+          </div>
+        </div>
+        <p class="text-white">
+          Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet
+          sint. Velit officia consequat duis enim velit mollit. Exercitation
+          veniam consequat sunt nostrud amet.Proin sit amet condimentum orci.
+        </p>
+        <a href="/#" class="flex gap-x-3 items-center text-[#FA636B]">
+          <img class="h-2 rounded-full" src="/static/assets/images/arrow.svg" alt="" />
+          Read more
+        </a>
+        <img class="w-full" src="/static/assets/images/blog-1.png" alt="" />
+      </div> -->
+    </div>
+  </div>
+
+  <!-- Services -->
+  <div class="relative flex items-center flex-col md:flex-row justify-between lg:justify-center p-6 mx-auto space-y-5">
+    <img class="md:order-last w-full md:scale-125 xl:scale-100 lg:w-6/12 max-w-[800px]" src={
+			lang == "en"
+			? "/static/assets/images/rlo-multilaw-en.svg"
+			: "/static/assets/images/rlo-multilaw-ar.svg"
+			} alt="">
+    <div class="text-lg lg:text-3xl w-full md:max-w-xl">
+      <h6 class="font-bold text-[32px] text-2xl md:text-4xl lg:text-5xl text-black px-7 py-4 md:p-7">{t("At your service")}</h6>
+      <ul class="space-y-3 font-light">
+        <li class="flex gap-x-3 items-center text-[24px] lg:text-3xl font-light">
+          <span class="font-bold text-[#D0222B]">+</span>
+          {t("Transactions")}
+        </li>
+        <li class="flex gap-x-3 items-center text-[24px] lg:text-3xl  font-light">
+          <span class="font-bold text-[#D0222B]">+</span>
+          {t("Litigation and Arbitration")}
+        </li>
+        <li class="flex gap-x-3 items-center text-[24px] lg:text-3xl  font-light">
+          <span class="font-bold text-[#D0222B]">+</span>
+          {t("Consultancy")}
+        </li>
+      </ul>
+    </div>
+  </div>
+</Layout>

@@ -3,6 +3,7 @@ title: Reed Runnels
 name: Reed Runnels
 job_title: Partner
 image: /static/images/uploads/Reed Runnels.jpg
+order: 2
 education:
   - american-university-in-washington-d.c.-b.s.b.a.
   - st.-mary’s-school-of-law-juris-doctor

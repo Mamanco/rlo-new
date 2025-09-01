@@ -1,0 +1,118 @@
+---
+import { defaultLang } from '@/i18n/ui';
+import { useTranslations } from '@/i18n/utils';
+import Layout from '@/layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+import { getEntry } from 'astro:content';
+
+export async function getStaticPaths() {
+	const practiceList = await getCollection("practices");
+
+	const finalList = practiceList.map(entry => (
+		{
+			params: { slug: entry.slug },
+			props: { entry },
+		}
+	));
+			
+				
+			
+
+	return finalList;
+}
+
+const { slug } = Astro.params;
+const lang = Astro.currentLocale || defaultLang;
+const t = useTranslations(lang);
+
+const { entry } = Astro.props;
+
+const { Content } = await entry.render()
+---
+<Layout lang={lang} slug=`practices/${slug}`>
+	<div class="p-6 md:p-12 md:max-w-7xl mx-auto">
+    <h1 class="text-3xl font-semibold border-b border-black/10 py-4">{entry.data.name}</h1>
+    <div class="my-6 be-html" style="padding-bottom: 25px;">
+      <Content />
+    </div>
+
+    <!-- Key contacts -->
+    <!-- <div>
+                <p class="uppercase my-5">Key contact</p>
+                <div class="grid grid-cols-2 gap-4 md:grid-cols-4">
+                    <div>
+                        <img class="w-full" src="assets/images/1.png" alt="">
+                        <p class="text-lg">Full name</p>
+                        <p class="italic">position</p>
+                    </div>
+                    <div>
+                        <img class="w-full" src="assets/images/2.png" alt="">
+                        <p class="text-lg">Full name</p>
+                        <p>position</p>
+                    </div>
+                    <div>
+                        <img class="w-full" src="assets/images/3.png" alt="">
+                        <p class="text-lg">Full name</p>
+                        <p class="italic">position</p>
+                    </div>
+                    <div>
+                        <img class="w-full" src="assets/images/4.png" alt="">
+                        <p class="text-lg">Full name</p>
+                        <p class="italic">position</p>
+                    </div>
+                    <div>
+                        <img class="w-full" src="assets/images/5.png" alt="">
+                        <p class="text-lg">Full name</p>
+                        <p class="italic">position</p>
+                    </div>
+                    <div>
+                        <img class="w-full" src="assets/images/6.png" alt="">
+                        <p class="text-lg">Full name</p>
+                        <p class="italic">position</p>
+                    </div>
+                    <div>
+                        <img class="w-full" src="assets/images/7.png" alt="">
+                        <p class="text-lg">Full name</p>
+                        <p class="italic">position</p>
+                    </div>
+                    <div>
+                        <img class="w-full" src="assets/images/8.png" alt="">
+                        <p class="text-lg">Full name</p>
+                        <p class="italic">position</p>
+                    </div>
+                </div>
+            </div> -->
+  </div>
+
+  <!-- At your service -->
+  <section class="my-40">
+    <div
+      class="relative flex items-center flex-col md:flex-row justify-between lg:justify-center p-6 mx-auto space-y-5">
+      <img class="md:order-last w-full md:scale-125 xl:scale-100 lg:w-6/12 max-w-[800px]"
+        src={
+				lang == "en"
+					? "/static/assets/images/rlo-multilaw-en.svg"
+					: "/static/assets/images/rlo-multilaw-ar.svg"
+				}
+			alt="">
+      <div class="text-lg lg:text-3xl w-full md:max-w-xl">
+        <h6 class="font-bold text-[32px] text-2xl md:text-4xl lg:text-5xl text-black px-7 py-4 md:p-7">At your
+          service</h6>
+        <ul class="space-y-3 font-light">
+          <li class="flex gap-x-3 items-center text-[24px] lg:text-3xl font-light">
+            <span class="font-bold text-[#D0222B]">+</span>
+            {t("Transactions")}
+          </li>
+          <li class="flex gap-x-3 items-center text-[24px] lg:text-3xl  font-light">
+            <span class="font-bold text-[#D0222B]">+</span>
+            {t("Litigation and Arbitration")}
+          </li>
+          <li class="flex gap-x-3 items-center text-[24px] lg:text-3xl  font-light">
+            <span class="font-bold text-[#D0222B]">+</span>
+            {t("Consultancy")}
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</Layout>

@@ -3,6 +3,7 @@ title: Mohammed Al-Attiyah
 name: Mohammed Al-Attiyah
 job_title: Associate, Riyadh
 image: /static/images/uploads/Mohammed Al-Attiyah.jpg
+order: 11
 education:
   - king-saud-university-bachelor-of-laws
 clients:

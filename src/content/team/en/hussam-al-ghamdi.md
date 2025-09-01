@@ -3,6 +3,7 @@ title: Hussam Al-Ghamdi
 name: Hussam Al-Ghamdi
 job_title: Senior Associate, Jeddah
 image: /static/images/uploads/Hussam Al-Ghamdi.jpeg
+order: 8
 education:
   - king-abdulaziz-university-bachelor-of-laws
 clients:

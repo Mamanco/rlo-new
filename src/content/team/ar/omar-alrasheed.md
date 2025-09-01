@@ -3,15 +3,16 @@ title: Omar Alrasheed
 name: عمر الرشيد
 job_title: شريك
 image: /static/images/uploads/omar-alrasheed-2.png
+order: 1
 education:
-  - king-saud-university-ll.b.
+  - king-saud-university-ll-b
   - ucla-masters-in-law
 clients:
   - exxonmobil-corporation
   - halliburton-company
   - bechtel-corporation
   - ford-motor-company
-  - merck-co.
+  - merck-co
   - mars-incorporated
 bars:
   - saudi-arabia

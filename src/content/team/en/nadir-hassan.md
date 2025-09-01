@@ -3,6 +3,7 @@ title: Nadir Hassan
 name: Nadir Hassan
 job_title: Legal Consultant
 image: /static/images/uploads/Nadir Hassan.jpeg
+order: 12
 education:
   - university-of-south-wales-bachelor-of-laws
 clients:

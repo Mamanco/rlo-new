@@ -3,6 +3,7 @@ title: Hussam Al-Ghamdi
 name: حسام الغامدي
 job_title: محامي و مستشار قانوني
 image: /static/images/uploads/Hussam Al-Ghamdi.jpeg
+order: 8
 education:
   - king-abdulaziz-university-bachelor-of-laws
 clients:

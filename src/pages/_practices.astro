@@ -52,7 +52,7 @@ const listSectors = featuredPractices.filter(entry => entry.slug.split("/").incl
         class="grid tab-content mb-10 grid-cols-1 md:grid-cols-4 md:gap-16 px-10 gap-8 items-center text-[#555555] md:max-w-7xl mx-auto">
 				{
 					listPractices.map(entry => (
-						<a class="practice-container" href="/practices/anti-bribery">
+						<a class="practice-container" href=`/practices/${entry.slug}`>
 							<div class="flex items-center justify-start gap-3 md:flex-col break-words">
 								<img src={entry.data.image} class="w-8 h-8">
 								<p class="text-start md:text-center practice-name">{entry.data.name}</p>

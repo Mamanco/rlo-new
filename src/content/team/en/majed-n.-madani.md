@@ -3,6 +3,7 @@ title: Majed N. Madani
 name: Majed N. Madani
 job_title: Executive Director
 image: /static/images/uploads/Majed N. Madani.jpg
+order: 5
 education:
   - university-of-business-technology-mba
   - king-saud-university-bachelor-of-laws

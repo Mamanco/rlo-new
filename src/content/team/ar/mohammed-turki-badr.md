@@ -3,6 +3,7 @@ title: Mohammed Turki Badr
 name: محمد بدر
 job_title: مستشار قانون
 image: /static/images/uploads/Mohammed Turki Badr.jpeg
+order: 14
 education:
   - university-of-business-and-technology-bachelor-of-laws
 clients: []
