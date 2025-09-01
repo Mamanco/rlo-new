@@ -3,7 +3,7 @@ title: IPOs
 name: الاكتتابات
 image: /static/images/uploads/image 38.svg
 type: practice
-featured: true
+featured: false
 featured_order: null
 hidden: false
 ---

@@ -1,0 +1,14 @@
+---
+title: Healthcare
+name: Healthcare
+image: /static/images/uploads/image 86.svg
+type: sector
+featured: false
+featured_order: null
+hidden: false
+---
+Vision 2030 has driven transformational changes in the Kingdom of Saudi Arabia resulting in a vast number of healthcare projects, including public-private partnership projects.
+
+Our Healthcare sector group consists of a multi-disciplinary team of experts drawn from our Project and Corporate practices who support our clients in the complex issues raised by those projects.
+
+We can successfully guide you through all stages of the lifecycle of healthcare infrastructure projects. In the healthcare infrastructure sector, we regularly advise on lettings and leasings, development, planning and construction, environmental issues and implications, private/public partnerships, including public procurement, transitional employment issues, commercial agreements with stakeholders, outsourcing, data protection and privacy, strategic licensing and collaboration agreements, global joint ventures, M&A and restructuring.

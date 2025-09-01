@@ -3,8 +3,8 @@ title: Board Secretariat Functions and Directors’ responsibilities
 name: مهام أمناء مجلس الإدارة ومسؤوليات المديرين
 image: /static/images/uploads/image 7.svg
 type: practice
-featured: false
-featured_order: null
+featured: true
+featured_order: 10
 hidden: false
 ---
 نتيح إمكانية تفويض أنشطة أمناء مجلس الإدارة لشركاتهم في المملكة العربية السعودية إلى فريق الشركات لدينا.

@@ -4,7 +4,7 @@ name: Corporate Compliance
 image: /static/images/uploads/image 14.svg
 type: practice
 featured: true
-featured_order: null
+featured_order: 5
 hidden: false
 ---
 Further to Vision 2030, the Kingdom of Saudi Arabia has issued numerous new regulations.

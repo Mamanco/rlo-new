@@ -4,7 +4,7 @@ name: الامتثال للشركات
 image: /static/images/uploads/image 14.svg
 type: practice
 featured: true
-featured_order: null
+featured_order: 5
 hidden: false
 ---
 بالتزامن مع رؤية المملكة 2030، تشهد المملكة العربية السعودية تحديث وسن العديد من الأنظمة في مختلف القطاعات وبوتيرة عالية.

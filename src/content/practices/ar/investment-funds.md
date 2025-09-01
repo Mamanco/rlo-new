@@ -3,7 +3,7 @@ title: Investment Funds
 name: صناديق الاستثمار
 image: /static/images/uploads/image 43.svg
 type: practice
-featured: true
+featured: false
 featured_order: null
 hidden: false
 ---

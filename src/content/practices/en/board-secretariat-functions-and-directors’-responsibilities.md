@@ -3,8 +3,8 @@ title: Board Secretariat Functions and Directors’ responsibilities
 name: Board Secretariat Functions and Directors’ responsibilities
 image: /static/images/uploads/image 7.svg
 type: practice
-featured: false
-featured_order: null
+featured: true
+featured_order: 10
 hidden: false
 ---
 We offer our clients the possibility to delegate the board secretariat activities of their companies in the Kingdom of Saudi Arabia to our Corporate team.

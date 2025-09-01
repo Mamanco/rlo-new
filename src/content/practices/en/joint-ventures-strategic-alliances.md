@@ -3,7 +3,7 @@ title: Joint ventures & Strategic Alliances
 name: Joint ventures & Strategic Alliances
 image: /static/images/uploads/image 48.svg
 type: practice
-featured: true
+featured: false
 featured_order: null
 hidden: false
 ---

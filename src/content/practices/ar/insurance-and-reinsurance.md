@@ -3,7 +3,7 @@ title: Insurance and Reinsurance
 name: التأمين وإعادة التأمين
 image: /static/images/uploads/image 39.svg
 type: practice
-featured: true
+featured: false
 featured_order: null
 hidden: false
 ---

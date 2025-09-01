@@ -4,7 +4,7 @@ name: استشارات مكافحة الاحتكار والمنافسة
 image: /static/images/uploads/image 2.svg
 type: practice
 featured: true
-featured_order: null
+featured_order: 13
 hidden: false
 ---
 أصبح قانون مكافحة الاحتكار أكثر إثارة للجدل ، وأصبحت العقوبات ضخمة.

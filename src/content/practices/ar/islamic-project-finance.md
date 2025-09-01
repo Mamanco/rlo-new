@@ -3,7 +3,7 @@ title: Islamic Project Finance
 name: التمويل الإسلامي
 image: /static/images/uploads/image 47.svg
 type: practice
-featured: true
+featured: false
 featured_order: null
 hidden: false
 ---

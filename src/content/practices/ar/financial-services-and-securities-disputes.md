@@ -3,7 +3,7 @@ title: Financial Services and Securities Disputes
 name: المنازعات المتعلقة بالخدمات والأوراق المالية
 image: /static/images/uploads/image 32.svg
 type: practice
-featured: true
+featured: false
 featured_order: null
 hidden: false
 ---

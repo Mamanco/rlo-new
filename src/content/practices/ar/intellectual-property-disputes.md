@@ -3,7 +3,7 @@ title: Intellectual Property Disputes
 name: Intellectual Property Disputes
 image: /static/images/uploads/image 40.svg
 type: practice
-featured: true
+featured: false
 featured_order: null
 hidden: false
 ---
