@@ -6,12 +6,12 @@ image: /static/images/uploads/Lyndon Nugent.png
 order: 4
 education:
   - texas-state-university
-  - st.-mary’s-school-of-law-juris-doctor
+  - st-marys-school-of-law-juris-doctor
 clients:
   - aramex
   - saudi-telecom-company-stc
-  - rashed-abdul-rahman-al-rashed-sons-co.-rar
-  - saudi-vetonit-company-ltd.-saveto
+  - rashed-abdul-rahman-al-rashed-sons-co-rar
+  - saudi-vetonit-company-ltd-saveto
 bars:
   - state-bar-of-texas
 practices: []

@@ -10,7 +10,7 @@ clients:
   - musharaka-capital-company
   - saudi-makamin-holding-company
   - armah-sports-company
-  - dar-al-ana’am-trading
+  - dar-al-anaam-trading
 bars:
   - saudi-arabia
 practices:

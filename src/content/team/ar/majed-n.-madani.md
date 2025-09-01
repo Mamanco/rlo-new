@@ -9,11 +9,11 @@ education:
   - king-saud-university-bachelor-of-laws
 clients:
   - tal-aramex
-  - saudi-vetonit-company-ltd.-saveto
-  - rashed-abdul-rahman-al-rashed-sons-co.-rar
+  - saudi-vetonit-company-ltd-saveto
+  - rashed-abdul-rahman-al-rashed-sons-co-rar
   - steward-health-care
   - akima-llc
-  - viridi-parente-inc.
+  - viridi-parente-inc
 bars:
   - saudi-arabia
 practices: []

@@ -9,8 +9,8 @@ education:
 clients:
   - aramex
   - saudi-telecom-company-stc
-  - rashed-abdul-rahman-al-rashed-sons-co.-rar
-  - saudi-vetonit-company-ltd.-saveto
+  - rashed-abdul-rahman-al-rashed-sons-co-rar
+  - saudi-vetonit-company-ltd-saveto
   - saudi-binladin-group
 bars:
   - saudi-arabia

@@ -5,14 +5,14 @@ job_title: شريك
 image: /static/images/uploads/Reed Runnels.jpg
 order: 2
 education:
-  - american-university-in-washington-d.c.-b.s.b.a.
-  - st.-mary’s-school-of-law-juris-doctor
+  - american-university-in-washington-dc-bsba
+  - st-marys-school-of-law-juris-doctor
 clients:
   - secretary-of-the-board-of-directors-for-nicdp
   - saudi-telecom-company-stc
   - almarai-company
-  - rashed-abdul-rahman-al-rashed-sons-co.-rar
-  - saudi-vetonit-company-ltd.-saveto
+  - rashed-abdul-rahman-al-rashed-sons-co-rar
+  - saudi-vetonit-company-ltd-saveto
   - mondragon-corporation
 bars:
   - state-bar-of-texas
