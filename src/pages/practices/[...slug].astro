@@ -29,7 +29,7 @@ const { entry } = Astro.props;
 
 const { Content } = await entry.render()
 ---
-<Layout lang={lang} slug=`practices/${slug}`>
+<Layout lang={lang} slug=`practices/${slug}`> 
 	<div class="p-6 md:p-12 md:max-w-7xl mx-auto">
     <h1 class="text-3xl font-semibold border-b border-black/10 py-4">{entry.data.name}</h1>
     <div class="my-6 be-html" style="padding-bottom: 25px;">

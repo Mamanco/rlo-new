@@ -1,6 +1,7 @@
 ---
 import { useTranslations } from '@/i18n/utils';
 import Layout from '@/layouts/Layout.astro';
+import { Image } from 'astro:assets';
 import { getCollection } from 'astro:content';
 
 const { title, lang="en", slug="" } = Astro.props;
@@ -73,6 +74,7 @@ const listPractices = featuredPractices.filter(entry => entry.data.featured && e
         </div>
         <div class="leading_img">
           <img src="/static/assets/images/law.png" alt="law" />
+         
         </div>
       </div>
   </section>
@@ -159,7 +161,7 @@ const listPractices = featuredPractices.filter(entry => entry.data.featured && e
 							</span>
             </div>
             <div class="m_image">
-              <img class="aspect-3/2 object-conver" src="{{.Image}}" />
+              <img class="aspect-3/2 object-conver" src="" />
             </div>
           </a>
         
