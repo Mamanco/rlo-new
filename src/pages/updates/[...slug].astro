@@ -1,0 +1,62 @@
+---
+import { defaultLang } from '@/i18n/ui';
+import { useTranslations } from '@/i18n/utils';
+import Layout from '@/layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+import { getEntry } from 'astro:content';
+
+export async function getStaticPaths() {
+	const articleList = await getCollection("articles");
+
+	const finalList = articleList.map(entry => (
+		{
+			params: { slug: entry.slug },
+			props: { entry },
+		}
+	));
+			
+
+	return finalList;
+}
+
+const { slug } = Astro.params;
+const lang = Astro.currentLocale || defaultLang;
+const t = useTranslations(lang);
+
+const { entry } = Astro.props;
+
+const { Content } = await entry.render()
+
+---
+
+<Layout lang={lang} slug=`articles/${slug}`>
+
+  <a href="/articles/" class="text-red-500 hover:text-red-400 hover:brightness-200">
+    <div class="flex gap-3 items-center ms-10 mt-10" >
+    <img class="h-4  w-10 rotate-180" src="/static/assets/images/arrow.svg" alt=""> 
+    <span class="text-base ">{t("Back")}</span>
+  </div>
+  </a>
+  
+  <div class="p-6  mx-auto lg:p-12">
+    <div class="flex flex-col gap-4 items-center space-y-6">
+      <!-- TODO : History Back button -->
+      
+      <div class="py-3 lg:max-w-4xl">
+        <h3 class="text-3xl">{entry.data.title}</h3>  
+        <h5 class="text-lg">{entry.data.date.toISOString().split("T")[0]}</h5>
+        <!-- <h5 class="text-lg">{entry.data.date.toLocaleDateString("en-US",{
+          year: "numeric",
+          month: "long",
+          day: "numeric",
+        })}</h5> -->
+
+      </div>
+      <img class="w-full lg:max-w-5xl" src={entry.data.image} alt="" />
+      <div class="w-full my-10 p-4 bg-[#d9d3d3] lg: max-w-4xl">
+          <Content>
+      </div>
+    </div>
+  </div> 
+
+</Layout>
