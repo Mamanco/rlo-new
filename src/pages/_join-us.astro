@@ -1,0 +1,98 @@
+---
+import { useTranslations } from '@/i18n/utils';
+import Layout from '@/layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+const { title, lang="en", slug="join-us" } = Astro.props;
+const t = useTranslations(lang);
+---
+<Layout lang={lang} slug={slug}>
+ <div class="dark">
+      <div class="p-6 md:p-12 lg:max-w-7xl mx-auto">
+        <!-- <img
+          class="w-full my-10 md:w-1/2 ml-auto"
+          src="/static/assets/images/joinus-1.png"
+        /> -->
+        <div class="flex items-center flex-col md:flex-row">
+          <p class="order-last text-white text-2xl">
+            {t("To ensure that we continue to deliver the highest standards of service, we only recruit the best lawyers, staff and students to be part of our team. We have strong ties with leading universities and are often the number one choice for applying candidates and students seeking internships, who regularly choose us over other local or international firms.")}
+          </p>
+          <img
+            class="order-last md:order-1 w-full my-10 md:p-12"
+            src="/static/assets/images/experts-2.jpg"
+          />
+        </div>
+      </div>
+    </div>
+
+    <!-- Motivation -->
+    <section class="flex flex-col justify-center bg-[#D0222B] h-screen">
+      <div
+        class="flex md:grid p-6 grid-cols-12 flex-wrap gap-y-10 md:gap-y-20 text-white"
+      >
+        <div class="col-span-1"></div>
+        <div class="col-span-3 flex w-full gap-x-3 border-t border-white/25">
+          <div class="font-thin break-all">01</div>
+          <div class="pt-1.5 text-xl md:text-3xl font-bold text-white" style="line-height: 2.7rem;">
+            {t("You are innovative")}
+          </div>
+        </div>
+        <div class="col-span-1"></div>
+        <div class="col-span-4 flex w-full gap-x-3 border-t border-white/25">
+          <div class="font-thin break-all">02</div>
+          <div class="pt-1.5 text-xl md:text-3xl font-bold text-white" style="line-height: 2.7rem;">
+            {t("You are a problem solver")}
+          </div>
+        </div>
+        <div class="col-span-3"></div>
+        <div class="col-span-2"></div>
+        <div class="col-span-4 flex w-full gap-x-3 border-t border-white/25">
+          <div class="font-thin break-all">03</div>
+          <div class="pt-1.5 text-xl md:text-3xl font-bold text-white" style="line-height: 2.7rem;">
+            {t("You strive for excellence")}
+          </div>
+        </div>
+        <div class="col-span-1"></div>
+        <div class="col-span-4 flex w-full gap-x-3 border-t border-white/25">
+          <div class="font-thin break-all">04</div>
+          <div class="pt-1.5 text-xl md:text-3xl font-bold text-white" style="line-height: 2.7rem;">
+            {t("You advocate integrity")}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Upload your resume -->
+    <div
+      class="flex flex-col md:flex-row items-end bg-white w-full p-6 md:p-12 mx-auto text-xl"
+    >
+      <div class="md:order-last md:w-1/2 space-y-5">
+        <p class="text-black text-center md:text-start">{t("Upload your resume*")}</p>
+        <img src="/static/assets/images/say_6672.jpg" alt=""/>
+        <p class="text-black">
+          {t("Omar Alrasheed Law Firm is always interested in adding talent to the firm, and we welcome inquiries regarding potential collaborations")}
+        </p>
+        <a
+          href="/send-cv/"
+          class="flex gap-x-3 items-center text-[#FA636B]"
+        >
+          <img
+            class="h-2 rounded-full"
+            src="/static/assets/images/arrow.svg"
+            alt=""
+          />
+          {t("Send CV")}
+        </a>
+      </div>
+      <img
+        class="w-full md:w-1/2 my-10"
+        style="padding-right: 50px;"
+        src={
+            lang == "en"
+                ? "/static/assets/images/rlo-multilaw-en.svg"
+                : "/static/assets/images/rlo-multilaw-ar.svg"
+        }  
+        />
+    </div>
+
+</Layout>

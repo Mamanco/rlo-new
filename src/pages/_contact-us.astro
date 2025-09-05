@@ -1,0 +1,145 @@
+---
+import { useTranslations } from '@/i18n/utils';
+import Layout from '@/layouts/Layout.astro';
+
+const { title, lang="en", slug="contact-us" } = Astro.props;
+const t = useTranslations(lang);
+---
+<Layout lang={lang} slug={slug}>
+
+
+ <!-- Get to know -->
+    <div class="dark text-white p-8 md:p-32">
+      <div class="w-full">
+        <div class="w-full md:w-6/12 text-white space-y-5">
+          <h2 class="text-3xl font-medium">{t( "Get to know us")}</h2>
+          <p class="pr-10 text-white/70">
+            {t( "successful relationship start’s with a meeting. We love to get to know our clients well, it is our key to success!")}
+          </p>
+          <p class="text-white font-light text-lg">{t( "We value your privacy")}</p>
+        </div>
+      </div>
+
+      <!-- Form -->
+      <div class="w-full md:w-7/12 ml-auto">
+        <form class="flex justify-between flex-wrap gap-x-3" id="contact-form">
+          <input
+            class="bg-transparent border-b border-white/20 py-3 w-full md:w-5/12 text-xl font-light focus:outline-none"
+            type="text"
+            placeholder={t( "First name*")}
+            id="firstname"
+            name="firstname"
+            autocomplete="given-name"
+            required
+          />
+          <input
+            class="bg-transparent border-b border-white/20 py-3 w-full md:w-5/12 text-xl font-light focus:outline-none"
+            type="text"
+            placeholder={t( "Last name*")}
+            id="lastname"
+            name="lastname"
+            autocomplete="family-name"
+            required
+          />
+          <input
+            class="bg-transparent border-b border-white/20 py-3 w-full md:w-5/2 text-xl font-light focus:outline-none"
+            type="text"
+            placeholder={t( "Company")}
+            id="company"
+            name="company"
+          />
+          <input
+            class="bg-transparent border-b border-white/20 py-3 w-full md:w-5/2 text-xl font-light focus:outline-none"
+            type="email"
+            placeholder={t( "Email address*")}
+            id="email"
+            name="email"
+            required
+          />
+          <input
+            class="bg-transparent border-b border-white/20 py-3 w-full md:w-5/2 text-xl font-light focus:outline-none"
+            type="tel"
+            placeholder={t( "Phone Number")}
+            id="phone"
+            name="phone"
+            required
+          />
+          <textarea
+            class="bg-transparent border-b border-white/20 py-3 w-full md:w-5/2 text-xl font-light focus:outline-none"
+            type="text"
+            rows="8"
+            id="message"
+            name="message"
+            placeholder={t( "How may i help you today?")}
+          ></textarea>
+          <!-- <input name="to-email" type="hidden" value="omar@alrasheedlaw.com"> -->
+          <input name="to-email" type="hidden" value="a.rasheed@tc-sa.com">
+          <input name="to-subject" type="hidden" value="RLO Contact Us">
+
+          <div class="flex w-full justify-end">
+            <button
+              class="border border-[#FA636B] rounded-full px-5 py-1 md:px-8 md:py-3 text-[#FA636B] my-6"
+              type="submit"
+            >
+            {t( "Send Message")}
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Map Section -->
+    <div
+      class="bg-white p-8 md:p-20 lg:p-32 flex flex-col items-start md:flex-row gap-10 lg:gap-20"
+    >
+      <div class=" w-full">
+        <h2 class="text-4xl font-bold text-black overflow-hidden">{t( "Visit us")}</h2>
+        <p class="pr-10">
+            {t("Musa Ibn Nussair St")}<br/>
+            {t("Siricon Building No.8")}<br/>
+            {t("2nd Floor (Back Entrance)")}<br/>
+            {t("Al Olaya")}<br/>
+            {t("Riyadh 11372")}<br/>
+            {t("Kingdom of Saudi Arabia")}
+        </p>
+        <a href="https://goo.gl/maps/ZU83zHCYRK7zjyfZA" target="_blank" class="flex gap-x-3 items-center text-[#FA636B]">
+          <img
+            class="h-2 rounded-full"
+            src="/static/assets/images/arrow.svg"
+            alt=""
+          />
+          {t( "View map")}
+        </a>
+      </div>
+      <!-- <img src="/static/assets/images/contact-map.png" class="w-full md:w-7/12 h-[500px] bg-red-400" /> -->
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3624.676899331496!2d46.68012647626334!3d24.703631278032063!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e2f032426bb5457%3A0x2563bbaceea4b99!2sOmar%20Al%20Rasheed%20Law%20Firm!5e0!3m2!1sen!2sae!4v1686718324058!5m2!1sen!2sae" width="600" height="450" style="border:0;height: 450px; width: 100%;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+
+    <script is:inline src="https://webform.maman.ae/webform.js"></script>
+    <script>
+    //   WebForm("contact-form");
+    </script>
+
+    <!-- Meet us -->
+    <!-- <div class="light p-8">
+      <div class="w-full md:w-1/2 ml-auto space-y-5">
+        <h2 class="text-3xl font-medium">{t( "Meet us"}}</h2>
+        <p class="pr-10 text-black/70">
+          {t( "For questions or other inquiries, feel free to contact us"}}
+        </p>
+        <img class="" src="/static/assets/images/contact-meet.jpg" alt="" />
+      </div>
+    </div> -->
+
+    <!-- <div class="py-[80px] w-full flex items-center justify-end px-[165px]">
+      <img class="" src="/static/assets/images/phone.png" alt="" />
+    </div> -->
+
+    <!-- <div class="w-full px-[175px] py-[80px] flex items-center justify-end">
+      <a href="/#">
+        <img src="/static//assets/images/phone.png" alt="phone icon"/>
+      </a>
+    </div> -->
+
+
+</Layout>

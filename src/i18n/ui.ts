@@ -58,8 +58,7 @@ export const ui = {
   "If you are looking for first tier legal advice": "If you are looking for first tier legal advice",
   "If you are seeking a great career": "If you are seeking a great career",
   "Image Credits: Asmaa Almoayed ": "Image Credits: Asmaa Almoayed ",
-  "In Al-Rasheed Law Firm we seek, attract, and celebrate only the leading lawyers and specialists of their respective fields.": "In Al-Rasheed Law Firm we seek, attract, and celebrate only the leading lawyers and specialists of their respective fields.",
-  "In AlRasheed Law Firm we seek, attract, and celebrate only the leading lawyers and specialists of their respective fields.": "In AlRasheed Law Firm we seek, attract, and celebrate only the leading lawyers and specialists of their respective fields.",
+  "In AlRasheed Law Firm we seek, attract, and celebrate only the leading lawyers and specialists of their respective fields.": "In Alrasheed Law Firm we seek, attract, and celebrate only the leading lawyers and specialists of their respective fields.", // to be check
   "Join Us": "Join Us",
   "Join us": "Join us",
   "Join us form": "Join us form",
@@ -261,8 +260,7 @@ export const ui = {
   "If you are looking for first tier legal advice": "إذا كنت تبحث عن مشورة قانونية من الدرجة الأولى",
   "If you are seeking a great career": "إذا كنت تبحث عن وظيفة رائعة",
   "Image Credits: Asmaa Almoayed ": "Translate me ---> Image Credits: Asmaa Almoayed ",
-  "In Al-Rasheed Law Firm we seek, attract, and celebrate only the leading lawyers and specialists of their respective fields.": "في مكتبنا، نسعى لجذب والاحتفال بالمحامين والمتخصصين الرائدين في مجالات تخصصهم.",
-  "In AlRasheed Law Firm we seek, attract, and celebrate only the leading lawyers and specialists of their respective fields.": "Translate me ---> In AlRasheed Law Firm we seek, attract, and celebrate only the leading lawyers and specialists of their respective fields.",
+  "In Alrasheed Law Firm we seek, attract, and celebrate only the leading lawyers and specialists of their respective fields.": "في مكتبنا، نسعى لجذب والاحتفال بالمحامين والمتخصصين الرائدين في مجالات تخصصهم.", // to be check
   "Join Us": "انضم الينا",
   "Join us": "انضم إلينا",
   "Join us form": "انضم إلينا النموذج",

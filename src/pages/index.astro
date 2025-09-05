@@ -8,14 +8,22 @@ const { title, lang="en", slug="" } = Astro.props;
 const t = useTranslations(lang);
 
 const featuredPractices = await getCollection("practices");
+const featuredArticles = await getCollection("articles");
 
 for (let i=0; i<featuredPractices.length;i++) {
 	console.log(featuredPractices[i].slug);
 }
 
+for (let i=0; i<featuredArticles.length;i++) {
+  console.log(featuredArticles[i].slug);
+}
+
 console.log(`index (slug): ${slug}`);
 
-const listPractices = featuredPractices.filter(entry => entry.data.featured && entry.slug.split("/").includes(lang))
+const listPractices = featuredPractices.filter(practiceEntry => practiceEntry.data.featured && practiceEntry.slug.split("/").includes(lang))
+const listArticles = featuredArticles.filter(articleEntry =>  articleEntry.slug.split("/").includes(lang)).sort((a,b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime()).slice(0,3);
+console.log(listArticles);
+
 ---
 <Layout lang={lang} slug={slug}>
 <!-- Banner -->
@@ -63,7 +71,7 @@ const listPractices = featuredPractices.filter(entry => entry.data.featured && e
               {t("The combination of our international qualifications and local legal knowledge provides us with an edge over any international/local combination of firms.")}
             </p>
           </div>
-          <a href="/about-us">
+          <a href=`/${lang}/about-us/`>
             <div class="arrow_btn">
               <!-- <div class="arrow_img">
                 <img src="/static/assets/images/arrowRight.png" alt="arrow" />
@@ -108,12 +116,12 @@ const listPractices = featuredPractices.filter(entry => entry.data.featured && e
             </div>
             <div class="ex_items">
               {
-								listPractices.map(entry => (
+								listPractices.map(practiceEntry => (
 									<a
-										href={entry.slug}>
+										href={practiceEntry.slug}>
 										<div class="ex_item cp justify-between pe-2">
 											<div class="ex_name"><span>
-												{entry.data.name}
+												{practiceEntry.data.name}
 											</span></div>
 											<div class="h-8 w-8 invert"><img src="/static/assets/images/icons/chevron-right.svg" /></div>
 										</div>
@@ -124,7 +132,7 @@ const listPractices = featuredPractices.filter(entry => entry.data.featured && e
                 <!-- <div class="arrow_img">
                 <img src="/static/assets/images/arrowRight.png" alt="arrow" />
               </div> -->
-                <a href="/practices/"><span>{t("All practice areas")}</span></a>
+                <a href=`/${lang}/practices/`><span>{t("All practice areas")}</span></a>
               </div>
             </div>
           </div>
@@ -147,27 +155,30 @@ const listPractices = featuredPractices.filter(entry => entry.data.featured && e
         </div>
         <div class="media_items">
           <!-- {{range .Articles}} -->
-          <a href="/articles/{{.Slug}}"  class="m_item pe-8 duration-500 hover:shadow-xl">
+          {
+            listArticles.map(articleEntry => (
+         <a href=`/updates/${articleEntry.slug}`  
+            class="mx-2 my-2 p-8 w-lg duration-500 hover:shadow-xl">
             <div class="m_item_title ">
               <h5 class="">
-								<!-- {{translate $.Lang .Title}} -->
-								 XXXXX
+                {articleEntry.data.name}
 							</h5>
             </div>
-            <div class="m_date">
+            <div class="text-sm text-gray-500 mb-4">
               <span>
-								<!-- {{formatDate .Date}} -->
-								 XXXXX
+                {new Date(articleEntry.data.date).toISOString().slice(0, 10)}
 							</span>
             </div>
-            <div class="m_image">
-              <img class="aspect-3/2 object-conver" src="" />
+            <div class="mt-8 width-full h-fit overflow-hidden">
+              <img class="aspect-3/2 object-conver" src={articleEntry.data.image} />
             </div>
           </a>
-        
+            ))
+          }      
           <!-- {{end}} -->
         </div>
-        <a href="/articles/" class="arrow_btn flex justify-end items-center align-middle my-10 gap-4">
+
+        <a href=`/${lang}/articles` class="arrow_btn flex justify-end items-center align-middle my-10 gap-4">
           <span class="">{t("Read more")}</span>
           <!-- <img class="h-10 w-12" src="static/assets/images/arrow.svg" alt=""> -->
         </a>
@@ -235,7 +246,7 @@ const listPractices = featuredPractices.filter(entry => entry.data.featured && e
           </div>
           <div class="ot_details">
             <p>
-              {t("In Al-Rasheed Law Firm we seek, attract, and celebrate only the leading lawyers and specialists of their respective fields.")}</p>
+              {t("In AlRasheed Law Firm we seek, attract, and celebrate only the leading lawyers and specialists of their respective fields.")}</p>
           </div>
 
           <div class="ot_img">
@@ -259,7 +270,8 @@ const listPractices = featuredPractices.filter(entry => entry.data.featured && e
   <section class="mb-40">
     <div
       class="relative flex items-center flex-col md:flex-row justify-between lg:justify-center p-6 mx-auto space-y-5">
-      <img class="md:order-last w-full md:scale-125 xl:scale-100 lg:w-6/12 max-w-[800px]" src={
+      <img class="md:order-last w-full md:scale-125 xl:scale-100 lg:w-6/12 max-w-[800px]" 
+      src={
 				lang == "en"
 				? "/static/assets/images/rlo-multilaw-en.svg"
 				: "/static/assets/images/rlo-multilaw-ar.svg"

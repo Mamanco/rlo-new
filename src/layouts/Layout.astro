@@ -214,7 +214,7 @@ const enSlug = "/" + langSlug.replace(`${lang}/`, "en/", 1);
 									? "navbar active"
 									: "navbar"
 								}>
-                    <a class="md:p-3 py-2 block hover:text-red-400" href="/join-us/">{t("Join Us")}</a>
+                    <a class="md:p-3 py-2 block hover:text-red-400" href=`/${lang}/join-us/`>{t("Join Us")}</a>
                 </li>
                 <li class="navbar" style="font-size: 18px;border: solid 1px;padding: 5px 10px;">
                     {lang == "en"
@@ -271,7 +271,6 @@ const enSlug = "/" + langSlug.replace(`${lang}/`, "en/", 1);
               <div><strong>{t("Email")}</strong></div>
               <div>enquiries@alrasheedlaw.com</div>
             </div>
-
           </div>
         </div>
       </div>
