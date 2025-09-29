@@ -67,14 +67,14 @@ const clients = await Promise.all(entry.data.clients!
 ---
 <Layout lang={lang} slug=`team/${slug}`>
 	<div class="flex justify-center gap-14 flex-wrap dark p-6 lg:p-12">
-
     <div class="w-full md:w-3/12 space-y-10">
-      <a href="/team" class="text-red-500 hover:text-red-400 hover:brightness-150">
-        <div class="flex gap-4 items-start items-center" >
-        <img class="h-4  w-10 rotate-180" src="/static/assets/images/arrow.svg" alt=""> 
-        <span class="text-base ">Back</span>
-      </div>
-      </a>
+        <!-- Back button -->
+  <button onclick="history.back()" class="text-red-400 hover:brightness-200 hover:text-red-400">
+    <div class="flex gap-3 items-center mb-8">
+       <img class="h-4  w-10 rotate-180" src="/static/assets/images/arrow.svg" alt=""> 
+    <span class="text-base">{t("Back")}</span>
+    </div>
+  </button>
       <!-- Avatar -->
       <img class="order-1 col-span-4 row-span-auto" src={entry.data.image} alt="" />
       <div class="order-3 col-span-3 row-span-auto">
@@ -83,7 +83,8 @@ const clients = await Promise.all(entry.data.clients!
           <h4 class="uppercase text-[24px] font-light">Practices</h4>
 					{
 						practices.map(entry => (
-							<a class="flex gap-x-3 items-center" href="/practices/{{.Slug}}">
+              // TODO: fix link to practice page
+							<a class="flex gap-x-3 items-center" href=`/practices/${lang}/${entry.data.slug}`>
 								<img class="invert h-6 w-6 " src="/static/assets/images/icons/chevron-right.svg" alt="" />{entry.data.name}
 							</a>
 						))

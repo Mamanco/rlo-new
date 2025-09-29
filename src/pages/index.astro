@@ -118,7 +118,7 @@ console.log(listArticles);
               {
 								listPractices.map(practiceEntry => (
 									<a
-										href={practiceEntry.slug}>
+										href=`/practices/${practiceEntry.slug}`>
 										<div class="ex_item cp justify-between pe-2">
 											<div class="ex_name"><span>
 												{practiceEntry.data.name}
@@ -220,7 +220,7 @@ console.log(listArticles);
           <div class="ot_img_wrap">
             <img src="/static/assets/images/walid-reed.png" />
             <div class="ot_arrow">
-              <a href="/team/">
+              <a href=`/${lang}/team/`>
                 <div class="arrow_btn">
                   <!-- <div class="arrow_img">
                     <img src="/static/assets/images/arrowRight.png" alt="arrow" />

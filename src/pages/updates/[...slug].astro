@@ -30,18 +30,19 @@ const { Content } = await entry.render()
 ---
 
 <Layout lang={lang} slug=`articles/${slug}`>
-
-  <a href="/articles/" class="text-red-500 hover:text-red-400 hover:brightness-200">
-    <div class="flex gap-3 items-center ms-10 mt-10" >
-    <img class="h-4  w-10 rotate-180" src="/static/assets/images/arrow.svg" alt=""> 
-    <span class="text-base ">{t("Back")}</span>
-  </div>
-  </a>
   
-  <div class="p-6  mx-auto lg:p-12">
+
+
+  <!-- Article Content --> 
+  <div class="p-6  mx-auto lg:p- lg:max-w-7xl">
+    <button onclick="history.back()" class="text-red-500 hover:brightness-200 hover:text-red-400">
+      <div class="flex gap-3 items-center my-8">
+        <img class="h-4  w-10 rotate-180" src="/static/assets/images/arrow.svg" alt=""> 
+        <span class="text-base">{t("Back")}</span>
+      </div>
+    </button>     
+
     <div class="flex flex-col gap-4 items-center space-y-6">
-      <!-- TODO : History Back button -->
-      
       <div class="py-3 lg:max-w-4xl">
         <h3 class="text-3xl">{entry.data.title}</h3>  
         <h5 class="text-lg">{entry.data.date.toISOString().split("T")[0]}</h5>
@@ -52,7 +53,7 @@ const { Content } = await entry.render()
         })}</h5> -->
 
       </div>
-      <img class="w-full lg:max-w-5xl" src={entry.data.image} alt="" />
+      <img class="w-8/10 lg:max-w-5xl" src={entry.data.image} alt="" />
       <div class="w-full my-10 p-4 bg-[#d9d3d3] lg: max-w-4xl">
           <Content>
       </div>
