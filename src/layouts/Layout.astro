@@ -210,7 +210,7 @@ const enSlug = "/" + langSlug.replace(`${lang}/`, "en/", 1);
                     <a class="md:p-3 py-2 block hover:text-red-400" href=`/${lang}/contact-us/`>{t("Contact Us")}</a>
                 </li>
                 <li class={
-									slug == "/" || slug == `/${lang}`
+									slug == `${lang}/join-us` || slug.startsWith("join-us")
 									? "navbar active"
 									: "navbar"
 								}>

@@ -34,6 +34,7 @@ const practices = await Promise.all(entry.data.practices!
 		const practice = await getEntry("practices", `${lang}/${entry}`)
 		return {
 			data: practice!.data,
+			slug: practice!.slug,
 		};
 	})
 );
@@ -84,7 +85,7 @@ const clients = await Promise.all(entry.data.clients!
 					{
 						practices.map(entry => (
               // TODO: fix link to practice page
-							<a class="flex gap-x-3 items-center" href=`/practices/${lang}/${entry.data.slug}`>
+							<a class="flex gap-x-3 items-center" href=`/practices/${entry.slug}`>
 								<img class="invert h-6 w-6 " src="/static/assets/images/icons/chevron-right.svg" alt="" />{entry.data.name}
 							</a>
 						))
@@ -135,7 +136,7 @@ const clients = await Promise.all(entry.data.clients!
 
       <div class="order-4 col-span-7 my-10 space-y-3">
         <!-- Sector -->
-        <h4 class="uppercase text-[24px] font-light">Representative matters include:</h4>
+        <h4 class="uppercase text-[24px] font-light">{t("Representative matters include")}:</h4>
         <div class="clients">
 					<ul>
 						{
