@@ -29,8 +29,17 @@ const { entry } = Astro.props;
 
 const { Content } = await entry.render()
 ---
-<Layout lang={lang} slug=`practices/${slug}`>
+<Layout lang={lang} slug=`practices/${slug}`> 
+
+
+
 	<div class="p-6 md:p-12 md:max-w-7xl mx-auto">
+  <button onclick="history.back()" class="text-red-500 hover:brightness-200 hover:text-red-400">
+    <div class="flex gap-3 items-center mb-8">
+       <img class="h-4  w-10 rotate-180" src="/static/assets/images/arrow.svg" alt=""> 
+    <span class="text-base">{t("Back")}</span>
+    </div>
+  </button>
     <h1 class="text-3xl font-semibold border-b border-black/10 py-4">{entry.data.name}</h1>
     <div class="my-6 be-html" style="padding-bottom: 25px;">
       <Content />
