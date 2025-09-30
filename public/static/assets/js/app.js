@@ -11,14 +11,20 @@ function toggle() {
   const menu = document.querySelector("#menu");
   menu.classList.toggle("hidden");
 }
+// function goUp() {
+//   const scrollTop = () => {
+//     if (document.documentElement.scrollTop > 0) {
+//       window.scrollBy(0, -50);
+//       requestAnimationFrame(scrollTop);
+//     }
+//   };
+//   scrollTop();
+// }
 function goUp() {
-  const scrollTop = () => {
-    if (document.documentElement.scrollTop > 0) {
-      window.scrollBy(0, -50);
-      requestAnimationFrame(scrollTop);
-    }
-  };
-  scrollTop();
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
 }
 
 function getCookie(name) {
