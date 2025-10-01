@@ -8,12 +8,20 @@ import { getEntry } from 'astro:content';
 export async function getStaticPaths() {
 	const teamList = await getCollection("team");
 
-	const finalList = teamList.map(entry => (
+	let finalList = teamList.map(entry => (
 		{
 			params: { slug: entry.slug },
 			props: { entry },
 		}
 	));
+
+	// teamList.map(entry => {
+	// 	const slug = entry.slug.split("/")[1];
+	// 	finalList.push({
+	// 		params: { slug: slug },
+	// 		props: { entry },
+	// 	});
+	// });
 			
 				
 			
