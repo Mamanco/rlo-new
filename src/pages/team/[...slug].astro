@@ -15,13 +15,13 @@ export async function getStaticPaths() {
 		}
 	));
 
-	// teamList.map(entry => {
-	// 	const slug = entry.slug.split("/")[1];
-	// 	finalList.push({
-	// 		params: { slug: slug },
-	// 		props: { entry },
-	// 	});
-	// });
+	teamList.map(entry => {
+		const slug = entry.slug.split("/")[1];
+		finalList.push({
+			params: { slug: slug },
+			props: { entry },
+		});
+	});
 			
 				
 			
