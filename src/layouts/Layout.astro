@@ -66,7 +66,7 @@ const enSlug = "/" + langSlug.replace(`${lang}/`, "en/", 1);
   <!-- Header/Navbar -->
   <div id="header">
 		<header>
-    <nav class="flex flex-wrap items-center justify-between w-full py-4 md:py-0 px-4 lg:px-10 text-md text-gray-700 bg-white">
+    <nav class="flex flex-wrap items-center justify-between  w-full py-4 px-4  text-md text-gray-700 bg-white md:py-0 lg:px-10 md:justify-center  lg:justify-between">
         <div>
             <a href="/">
                 {lang == "en"
@@ -166,7 +166,7 @@ const enSlug = "/" + langSlug.replace(`${lang}/`, "en/", 1);
       />
     </svg>
         <div class="hidden w-full md:flex md:items-center md:w-auto" id="menu">
-            <ul class="flex flex-col items-center pt-4 lg:text-2xl text-gray-700 md:flex-row md:text-lg md:justify-between md:pt-0">
+            <ul class="flex flex-col items-center pt-4  text-gray-700 md:flex-row  md:justify-between md:pt-0">
                 <li class={
 									slug == "" || slug == `${lang}`
 									? "navbar active"
