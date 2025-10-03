@@ -1,5 +1,5 @@
 ---
-title: Board Secretariat Functions and Directors’ responsibilities
+title: Board Secretariat Functions and Director's responsibilities
 name: مهام أمناء مجلس الإدارة ومسؤوليات المديرين
 image: /static/images/uploads/image 7.svg
 type: practice
