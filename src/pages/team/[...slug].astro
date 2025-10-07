@@ -78,57 +78,55 @@ const clients = await Promise.all(entry.data.clients!
 	<div class="flex justify-center gap-14 flex-wrap dark p-6 lg:p-12">
     <div class="w-full md:w-3/12 space-y-10">
         <!-- Back button -->
-  <button onclick="history.back()" class="text-red-400 hover:brightness-200 hover:text-red-400">
-    <div class="flex gap-3 items-center mb-8">
-       <img class="h-4  w-10 rotate-180" src="/static/assets/images/arrow.svg" alt=""> 
-    <span class="text-base">{t("Back")}</span>
-    </div>
-  </button>
+      <button onclick="history.back()" class="text-red-400 hover:brightness-200 hover:text-red-400">
+        <div class="flex gap-3 items-center mb-8">
+          <img class="h-4  w-10 rotate-180" src="/static/assets/images/arrow.svg" alt=""> 
+        <span class="text-base">{t("Back")}</span>
+        </div>
+      </button>
       <!-- Avatar -->
       <img class="order-1 col-span-4 row-span-auto" src={entry.data.image} alt="" />
       <div class="order-3 col-span-3 row-span-auto">
         <!-- Practices -->
-        <div class="order-5 col-span-4 space-y-3">
+        <div class="order-5 col-span-4 mb-8 space-y-3">
           <h4 class="uppercase text-[24px] font-light">Practices</h4>
-					{
-						practices.map(entry => (
+          {
+            practices.map(entry => (
               // TODO: fix link to practice page
-							<a class="flex gap-x-3 items-center" href=`/practices/${entry.slug}`>
-								<img class="invert h-6 w-6 " src="/static/assets/images/icons/chevron-right.svg" alt="" />{entry.data.name}
-							</a>
-						))
-					}
+              <a class="flex gap-x-3 items-center" href=`/practices/${entry.slug}`>
+                <img class="invert h-6 w-6 " src="/static/assets/images/icons/chevron-right.svg" alt="" />{entry.data.name}
+              </a>
+            ))
+          }
         </div>
         <!-- Education -->
-        <div class="order-6 col-span-4 space-y-3">
-          <h4 class="uppercase text-[24px] font-light" style="padding-top: 40px;">Education</h4>
-          <div class="bio-left text-white text-xl">
+        <div class="order-6 col-span-4 my-4">
+          <h4 class="uppercase text-[24px] font-light">Education</h4>
+          <div class="bio-left my-4 text-white text-xl">
             {
-							education.map(entry => (
-								<p>{entry.data.name}</p>
-							))
-						}
+              education.map(entry => (
+                <p>{entry.data.name}</p>
+              ))
+            }
           </div>
         </div>
         <!-- Qualification -->
-         <!-- hides Bars & Courts id Qualification is empty -->
-					{
-						bars.length == 0
-						? ""
-						: <div class="order-7 col-span-4 space-y-3">
-								<h4 class="uppercase text-[24px] font-light" style="padding-top: 40px;">Bars & Courts</h4>
-								<div class="bio-left text-white text-xl">
-									{
-										bars.map(entry => (
-											<p>{entry.data.name}</p>
-										))
-									}
-								</div>
-        			</div>
-
-					}
+        <!-- hides Bars & Courts id Qualification is empty -->
+          {
+            bars.length == 0
+            ? ""
+            : <div class="order-7 col-span-4 my-4 space-y-3">
+                <h4 class="uppercase text-[24px] font-light">Bars & Courts</h4>
+                <div class="bio-left text-white text-xl">
+                  {
+                    bars.map(entry => (
+                      <p>{entry.data.name}</p>
+                    ))
+                  }
+                </div>
+              </div>
+          }
       </div>
-
     </div>
     <div class="w-full md:w-6/12">
       <!-- Description -->
@@ -146,13 +144,13 @@ const clients = await Promise.all(entry.data.clients!
         <!-- Sector -->
         <h4 class="uppercase text-[24px] font-light">{t("Representative matters include")}:</h4>
         <div class="clients">
-					<ul>
-						{
-							clients.map(entry => (
-								<li>{entry.data.name}</li>
-							))
-						}
-					</ul>
+          <ul>
+            {
+              clients.map(entry => (
+                <li>{entry.data.name}</li>
+              ))
+            }
+          </ul>
         </div>
       </div>
 
@@ -180,7 +178,30 @@ const clients = await Promise.all(entry.data.clients!
   </div>
 
   <!-- Services -->
-  <div class="relative flex items-center flex-col md:flex-row justify-between lg:justify-center p-6 mx-auto space-y-5">
+  <div class="flex items-center mb-8 justify-center gap-10 flex-wrap p-6 lg:p-12">
+    <div class="text-lg w-full mt-8 md:max-w-xl lg:text-3xl">
+      <h6 class="font-bold text-[32px] text-2xl md:text-4xl lg:text-5xl text-black px-7 py-4 md:p-7">{t("At your service")}</h6>
+      <ul class="space-y-3 font-light">
+        <li class="flex gap-x-3 items-center text-[24px] lg:text-3xl font-light">
+          {t("Transactions")}
+        </li>
+        <li class="flex gap-x-3 items-center text-[24px] lg:text-3xl  font-light">
+          {t("Litigation and Arbitration")}
+        </li>
+        <li class="flex gap-x-3 items-center text-[24px] lg:text-3xl  font-light">
+          {t("Consultancy")}
+        </li>
+      </ul>
+    </div>
+    
+    <img class="md:order-last w-10/12 md:scale-125 xl:scale-100 lg:w-6/12 max-w-[800px]" src={
+      lang == "en"
+      ? "/static/assets/images/rlo-multilaw-en.svg"
+      : "/static/assets/images/rlo-multilaw-ar.svg"
+      } alt="">
+  </div>
+  
+  <!-- <div class="relative flex items-center flex-col md:flex-row justify-between lg:justify-center p-6 mx-auto space-y-5">
     <img class="md:order-last w-full md:scale-125 xl:scale-100 lg:w-6/12 max-w-[800px]" src={
 			lang == "en"
 			? "/static/assets/images/rlo-multilaw-en.svg"
@@ -203,5 +224,5 @@ const clients = await Promise.all(entry.data.clients!
         </li>
       </ul>
     </div>
-  </div>
+  </div> -->
 </Layout>
