@@ -13,8 +13,8 @@ const listSectors = featuredPractices.filter(entry => entry.slug.split("/").incl
 ---
 <Layout lang={lang} slug={slug}>
 <!-- Headlines or Hero -->
-    <div class="p-6 md:p-12 md:max-w-7xl mx-auto my-10">
-        <div class="uppercase w-full text-xl text-[#343434]">{t("Expertise")}</div>
+    <div class="p-6 md:p-12 md:max-w-7xl mx-auto my-8">
+        <div class="uppercase w-full text-4xl text-[#343434]">{t("Expertise")}</div>
         <!-- <p class="md:text-3xl lg:text-4xl ml-auto w-full md:w-11/12 lg:leading-10 overflow-hidden">
             {t("We have a strong,"}} <span class="md:font-bold">{t("multidisciplinary"}}</span>
             {t("team comprising"}} <span class="md:font-bold">{t("lawyers, professionals and specialists"}}</span>
@@ -63,7 +63,7 @@ const listSectors = featuredPractices.filter(entry => entry.slug.split("/").incl
     </div>
     <!-- Sectors -->
     <div id="sectors"
-        class="grid tab-content mb-10 grid-cols-1 md:grid-cols-4 md:gap-16 px-10 gap-8 items-center text-[#555555] md:max-w-7xl mx-auto hidden">
+        class="grid tab-content mb-10 grid-cols-1 md:grid-cols-4 md:gap-16 px-10 gap-8 items-center text-[#555555] md:max-w-7xl mx-auto">
 				{
 					listSectors.map(entry => (
 						<a class="practice-container" href=`/practices/${entry.slug}`>
