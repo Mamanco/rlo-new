@@ -29,7 +29,7 @@ const testimonials = await Promise.all(testimonialList
 <Layout lang={lang} slug={slug}>
 	<!-- Gallery -->
   <div class="bg-[#343434] p-6 md:p-12 lg:p-20">
-
+	<div class="2xl:w-10/12 mx-auto">
     <h2 class="text-3xl my-10 text-white">{t("Updates")}</h2>
      <div class="relative px-5 my-5">
       <img class="absolute w-6" src="/static/assets/images/search.svg" alt="" />
@@ -38,13 +38,13 @@ const testimonials = await Promise.all(testimonialList
         type="text" placeholder={t("Search by Title, Title")} />
     </div>
 
-    <div class="grid grid-cols-1 mt-10 gap-8 md:grid-cols-4">
+    <div class="grid grid-cols-1 mt-10 gap-8 md:grid-cols-3 lg:grid-cols-4">
 			{
 				updateList.map(entry => (
-					<a class="article-container my-10 min-h-full  border-s border-neutral-500 transition duration-700 hover:shadow-2xl shadow-gray-950" 
+					<a class="article-container my-10 pt-2 min-h-full  border-s border-neutral-500 transition duration-700 hover:shadow-2xl shadow-gray-950" 
 						href=`/updates/${entry.slug}`>
 						<div class="flex flex-col gap-3 text-white px-8 justify-between">
-							<img class="w-full max-w-xs max-h-64 object-cover" src={entry.data.image} alt="">          
+							<img class="w-full min-h-30  max-h-64 object-cover object-center xl:object-contain" src={entry.data.image} alt="">          
 							<h3 class="article-Title text-lg mt-10">{entry.data.name}</h3>
 							<p class="text-base">{new Date(entry.data.date).toISOString().slice(0, 10)}</p> 
 						</div>
@@ -62,25 +62,25 @@ const testimonials = await Promise.all(testimonialList
       <h2 class="uppercase text-[#D0222B] text-4xl overflow-hidden">{t("What they are saying")}</h2>
       <p class=""><strong >{t("Collated independently by Legal 500 research team")}</strong></p>
   </div> 
-  <div class="grid grid-cols-2 gap-8 justify-center">
+  <div class="grid grid-cols-2 gap-8 justify-center italic">
 		{
 			testimonials.map(entry => (
-				<div class="w-md bg-neutral-200 p-8 rounded shadow">
-					<div class="flex-col items-center justify-center">
+				<div class="bg-neutral-200 p-8 rounded shadow">
+					<div class="flex-col items-center justify-center text-center">
 						<svg class="h-12 mx-auto mb-2 text-[#D0222B] dark:text-[#D0222B]" viewBox="0 0 24 27" fill="none" xmlns="http://www.w3.org/2000/svg">
 							<path d="M14.017 18L14.017 10.609C14.017 4.905 17.748 1.039 23 0L23.995 2.151C21.563 3.068 20 5.789 20 8H24V18H14.017ZM0 18V10.609C0 4.905 3.748 1.038 9 0L9.996 2.151C7.563 3.068 6 5.789 6 8H9.983L9.983 18L0 18Z" fill="currentColor"/>
-					</svg> 
+						</svg> 
 						<p>
-							<em>
+							{/* <em>
 								<entry.Content />
-							</em>
+							</em> */}
 						</p>
 					</div>
 					<div class="flex justify-start gap-3 ms-2 mt-4">
 						<img class="rounded-full h-12 w12" src={entry.data.image} alt="" >
 					
 						<div class="flex flex-col justify-center items-start text-sm">
-							<div class="text-neutral-700">
+							<div class="text-neutral-600 text-xl text-start font-semibold">
 								<h5>{entry.data.name}</h5>
 							</div>
 							<div class="text-neutral-600">
@@ -94,6 +94,7 @@ const testimonials = await Promise.all(testimonialList
 				</div>
 			))
 		}
+	</div>
   </div>
   </div>
  

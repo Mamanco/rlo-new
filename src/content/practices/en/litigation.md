@@ -3,7 +3,7 @@ title: Litigation
 name: Litigation
 image: /static/images/uploads/image 36.svg
 type: practice
-featured: false
+featured: true
 featured_order: 1
 hidden: false
 ---

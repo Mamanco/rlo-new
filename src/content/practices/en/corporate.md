@@ -3,7 +3,7 @@ title: Corporate
 name: Corporate
 image: /static/images/uploads/image 17.svg
 type: practice
-featured: true
+featured: false
 featured_order: null
 hidden: false
 ---

@@ -19,8 +19,10 @@ for (let i=0; i<featuredArticles.length;i++) {
 }
 
 console.log(`index (slug): ${slug}`);
-
-const listPractices = featuredPractices.filter(practiceEntry => practiceEntry.data.featured && practiceEntry.slug.split("/").includes(lang))
+//const sortedPractices = featuredPractices.sort((a,b) => a.data.featured_order - b.data.featured_order); // TODO: sort by featured order
+const listPractices = featuredPractices
+  .filter(practiceEntry => practiceEntry.data.featured && practiceEntry.slug.split("/").includes(lang))
+  .sort((a, b) => (a.data.featured_order ?? 0) - (b.data.featured_order ?? 0));
 const listArticles = featuredArticles.filter(articleEntry =>  articleEntry.slug.split("/").includes(lang)).sort((a,b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime()).slice(0,3);
 console.log(listArticles);
 
@@ -71,14 +73,13 @@ console.log(listArticles);
               {t("The combination of our international qualifications and local legal knowledge provides us with an edge over any international/local combination of firms.")}
             </p>
           </div>
-          <a href=`/${lang}/about-us/`>
-            <div class="arrow_btn">
-              <!-- <div class="arrow_img">
-                <img src="/static/assets/images/arrowRight.png" alt="arrow" />
-              </div> -->
+
+          <a href=`/${lang}/about-us/` class="m-10 text-2xl cursor-default text-red-400 hover:opacity-60 duration-350">
+            <div class="">
               <span>{t("About Us")}</span>
             </div>
           </a>
+
         </div>
         <div class="leading_img">
           <img src="/static/assets/images/law.png" alt="law" />
@@ -128,7 +129,7 @@ console.log(listArticles);
 									</a>
 								))
 							}
-              <div class="arrow_btn">
+              <div class="mt-6 text-2xl text-red-400 hover:opacity-60 duration-350">
                 <!-- <div class="arrow_img">
                 <img src="/static/assets/images/arrowRight.png" alt="arrow" />
               </div> -->
@@ -153,13 +154,13 @@ console.log(listArticles);
             <p>{{Tf "ui/v1" .Lang "We exhibit thought leadership by publicly issuing opinions and bulletins that help elucidate complex issues of Saudi Arabian law, often becoming the source for our competitors and clients."}}</p>
           </div> -->
         </div>
-        <div class="media_items">
+        <div class="media_items ">
           <!-- {{range .Articles}} -->
           {
             listArticles.map(articleEntry => (
          <a href=`/updates/${articleEntry.slug}`  
-            class="mx-2 my-2 p-8 w-lg duration-500 hover:shadow-xl">
-            <div class="m_item_title ">
+            class="mx-2 my-2 p-6 w-lg border-s-1 border-gray-200 cursor-pointer hover:shadow-xl duration-500">
+            <div class="text-lg font-semibold mb-2">
               <h5 class="">
                 {articleEntry.data.name}
 							</h5>
@@ -170,7 +171,7 @@ console.log(listArticles);
 							</span>
             </div>
             <div class="mt-8 width-full h-fit overflow-hidden">
-              <img class="aspect-3/2 object-conver" src={articleEntry.data.image} />
+              <img class="object-conver" src={articleEntry.data.image} />
             </div>
           </a>
             ))
@@ -178,7 +179,7 @@ console.log(listArticles);
           <!-- {{end}} -->
         </div>
 
-        <a href=`/${lang}/articles` class="arrow_btn flex justify-end items-center align-middle my-10 gap-4">
+        <a href=`/${lang}/articles` class="flex justify-end cursor-pointer mt-6 me-9 text-2xl text-red-400 hover:opacity-60 duration-350">
           <span class="">{t("Read more")}</span>
           <!-- <img class="h-10 w-12" src="static/assets/images/arrow.svg" alt=""> -->
         </a>
@@ -221,7 +222,7 @@ console.log(listArticles);
             <img src="/static/assets/images/walid-reed.png" />
             <div class="ot_arrow">
               <a href=`/${lang}/team/`>
-                <div class="arrow_btn">
+                <div class="text-2xl text-red-400 hover:opacity-60 duration-350">
                   <!-- <div class="arrow_img">
                     <img src="/static/assets/images/arrowRight.png" alt="arrow" />
                   </div> -->

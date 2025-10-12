@@ -1,6 +1,6 @@
 ---
-title: Board Secretariat Functions and Directors’ responsibilities
-name: Board Secretariat Functions and Directors’ responsibilities
+title: Board Secretariat Functions and Director's responsibilities
+name: Board Secretariat Functions and Director's responsibilities
 image: /static/images/uploads/image 7.svg
 type: practice
 featured: true

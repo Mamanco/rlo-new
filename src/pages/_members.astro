@@ -14,19 +14,19 @@ const members = membersList
 ---
 <Layout lang={lang} slug={slug}>
 	<!-- Gallery -->
-  <div class="bg-[#343434] p-6 md:p-12 lg:p-20">
+  <div class="bg-[#222222] p-6 md:p-12 lg:p-20">
     <div class="relative px-5 my-5">
       <img class="absolute w-6" src="/static/assets/images/search.svg" alt="" />
       <input id="search-input"
         class="placeholder:text-white/50 text-white border-b border-white/30 w-full bg-transparent px-14 py-1 focus:outline-none"
         type="text" placeholder={t("Search by Name, Title or Sector")} />
     </div>
-    <div class="grid grid-cols-1 gap-4 md:grid-cols-4">
+    <div class="grid grid-cols-1 gap-4 md:grid-cols-3 lg:grid-cols-4 2xl:w-[10/12] mx-auto">
       {
 				members.map(entry => (
 					<a href=`/team/${entry.slug}` class="member-container">
-						<div class="w-full h-fit" style=`background-image:url('${entry.data.image}'); height: 500px; background-size: cover; background-position: center;` alt="">
-							<div style="background: rgba(255,255,255,0.5);padding: 5px 20px; margin: 10px; top: 400px; position: relative;">
+            <div class="w-full relative min-h-[520px] bg-cover bg-center xl:bg-top" style={`background-image:url('${entry.data.image}');`}>
+							<div class="bg-neutral-300 opacity-70 inset-x-0.5 mx-auto px-5 py-1.5 absolute bottom-5 w-[95%]">
 								<div style="font-size: 20px; font-weight: bold;" class="member-name">{entry.data.name}</div>
 								<div style="font-size: 18px;" class="member-job">{entry.data.job_title}</div>
 								<div style="display:none"></div>

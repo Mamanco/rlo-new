@@ -3,7 +3,7 @@ title: Asset Finance
 name: تمويل الأصول
 image: /static/images/uploads/image 4.svg
 type: practice
-featured: true
+featured: false
 featured_order: null
 hidden: false
 ---
