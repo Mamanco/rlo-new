@@ -7,7 +7,7 @@ const { title, lang="en", slug="about-us" } = Astro.props;
 const t = useTranslations(lang);
 ---
 <Layout lang={lang} slug={slug}>
-<div class="p-6 md:p-12 max-w-7xl mx-auto">
+<div class="p-6 md:p-10 mt-10 max-w-7xl mx-auto">
     <!-- Headlines -->
     <div class="flex col-span-12 gap-x-1 md:col-span-4">
       <div class="uppercase text-3xl text-[#343434] lg:text-4xl" style="">{t("our goal")}</div>

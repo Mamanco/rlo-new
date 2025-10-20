@@ -124,7 +124,7 @@ console.log(listArticles);
 											<div class="ex_name"><span>
 												{practiceEntry.data.name}
 											</span></div>
-											<div class="h-8 w-8 invert"><img src="/static/assets/images/icons/chevron-right.svg" /></div>
+											<div class="min-h-8 min-w-8 invert rotate-320"><img src="/static/assets/images/icons/chevron-right.svg" /></div>
 										</div>
 									</a>
 								))
@@ -159,7 +159,7 @@ console.log(listArticles);
           {
             listArticles.map(articleEntry => (
          <a href=`/updates/${articleEntry.slug}`  
-            class="mx-2 my-2 p-6 w-lg border-s-1 border-gray-200 cursor-pointer hover:shadow-xl duration-500">
+            class="mx-2 my-2 p-6 w-lg md:border-s-1 border-gray-200 cursor-pointer hover:shadow-xl duration-500">
             <div class="text-lg font-semibold mb-2">
               <h5 class="">
                 {articleEntry.data.name}
@@ -268,26 +268,26 @@ console.log(listArticles);
     </div>
   </section>
   <!-- at your service -->
-  <section class=""> 
-    <div  class="">
-      <img class="" 
+  <section class="p-8 md:p-20 md:mt-8 lg:p-32 bg-[#F5F5F5]"> 
+    <div  class="flex flex-col gap-8 md:flex-row-reverse ">
+      <img class="flex-initial w-full md:w-7/12 lg:w-6/12" 
            src={
             lang == "en"
             ? "/static/assets/images/rlo-multilaw-en.svg"
             : "/static/assets/images/rlo-multilaw-ar.svg"
             } alt="">
-      <div class="text-lg lg:text-3xl w-full md:max-w-xl">
-        <h6 class="font-bold text-[32px] text-2xl md:text-4xl lg:text-5xl text-black px-7 py-4 md:p-7">{t("At your service")}</h6>
+      <div class="flex-auto w-full text-neutral-900 md:max-w-xl">
+        <h6 class="font-bold  text-neutral-900 text-[32px] text-xl md:text-3xl lg:text-4xl px-7 py-4 md:p-7">{t("At your service")}</h6>
         <ul class="space-y-3 font-light ms-12">
-          <li class="flex gap-x-3 items-center text-[24px] lg:text-3xl font-light">
+          <li class="flex gap-x-3 items-center text-xl lg:text-2xl font-light">
             <!-- <img class="w-6 h-6" src="static/assets/images/law-scale.png" alt=""> -->
             {t("Transactions")}
           </li>
-          <li class="flex gap-x-3 items-center text-[24px] lg:text-3xl  font-light">
+          <li class="flex gap-x-3 items-center text-xl lg:text-2xl  font-light">
             <!-- <img class="w-6 h-6" src="static/assets/images/law-scale.png" alt=""> -->
             {t("Litigation and Arbitration")}
           </li>
-          <li class="flex gap-x-3 items-center text-[24px] lg:text-3xl  font-light">
+          <li class="flex gap-x-3 items-center text-xl lg:text-2xl  font-light">
             <!-- <span class="font-bold text-[#D0222B]">+</span> -->
             {t("Consultancy")}
           </li>
