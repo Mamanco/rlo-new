@@ -12,9 +12,10 @@ clients:
 bars:
   - saudi-arabia
 practices:
-  - corporate-finance
-  - real-estate-investment-funds-and-reits
-  - capital-markets
+  - dispute-resolution
+  - litigation
+  - commercial-transactions
+  - saudi-law-expert-advice
 ---
 Mr. Ghaleb Alqahtany is an experienced attorney specializing in cross-border litigation. Based in our Riyadh office, he adeptly navigates complex legal issues involving multiple jurisdictions, often partnering with international law firms through our Multilaw Network to ensure seamless representation and the best outcomes for his clients.
 

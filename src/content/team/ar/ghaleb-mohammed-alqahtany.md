@@ -12,9 +12,10 @@ clients:
 bars:
   - saudi-arabia
 practices:
-  - corporate-finance
-  - real-estate-investment-funds-and-reits
-  - capital-markets
+  - dispute-resolution
+  - litigation
+  - commercial-transactions
+  - saudi-law-expert-advice
 ---
 يعمل السيد غالب القحطاني في مكتب الشركة بالرياض، وهو متخصص في قانون العقود والتفاوض. تمتد خبرته إلى شؤون الشركات والمعاملات والملكية الفكرية، حيث يعمل بشكل مستمر مع وزارة التجارة والاستثمار (MOCI) والهيئة العامة للاستثمار في المملكة العربية السعودية (SAGIA) لتسهيل تسجيل تراخيص الشركات والكيانات التجارية.
 
