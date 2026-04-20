@@ -246,24 +246,28 @@ const phasesWithTasks = await Promise.all(
                         </div>
                     </div>
                     <div class="md:w-3/5 p-10">
-                        <form action="#" method="POST" class="space-y-6">
+                        <form id="contact-us" class="space-y-6">
                             <div>
                                 <label class="block text-sm font-medium text-gray-700">Full Name</label>
-                                <input type="text" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm border p-3 focus:border-emerald-500 focus:ring-emerald-500" required>
+                                <input type="text" name="full-name" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm border p-3 focus:border-emerald-500 focus:ring-emerald-500" required>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700">Company Name</label>
+                                <input type="text" name="company-name" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm border p-3 focus:border-emerald-500 focus:ring-emerald-500" required>
                             </div>
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <div>
                                     <label class="block text-sm font-medium text-gray-700">Email</label>
-                                    <input type="email" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm border p-3 focus:border-emerald-500 focus:ring-emerald-500" required>
+                                    <input type="email" name="email" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm border p-3 focus:border-emerald-500 focus:ring-emerald-500" required>
                                 </div>
                                 <div>
                                     <label class="block text-sm font-medium text-gray-700">Phone</label>
-                                    <input type="tel" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm border p-3 focus:border-emerald-500 focus:ring-emerald-500">
+                                    <input type="tel" name="phone" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm border p-3 focus:border-emerald-500 focus:ring-emerald-500">
                                 </div>
                             </div>
                             <div>
                                 <label class="block text-sm font-medium text-gray-700">How can we help?</label>
-                                <textarea rows="4" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm border p-3 focus:border-emerald-500 focus:ring-emerald-500"></textarea>
+                                <textarea rows="4" name="message" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm border p-3 focus:border-emerald-500 focus:ring-emerald-500"></textarea>
                             </div>
                             <button type="submit" class="w-full bg-emerald-600 text-white font-bold py-3 px-4 rounded-md hover:bg-emerald-700 transition duration-300">
                                 Submit Inquiry
@@ -386,5 +390,10 @@ const phasesWithTasks = await Promise.all(
                 observer.observe(section);
             });
         });
+
+        document.addEventListener("DOMContentLoaded", () => {
+            webform("#contact-us");
+        });
     </script>
+    <script is:inline src="/static/assets/js/webform.js"></script>
 </Layout>
