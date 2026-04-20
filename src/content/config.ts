@@ -94,6 +94,27 @@ const clientCollection = defineCollection({
 	})
 });
 
+const new_company_phaseCollection = defineCollection({
+  schema: z.object({
+    title: z.string(),
+    name: z.string(),
+    short_name: z.string(),
+    bg_color: z.string(),
+    text_color: z.string(),
+    order: z.number(),
+  })
+});
+
+const new_company_taskCollection = defineCollection({
+  schema: z.object({
+    title: z.string(),
+    name: z.string(),
+    image: z.string(),
+    phase: z.string(),
+    order: z.number(),
+  })
+});
+
 
 // Export a `collections` object to register your new 'blog' collection
 export const collections = {
@@ -105,4 +126,6 @@ export const collections = {
 	education: educationCollection,
 	bars: barCollection,
 	clients: clientCollection,
+  new_company_phases : new_company_phaseCollection,
+  new_company_tasks :new_company_taskCollection,
 };

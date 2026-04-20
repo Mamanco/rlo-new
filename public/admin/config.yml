@@ -172,7 +172,39 @@ collections:
       - {name: "image", label: "Image", widget: "image", required: false, i18n: duplicate}
       - {name: "featured", label: "Featured", widget: "boolean", i18n: duplicate}
       - {name: 'body', label: 'Description', widget: 'markdown', i18n: true}
-
+  - name: "new_company_phase"
+    label: "New Company Phase"
+    folder: "src/content/new_company_phases"
+    create: true
+    i18n: true
+    fields:
+      - {name: "title", label: "Title", widget: "string", i18n: duplicate}
+      - {name: "name", label: "Name", widget: "string", i18n: true}
+      - {name: "short_name", label: "Short Name", widget: "string", i18n: true}
+      - {name: "order", label: "Order", widget: "number", i18n: duplicate}
+      - {name: "bg_color", label: "Background Color", widget: "color", i18n: duplicate}
+      - {name: "text_color", label: "Text Color", widget: "color", i18n: duplicate}
+      - {name: 'body', label: 'Description', widget: 'markdown', i18n: true}
+  - name: "new_company_task"
+    label: "New Company Task"
+    folder: "src/content/new_company_tasks"
+    create: true
+    i18n: true
+    fields:
+      - {name: "title", label: "Title", widget: "string", i18n: duplicate}
+      - {name: "name", label: "Name", widget: "string", i18n: true}
+      - {name: "order", label: "Order", widget: "number", i18n: duplicate}
+      - {name: "image", label: "Image", widget: "image", i18n: duplicate}
+      - {name: 'body', label: 'Description', widget: 'markdown', i18n: true}
+      - name: "phase"
+        label: "Phase"
+        widget: "relation"
+        i18n: duplicate
+        collection: "new_company_phase"
+        value_field: "{{slug}}"
+        search_fields: ["name"]
+        multiple: false
+        required: true
 
 
 
