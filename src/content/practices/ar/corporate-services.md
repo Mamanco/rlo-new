@@ -1,6 +1,6 @@
 ---
 title: Corporate Services
-name: الرئيسية نبذة عنا الخبرات فريقنا التحديثات تواصل معنا انضم الينا English
+name: الخدمات الشركة
 image: /static/images/uploads/image 19.svg
 type: practice
 featured: false
