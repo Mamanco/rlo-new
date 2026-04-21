@@ -24,8 +24,10 @@ const phasesWithTasks = await Promise.all(
   pahseEntryList.map(async (phase) => {
     // 1. Find all tasks belonging to this phase
     const phaseTasks = langTasks
-      .filter(task => task.data.phase === phase.data.title) 
+      .filter(task => phase.slug.split("/").includes(task.data.phase)) 
       .sort((a, b) => a.data.order - b.data.order);
+
+    console.log(phase.slug, phaseTasks);
 
     // 2. Await the render() function for each task to get its Markdown Content
     const tasksWithContent = await Promise.all(
@@ -232,7 +234,6 @@ const phasesWithTasks = await Promise.all(
             </div>
 
             <div class="flex flex-col md:flex-row gap-8 relative">
-                
                 <div class="md:w-1/4">
                     <div class="sticky top-8 bg-white md:bg-transparent p-2 md:p-0 z-20 shadow-md md:shadow-none rounded-xl mobile-nav-scroll overflow-x-auto flex flex-row md:flex-col gap-2 md:gap-0">
                         <!-- {pahseEntryList.map((entry)=>{
@@ -258,56 +259,25 @@ const phasesWithTasks = await Promise.all(
                                 </a>
                             )
                         })}
-                        
-
-                        
-
-                        <!-- <a href="#phase-1" data-target="phase-1" data-color="emerald" class="phase-tab tab-chevron block w-48 md:w-full flex-shrink-0 bg-gray-200 text-gray-600 font-semibold py-4 px-6 md:mb-2 hover:bg-gray-300">
-                            <span class="block text-xs uppercase tracking-wide opacity-80">Phase 1</span>
-                            Assessment
-                        </a>
-                        
-                        <a href="#phase-2" data-target="phase-2" data-color="blue" class="phase-tab tab-chevron block w-48 md:w-full flex-shrink-0 bg-gray-200 text-gray-600 font-semibold py-4 px-6 md:mb-2 hover:bg-gray-300">
-                            <span class="block text-xs uppercase tracking-wide opacity-80">Phase 2</span>
-                            MISA
-                        </a>
-                        
-                        <a href="#phase-3" data-target="phase-3" data-color="purple" class="phase-tab tab-chevron block w-48 md:w-full flex-shrink-0 bg-gray-200 text-gray-600 font-semibold py-4 px-6 md:mb-2 hover:bg-gray-300">
-                            <span class="block text-xs uppercase tracking-wide opacity-80">Phase 3</span>
-                            Commercial Reg.
-                        </a>
-                        
-                        <a href="#phase-4" data-target="phase-4" data-color="orange" class="phase-tab tab-chevron block w-48 md:w-full flex-shrink-0 bg-gray-200 text-gray-600 font-semibold py-4 px-6 md:mb-2 hover:bg-gray-300">
-                            <span class="block text-xs uppercase tracking-wide opacity-80">Phase 4</span>
-                            Government Reg.
-                        </a>
-                        
-                        <a href="#phase-5" data-target="phase-5" data-color="teal" class="phase-tab tab-chevron block w-48 md:w-full flex-shrink-0 bg-gray-200 text-gray-600 font-semibold py-4 px-6 hover:bg-gray-300">
-                            <span class="block text-xs uppercase tracking-wide opacity-80">Phase 5</span>
-                            Managed Services
-                        </a> -->
                     </div>
                 </div>
 
-                <div class="md:w-3/4 flex flex-col gap-12">
-                  
+                <div class="md:w-3/4 flex flex-col gap-8 opacity-70">
                     {phasesWithTasks.map((entry)=>{
                       return <section id={"phase-"+entry.data.order} class="phase-section rounded-2xl p-8 md:p-12 shadow-xl scroll-mt-24" style={"background-color:"+entry.data.text_color}>
                         <h3 class="text-3xl font-bold text-white mb-8 border-b pb-4" style={"border-color:"+entry.data.bg_color+"55"}>Phase {entry.data.order}: {entry.data.name}</h3>
-                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                            
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">                
                             {entry.tasks.map((task)=>{
                               return <div class="bg-white rounded-xl p-6 shadow-lg border-t-4 hover:-translate-y-1 transition duration-300" style={"border-color:"+entry.data.bg_color}>
                                 <div class="bg-emerald-100 text-emerald-600 w-12 h-12 rounded-lg flex items-center justify-center mb-4">
                                     <img src={task.data.image}></img>
                                 </div>
                                 <h4 class="text-xl font-bold text-gray-900 mb-2">{task.data.name}</h4>
-                                <p class="text-gray-600 text-sm leading-relaxed">
+                                {/* <p class="text-gray-600 text-sm leading-relaxed">
                                   <task.Content />
-                                </p>
+                                </p> */}
                             </div>
                             })}
-
                         </div>
                     </section>
                     })}
@@ -485,44 +455,50 @@ const phasesWithTasks = await Promise.all(
         <div class="space-y-8">
 
         <!-- Week 1 -->
-        <div class="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
-            <h3 class="text-xl font-semibold text-gray-800 mb-2">
-            Week 1 — Scoping & Document Preparation
-            </h3>
-            <p class="text-gray-600 leading-relaxed">
-            The initial phase includes providing a consultation covering activity classification, determination of the appropriate ownership structure, and preparation of a comprehensive list of required documents, including apostilled certificates from the investor’s home country. The duration of this phase may vary and could extend depending on the level of requirements and complexities related to the parent company in its home jurisdiction, as well as the readiness of its documentation.
-            </p>
+        <div class="border-l-4 border-blue-500 rounded-xl">
+            <div class="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
+                <h3 class="text-xl font-semibold text-gray-800 mb-2">
+                Week 1 — Scoping & Document Preparation
+                </h3>
+                <p class="text-gray-600 leading-relaxed">
+                The initial phase includes providing a consultation covering activity classification, determination of the appropriate ownership structure, and preparation of a comprehensive list of required documents, including apostilled certificates from the investor’s home country. The duration of this phase may vary and could extend depending on the level of requirements and complexities related to the parent company in its home jurisdiction, as well as the readiness of its documentation.
+                </p>
+            </div>
         </div>
 
         <!-- Week 2 -->
-        <div class="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
-            <h3 class="text-xl font-semibold text-gray-800 mb-2">
-            Weeks 2–3: Submission of MISA License Application
-            </h3>
-            <p class="text-gray-600 leading-relaxed">
-            Submission of the investment license application to the Ministry of Investment (MISA). Approval for standard commercial activities is typically issued within 10 to 15 working days, while more complex or regulated activities may require additional review.
-            </p>
+        <div class="border-l-4 border-blue-500 rounded-xl">        
+            <div class="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
+                <h3 class="text-xl font-semibold text-gray-800 mb-2">
+                Weeks 2–3: Submission of MISA License Application
+                </h3>
+                <p class="text-gray-600 leading-relaxed">
+                Submission of the investment license application to the Ministry of Investment (MISA). Approval for standard commercial activities is typically issued within 10 to 15 working days, while more complex or regulated activities may require additional review.
+                </p>
+            </div>
         </div>
 
         <!-- Week 3 -->
-        <div class="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
-            <h3 class="text-xl font-semibold text-gray-800 mb-2">
-            Weeks 3–4: Issuance of Commercial Registration and Notarization of Articles of Association
-            </h3>
-            <p class="text-gray-600 leading-relaxed">
-            Completion of parallel registrations with the General Organization for Social Insurance (GOSI), Zakat, Tax and Customs Authority (ZATCA), Qiwa platform, Chamber of Commerce, and registering the Saudi National Address of the company. This phase also includes facilitating the company’s bank account opening.
-            </p>
+        <div class="border-l-4 border-blue-500 rounded-xl">       
+            <div class="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
+                <h3 class="text-xl font-semibold text-gray-800 mb-2">
+                Weeks 3–4: Issuance of Commercial Registration and Notarization of Articles of Association
+                </h3>
+                <p class="text-gray-600 leading-relaxed">
+                Completion of parallel registrations with the General Organization for Social Insurance (GOSI), Zakat, Tax and Customs Authority (ZATCA), Qiwa platform, Chamber of Commerce, and registering the Saudi National Address of the company. This phase also includes facilitating the company’s bank account opening.
+                </p>
+            </div>
         </div>
-
         <!-- Week 4 -->
-        <div class="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
-            <h3 class="text-xl font-semibold text-gray-800 mb-2">
-            Weeks 6–8: HR Framework and Full Operational Readiness
-            </h3>
-            <p class="text-gray-600 leading-relaxed">
-            Preparation of employment contracts and internal labor regulations, along with advisory on Saudization requirements and assistance in obtaining work visas for foreign employees. At this stage, the company is fully established and ready from a legal, financial, and operational standpoint.
-            </p>
-        </div>
+        <div class="border-l-4 border-blue-500 rounded-xl">
+            <div class="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
+                <h3 class="text-xl font-semibold text-gray-800 mb-2">
+                Weeks 6–8: HR Framework and Full Operational Readiness
+                </h3>
+                <p class="text-gray-600 leading-relaxed">
+                Preparation of employment contracts and internal labor regulations, along with advisory on Saudization requirements and assistance in obtaining work visas for foreign employees. At this stage, the company is fully established and ready from a legal, financial, and operational standpoint.
+                </p>
+            </div>
         </div>
     </div>
     <div class="text-center mt-10">
