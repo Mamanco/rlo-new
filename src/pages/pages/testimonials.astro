@@ -1,0 +1,134 @@
+---
+import { useTranslations } from '@/i18n/utils';
+import Layout from '@/layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+const { title, lang="en", slug="updates" } = Astro.props;
+const t = useTranslations(lang);
+
+const testimonialList = await getCollection("testimonials");
+
+const testimonials = await Promise.all(testimonialList
+	.filter(entry => entry.slug.split("/").includes(lang) && entry.data.featured)
+	.sort((a,b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime())
+	.map(async entry => {
+		const { Content } = await entry.render()
+		return {
+			data: entry.data,
+			Content: Content,
+		};
+	})
+);
+
+
+---
+<Layout lang={lang} slug={slug}>
+
+  
+  
+	<!-- Gallery -->
+  <div class="bg-[#343434] ">
+	<div class="2xl:w-10/12 mx-auto px-6 md:px-10">
+    <h2 class="uppercase w-full text-4xl py-20 text-neutral-200 ">{t("Updates")}</h2>
+     <div class="relative px-5 my-5">
+      <img class="absolute w-6" src="/static/assets/images/search.svg" alt="" />
+      <input id="search-input"
+        class="placeholder:text-white/50 text-neutral-100 border-b border-white/30 w-full bg-transparent px-14 py-1 focus:outline-none"
+        type="text" placeholder={t("Search by Title, Title")} />
+    </div>
+
+  </div>
+  <div class="bg-neutral-100 p-6 md:px-12 lg:px-20 mt-20">
+     <!-- What they are saying -->
+     <div class="text-center my-8 p-6 md:p-12 lg:max-w-7xl mx-auto">
+      <h2 class="uppercase text-[#D0222B] text-4xl overflow-hidden">{t("What they are saying")}</h2>
+      <p class=""><strong >{t("Collated independently by Legal 500 research team")}</strong></p>
+  </div> 
+<div class="relative max-w-4xl mx-auto overflow-hidden">
+
+  <!-- SLIDES CONTAINER -->
+  <div id="slider" class="flex transition-transform duration-500 ease-in-out">
+
+    {
+      testimonials.map(entry => (
+        <div class="min-w-full px-4">
+          <div class="bg-neutral-200 p-8 rounded shadow text-center italic">
+
+            <!-- Quote Icon -->
+            <svg class="h-12 mx-auto mb-2 text-[#D0222B]" viewBox="0 0 24 27">
+              <path d="M14.017 18L14.017 10.609C14.017 4.905 17.748 1.039 23 0L23.995 2.151C21.563 3.068 20 5.789 20 8H24V18H14.017ZM0 18V10.609C0 4.905 3.748 1.038 9 0L9.996 2.151C7.563 3.068 6 5.789 6 8H9.983L9.983 18L0 18Z" fill="currentColor"/>
+            </svg>
+
+            <!-- Content -->
+            <p class="mb-6">
+              <entry.Content />
+            </p>
+
+            <!-- Author -->
+            <div class="flex justify-center items-center gap-3 mt-4">
+              <img class="rounded-full h-12 w-12" src={entry.data.image} alt="" >
+
+              <div class="text-sm text-left">
+                <h5 class="font-semibold text-lg">{entry.data.name}</h5>
+                <span class="block text-neutral-600">{entry.data.position}</span>
+                <span class="block text-orange-400">{entry.data.company}</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      ))
+    }
+
+  </div>
+
+  <!-- CONTROLS -->
+  <div class="flex justify-center gap-4 mt-6">
+    <button onclick="prevSlide()" class="px-4 py-2 bg-gray-300 rounded">←</button>
+    <button onclick="nextSlide()" class="px-4 py-2 bg-gray-300 rounded">→</button>
+  </div>
+
+</div>
+</div>
+</div>
+
+ 
+
+
+
+  <script is:inline src="/static/assets/js/jquery.min.js"></script>
+  <script is:inline src="/static/assets/js/search.js"></script>
+  <script>
+      searchUI("search-input", "article-container", [".article-Title"]);
+  </script>
+  <script>
+  
+  let current = 0;
+
+  function updateSlider() {
+    const slider = document.getElementById("slider");
+    if (slider) {
+      slider.style.transform = `translateX(-${current * 100}%)`;
+    }
+  }
+
+  function nextSlide() {
+    const slider = document.getElementById("slider");
+    if (!slider) return;
+    const total = slider.children.length;
+    current = (current + 1) % total;
+    updateSlider();
+  }
+
+  function prevSlide() {
+    const slider = document.getElementById("slider");
+    if (!slider) return;
+    const total = slider.children.length;
+    current = (current - 1 + total) % total;
+    updateSlider();
+  }
+
+  // AUTO PLAY (optional)
+  setInterval(nextSlide, 7500);  
+  </script>
+</Layout>
