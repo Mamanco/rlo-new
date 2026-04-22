@@ -65,7 +65,7 @@ const testimonials = await Promise.all(testimonialList
 ---
 
 <Layout lang={lang} slug=`pages`>
-  <div class="bg-gray-50 text-gray-800 antialiased">
+<div class="bg-gray-50 text-gray-800 antialiased">
         <header class="relative bg-slate-900 h-[80vh] min-h-[600px] flex items-center justify-center text-center px-4">
             <div class="absolute inset-0 opacity-30 bg-[url('/static/assets/images/landing_page/landing-page-bg.avif')] bg-cover bg-center"></div>
             <div class="absolute inset-0 bg-gradient-to-b from-transparent to-slate-900"></div>
@@ -479,10 +479,9 @@ const testimonials = await Promise.all(testimonialList
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
                 <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 15.75 7.5-7.5 7.5 7.5" />
             </svg>
-
           </span>
         </summary>
-        <p class="mt-3 !text-gray-300 leading-relaxed">
+        <p class="mt-3 ms-6 !text-gray-300 leading-relaxed">
           Yes — in most sectors. Saudi Arabia opened the majority of commercial activities to full foreign ownership under Vision 2030 reforms. MISA's approved activities list governs eligibility by sector. Some activities still require a Saudi partner; we assess your specific activity at the outset.
         </p>
       </details>
@@ -497,7 +496,7 @@ const testimonials = await Promise.all(testimonialList
 
           </span>
         </summary>
-        <p class="mt-3 !text-gray-300 leading-relaxed">
+        <p class="mt-3 ms-6 !text-gray-300 leading-relaxed">
           It varies by activity and entity type. For a standard foreign-owned LLC in commercial or consulting activities, the threshold can start from SAR 100,000, though MISA applies different requirements for industrial, healthcare, or financial services activities. We confirm the applicable figure after reviewing your activity list.
         </p>
       </details>
@@ -512,12 +511,12 @@ const testimonials = await Promise.all(testimonialList
 
           </span>
         </summary>
-        <p class="mt-3 !text-gray-300 leading-relaxed">
+        <p class="mt-3 ms-6 !text-gray-300 leading-relaxed">
           Not necessarily. Many steps can be managed remotely through a legal representative holding a duly authorised Power of Attorney. We advise on any steps that require your in-person presence and help plan accordingly.
         </p>
       </details>
 
-       <details class="group border-b border-gray-700 pb-4">
+      <details class="group border-b border-gray-700 pb-4">
         <summary class="flex justify-between items-center cursor-pointer text-lg font-medium list-none">
           What taxes will my company be subject to?
           <span class="transition-transform duration-300 group-open:rotate-180">
@@ -527,24 +526,80 @@ const testimonials = await Promise.all(testimonialList
 
           </span>
         </summary>
-        <p class="mt-3 !text-gray-300 leading-relaxed">
-          <ul class="list-disc">
+        <p class="mt-3 ms-8 leading-relaxed">
+          <ul class="list-disc ms-8 !text-gray-300">
             <li>A 20% corporate income tax is imposed on the share of profits attributable to foreign investors </li>
-            <li>The share of Saudi and GCC shareholders is subject to Zakat at 2.5% of the Zakat base </li>
+            <li>The share of Saudi and GCC shareholders is subject to Zakat at 2.5% of the Zakat base </li>            
           </ul>
+          <br>
         </p>
       </details>
 
+      <details class="group border-b border-gray-700 pb-4">
+        <summary class="flex justify-between items-center cursor-pointer text-lg font-medium list-none">
+          In addition, the following obligations apply:
+          <span class="transition-transform duration-300 group-open:rotate-180">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 15.75 7.5-7.5 7.5 7.5" />
+            </svg>
+
+          </span>
+        </summary>
+        <p class="mt-3 !text-gray-300 leading-relaxed">
+          <ul class="list-disc ms-8 !text-gray-300">
+            <li>Value Added Tax (VAT) at 15% on most transactions </li>
+            <li>Withholding tax on certain cross-border payments</li>            
+            <li>Social insurance contributions for employees </li>
+          </ul>
+          <br>
+          <strong class="!text-gray-300" >
+            Understanding these obligations from the outset enables proper financial planning and helps avoid unexpected liabilities in the future.
+          </strong>
+        </p>
+      </details>
+
+      <details class="group border-b border-gray-700 pb-4">
+        <summary class="flex justify-between items-center cursor-pointer text-lg font-medium list-none">
+          What is Nitaqat (Saudization) and does it apply to my company?
+          <span class="transition-transform duration-300 group-open:rotate-180">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 15.75 7.5-7.5 7.5 7.5" />
+            </svg>
+
+          </span>
+        </summary>
+        <p class="mt-3 ms-6 !text-gray-300 leading-relaxed">
+          The Nitaqat programme requires companies to employ a minimum percentage of Saudi nationals, with ratios varying by sector and company size. Non-compliance affects your ability to issue work visas for foreign employees. We build the appropriate Saudization strategy into your HR framework from inception.
+        </p>
+      </details>
+
+      <details class="group border-b border-gray-700 pb-4">
+        <summary class="flex justify-between items-center cursor-pointer text-lg font-medium list-none">
+          Can you help with compliance after setup?
+          <span class="transition-transform duration-300 group-open:rotate-180">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 15.75 7.5-7.5 7.5 7.5" />
+            </svg>
+
+          </span>
+        </summary>
+        <p class="mt-3 ms-6 !text-gray-300 leading-relaxed">
+          Yes ongoing support is one of our core offerings. We provide advisory covering license renewals, regulatory changes, AOA amendments, ZATCA filings, employment matters, and any other requirements that arise as your business develops.
+        </p>
+      </details>
+
+
+
     </div>
 
-    <!-- View All Link -->
+    <!-- View All Link
     <div class="text-center mt-10">
       <a href="#"
          class="inline-flex items-center gap-2 text-gray-300 hover:text-white font-medium transition">
         View All FAQs
         <span class="transition-transform group-hover:translate-x-1">→</span>
       </a>
-    </div>
+    </div> -->
 
   </div>
 </section>
