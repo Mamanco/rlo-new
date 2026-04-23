@@ -4,7 +4,11 @@
  * @param {string} endpoint - Your DigitalOcean Function URL
  * @param {string} secret - The shared secret (must match FRONTEND_SECRET in DO)
  */
-function webform(selector, endpoint="https://faas-sgp1-18bc02ac.doserverless.co/api/v1/web/fn-6821b166-0fd0-41fb-89e1-ceeca289ffc0/default/rommel", secret="YWxpdmVzd2luZ2R1cmluZ3BsYW5uaW5nYXNpZGVnZXR0aW5nYmVsb3dnaXZlcmFpc2U") {
+function webform(selector, {
+    endpoint="https://faas-sgp1-18bc02ac.doserverless.co/api/v1/web/fn-6821b166-0fd0-41fb-89e1-ceeca289ffc0/default/rommel",
+    secret="YWxpdmVzd2luZ2R1cmluZ3BsYW5uaW5nYXNpZGVnZXR0aW5nYmVsb3dnaXZlcmFpc2U",
+    callback
+} = {}){
     const form = document.querySelector(selector);
     if (!form) {
         console.error(`Webform: Could not find form with selector "${selector}"`);
@@ -89,6 +93,9 @@ function webform(selector, endpoint="https://faas-sgp1-18bc02ac.doserverless.co/
                     <p>Your message has been sent successfully. We will get back to you shortly.</p>
                 </div>
             `;
+            if (typeof callback === 'function') {
+                callback();
+            }
 
         } catch (error) {
             // 7. Error: Display below button and restore button state

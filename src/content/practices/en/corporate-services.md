@@ -7,8 +7,8 @@ featured: false
 featured_order: null
 hidden: false
 ---
-نتميز بخبرات واسعة في مجال ممارسات الشركات، حيث يتمتع فريقنا المتميز متعدد التخصصات بالقدرة على تقديم مشورة قانونية مميزة إلى عملاء الشركات بشأن مسائل الشركات المتقدمة والجديدة في كثير من الأحيان.
+We bring extensive expertise in corporate practice, supported by a distinguished multidisciplinary team capable of delivering high-level legal counsel to corporate clients on sophisticated and often emerging corporate matters.
 
-يتواصل باستمرار المديرون والمسؤولون التنفيذيون وكبار المديرين ومسؤولو صناديق الأسهم الخاصة والمستثمرون المؤسسون والأفراد مع محامينا الذين يتمتعون بمهارات عالية وخبرة عميقة، بصفتهم محامين موثوقين، فيما يتعلق بالمسائل الأكثر تعقيدًا وحساسية، بالإضافة إلى المسائل اليومية والروتينية.
+Our highly skilled and deeply experienced lawyers are consistently sought after by executives, directors, senior managers, private equity fund officers, institutional investors, and individuals who rely on us as trusted advisors for the most complex and sensitive issues, as well as routine and day-to-day matters.
 
-تشمل مهمات الاستشارات في مجال الشركات لدينا تقديم المشورة في شأن مسائل متعددة تتعلق بشؤون الشركة والتي منها تقديم المشورة إلى العملاء حول كيفية الوفاء بواجباتهم والتزاماتهم مع الاستفادة من جميع أشكال الحماية القانونية المتاحة وحقوق المساهمين ومتطلبات الإفصاح والإبلاغ ومسائل الامتثال وتقصي الحقائق فيما يتعلق بالانتهاكات المحتملة لأنظمة المملكة.
+Our corporate advisory services cover a broad range of matters related to corporate affairs, including advising clients on how to fulfill their duties and obligations while benefiting from all available legal protections, understanding shareholder rights, meeting disclosure and reporting requirements, addressing compliance matters, and conducting fact-finding related to potential violations of the Kingdom’s regulations.
