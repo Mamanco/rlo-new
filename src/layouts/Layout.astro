@@ -41,6 +41,16 @@ const enSlug = "/" + langSlug.replace(`${lang}/`, "en/", 1);
 <!DOCTYPE html>
 <html class="scroll-smooth" lang={lang} dir={direction}>
 
+ <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-DXQQHT4N8V"></script>
+    <script is:inline>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-DXQQHT4N8V');
+    </script>
+
+
 <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
