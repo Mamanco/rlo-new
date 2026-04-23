@@ -860,7 +860,7 @@ const testimonials = await Promise.all(testimonialList
         });
 
         document.addEventListener("DOMContentLoaded", () => {
-            webform('#contact-form', {
+            webform('#contact-us', {
                 callback: () => {
                     gtag('event', 'generate_lead', {
                     form_name: 'Contact Page Form'
