@@ -2,7 +2,7 @@
 title: Activity classification and MISA licensing strategy
 name: Activity classification and MISA licensing strategy
 order: 2
-image: /static/images/uploads/guarantee.png
+image: /static/images/uploads/license.png
 phase: strategic-setup-legal-structuring
 ---
 
