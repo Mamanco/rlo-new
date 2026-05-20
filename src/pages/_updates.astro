@@ -41,12 +41,12 @@ const testimonials = await Promise.all(testimonialList
     <div class="grid grid-cols-1 mt-10 gap-8 md:grid-cols-3 lg:grid-cols-4">
 			{
 				updateList.map(entry => (
-					<a class="my-10 pt-2 min-h-full  border-s border-neutral-500 transition duration-700 hover:shadow-2xl shadow-gray-950" 
+					<a class=" pt-2 min-h-full  border-s border-neutral-500 transition duration-350 hover:shadow-lg shadow-gray-950" 
 						href=`/updates/${entry.slug}`>
-						<div class="flex flex-col gap-3 text-neutral-100 px-8 justify-evenly min-h-full">
+						<div class="flex flex-col gap-3 text-neutral-100 px-6 justify-evenly min-h-full">
 							<img class="w-full min-h-30  max-h-64 object-cover object-center xl:object-contain" src={entry.data.image} alt="">          
-							<h3 class="article-Title text-lg mt-10">{entry.data.name}</h3>
-								<h4 class="text-neutral-500 text-base">{new Date(entry.data.date).toISOString().slice(0, 10)}</h5>
+							<h3 class="article-Title text-lg mt-4">{entry.data.name}</h3>
+								{/* <h4 class="text-neutral-500 text-base">{new Date(entry.data.date).toISOString().slice(0, 10)}</h4> */}
 						</div>
 					</a>				
 				))
