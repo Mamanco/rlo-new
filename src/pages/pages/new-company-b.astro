@@ -65,8 +65,8 @@ const testimonials = await Promise.all(testimonialList
 ---
 
 <Layout lang={lang} slug=`pages`>
-<div class="bg-gray-50 text-gray-800 antialiased">
-        <header class="relative bg-slate-900 h-[80vh] min-h-[600px] flex items-center justify-center text-center px-4">
+<div class="bg-gray-50 text-gray-800 antialiased" id="contact">
+        <header class="relative bg-slate-900 h-[80vh] min-h-[750px] flex items-center justify-center text-center px-4">
             <div class="absolute inset-0 opacity-30 bg-[url('/static/assets/images/landing_page/landing-page-bg.jpg')] bg-cover bg-center"></div>
             <div class="absolute inset-0 bg-gradient-to-b from-transparent to-slate-900"></div>
             
@@ -79,17 +79,62 @@ const testimonials = await Promise.all(testimonialList
                 Saudi Arabia with Confidence
               </span>
             </h1>
-
-<!--  -->
-
-
-                
                 <p class="text-xl md:text-2xl !text-gray-300 mb-10 max-w-2xl mx-auto">
                     End-to-end company formation, licensing, tax advisory, and operational setup all under one roof. We don't just register your company. We get it ready to do business.
                 </p>
-                <a href="#contact" class="bg-red-600 hover:bg-green-400 text-white font-bold py-4 px-8 rounded-full text-lg transition duration-300 shadow-lg hover:shadow-emerald-500/30">
-                    Get Your Free Consultation
-                </a>
+            </div>
+            <!-- Contact Form -->
+            <div class="md:w-3/5 p-10 relative z-10 text-white text-start opacity-90">
+              <form id="contact-us" class="text-gray-900 space-y-2 bg-white rounded-xl p-8 shadow-lg border-t-4 border-red-600">
+                <div>
+                  <label class="text-sm text-gray-700">Full Name</label>
+                  <input type="text" name="full-name" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm border p-3 focus:border-emerald-500 focus:ring-emerald-500" required>
+                </div>
+              <div>
+              <label class="block text-sm font-medium text-gray-700">Company Name</label>
+              <input type="text" name="company-name" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm border p-3 focus:border-emerald-500 focus:ring-emerald-500" required>
+              </div>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                  <label class="block text-sm font-medium text-gray-700">Email</label>
+                  <input type="email" name="email" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm border p-3 focus:border-emerald-500 focus:ring-emerald-500" required>
+              </div>
+              <div>
+                  <label class="block text-sm font-medium text-gray-700">Phone</label>
+                  <input type="tel" name="phone" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm border p-3 focus:border-emerald-500 focus:ring-emerald-500">
+              </div>
+              </div>
+
+              <div>
+              <label class="block text-sm font-medium text-gray-700">Country of Incorporation</label>
+              <input type="text" name="country-of-incorporation" placeholder="e.g. United Kingdom" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm border p-3 focus:border-emerald-500 focus:ring-emerald-500" required>
+              </div>
+
+              <div>
+              <label class="block text-sm font-medium text-gray-700">Sector / Industry</label>
+              <select name="sector" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm border p-3 focus:border-emerald-500 focus:ring-emerald-500 bg-white" required>
+                  <option value="" disabled selected>Select your industry</option>
+                  <option value="technology">Technology & Digital Economy</option>
+                  <option value="healthcare">Healthcare & Life Sciences</option>
+                  <option value="defense">Defense & Aerospace</option>
+                  <option value="energy">Energy, Oil & Gas</option>
+                  <option value="manufacturing">Manufacturing & Industrial</option>
+                  <option value="professional-services">Professional Services (Consulting, Legal, Engineering)</option>
+                  <option value="construction">Construction & Infrastructure</option>
+                  <option value="retail-consumer">Retail & Consumer Goods</option>
+                  <option value="logistics">Logistics & Transportation</option>
+                  <option value="other">Other</option>
+              </select>
+              </div>
+
+              <div>
+              <label class="block text-sm font-medium text-gray-700">How can we help?</label>
+              <textarea rows="4" name="message" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm border p-3 focus:border-emerald-500 focus:ring-emerald-500"></textarea>
+              </div>
+              <button type="submit" class="w-full bg-red-600 text-white font-bold py-3 px-4 rounded-md hover:bg-green-400 transition duration-300">
+              Submit Inquiry
+              </button>
+              </form>
             </div>
         </header>
 
@@ -323,276 +368,9 @@ const testimonials = await Promise.all(testimonialList
     </a> -->
     </div>            
 </main>
-        
-<!-- Your Goal -->
- <!-- 
-<section class="bg-slate-800 py-16 px-6">
-      <div class="max-w-7xl mx-auto">
-
-    
-          <div class="text-center mb-10">
-          <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">
-              Choosing the Right Entity for Your Goals
-          </h2>
-          <p class="!text-gray-200 max-w-2xl mx-auto">
-              Selecting the appropriate business structure is essential for long-term success. 
-              Each entity type offers unique advantages in terms of liability, taxation, and flexibility. 
-              Below is a simple comparison to help guide your decision.
-          </p>
-          </div>
-
-      
-          <div class="overflow-x-auto">
-          <table class="w-full border !text-white text-left">
-              <thead class="bg-gray-100 opacity-55 ">
-              <tr>
-                  <th class="p-4 border border-gray-700 font-semibold text-gray-700">Entity Type</th>
-                  <th class="p-4 border border-gray-700 font-semibold text-gray-700">Foreign Ownership</th>
-                  <th class="p-4 border border-gray-700 font-semibold text-gray-700">Best For</th>
-                  <th class="p-4 border border-gray-700 font-semibold text-gray-700">Typical Use</th>
-              </tr>
-              </thead>
-              <tbody class="">
-              <tr>
-                  <td class="p-4 border border-gray-700">Limited Liability Company (LLC)</td>
-                  <td class="p-4 border border-gray-700">Up to 100%</td>
-                  <td class="p-4 border border-gray-700">Commercial activities, consulting, trading</td>7                    <td class="p-4 border border-gray-700">Most Popular</td>
-                  
-              </tr>
-              <tr class="">
-                  <td class="p-4 border border-gray-700">Branch of Foreign Company</td>
-                  <td class="p-4 border border-gray-700">100%</td>
-                  <td class="p-4 border border-gray-700">Global companies with existing operations</td>
-                  <td class="p-4 border border-gray-700">Common</td>
-              </tr>
-              <tr>
-                  <td class="p-4 border border-gray-700">Joint Venture with Saudi Partner</td>
-                  <td class="p-4 border border-gray-700">Partial</td>
-                  <td class="p-4 border border-gray-700">Activities requiring local partnership</td>
-                  <td class="p-4 border border-gray-700">Strategic</td>
-              </tr>
-              <tr class="">
-                  <td class="p-4 border border-gray-700">Closed Joint Stock Company (CJSC)</td>
-                  <td class="p-4 border border-gray-700">Up to 100%</td>
-                  <td class="p-4 border border-gray-700">Larger enterprises, institutional investors</td>
-                  <td class="p-4 border border-gray-700">Advanced</td>
-              </tr>
-              <tr class="">
-                  <td class="p-4 border border-gray-700">Representative / Liaison Office</td>
-                  <td class="p-4 border border-gray-700">100%</td>
-                  <td class="p-4 border border-gray-700">Market research, pre-entry phase only</td>
-                  <td class="p-4 border border-gray-700">Limited</td>
-              </tr>               
-              </tbody>
-          </table>
-          </div>
-
-        
-          <div class="text-center mt-10">
-          <a href="#contact"
-              class="inline-block bg-red-600 text-white font-semibold px-8 py-3 rounded-full hover:bg-red-700 transition">
-              Get Your Free Consultation
-          </a>
-          </div>
-
-      </div>
-</section>  -->
-
-
-<!-- Timeline -->
-
-<!-- 
-<section class="bg-gray-50 py-16 px-6">
-  <div class="max-w-5xl mx-auto">
-
-      <div class="text-center mb-12">
-      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-          Typical Timeline: What to Expect, Week by Week
-      </h2>
-      <p class="text-gray-600 max-w-2xl mx-auto">
-          A straightforward commercial LLC with standard activities typically completes in four to six weeks. The outline below reflects a realistic, well-managed process.
-      </p>
-      </div>
-
-      <div class="space-y-8">
-
-      <div class="border-l-4 border-blue-500 rounded-xl">
-          <div class="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
-              <h3 class="text-xl font-semibold text-gray-800 mb-2">
-              Week 1 — Scoping & Document Preparation
-              </h3>
-              <p class="text-gray-600 leading-relaxed">
-              The initial phase includes providing a consultation covering activity classification, determination of the appropriate ownership structure, and preparation of a comprehensive list of required documents, including apostilled certificates from the investor’s home country. The duration of this phase may vary and could extend depending on the level of requirements and complexities related to the parent company in its home jurisdiction, as well as the readiness of its documentation.
-              </p>
-          </div>
-      </div>
-
-      <div class="border-l-4 border-blue-500 rounded-xl">        
-          <div class="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
-              <h3 class="text-xl font-semibold text-gray-800 mb-2">
-              Weeks 2–3: Submission of MISA License Application
-              </h3>
-              <p class="text-gray-600 leading-relaxed">
-              Submission of the investment license application to the Ministry of Investment (MISA). Approval for standard commercial activities is typically issued within 10 to 15 working days, while more complex or regulated activities may require additional review.
-              </p>
-          </div>
-      </div>
-
-      <div class="border-l-4 border-blue-500 rounded-xl">       
-          <div class="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
-              <h3 class="text-xl font-semibold text-gray-800 mb-2">
-              Weeks 3–4: Issuance of Commercial Registration and Notarization of Articles of Association
-              </h3>
-              <p class="text-gray-600 leading-relaxed">
-              Completion of parallel registrations with the General Organization for Social Insurance (GOSI), Zakat, Tax and Customs Authority (ZATCA), Qiwa platform, Chamber of Commerce, and registering the Saudi National Address of the company. This phase also includes facilitating the company’s bank account opening.
-              </p>
-          </div>
-      </div>
-
-      <div class="border-l-4 border-blue-500 rounded-xl">
-          <div class="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
-              <h3 class="text-xl font-semibold text-gray-800 mb-2">
-              Weeks 6–8: HR Framework and Full Operational Readiness
-              </h3>
-              <p class="text-gray-600 leading-relaxed">
-              Preparation of employment contracts and internal labor regulations, along with advisory on Saudization requirements and assistance in obtaining work visas for foreign employees. At this stage, the company is fully established and ready from a legal, financial, and operational standpoint.
-              </p>
-          </div>
-      </div>
-  </div>
-  <div class="text-center mt-10">
-      <a href="#contact"
-  class="inline-block bg-red-600 text-white font-semibold px-8 py-3 rounded-full hover:bg-red-700 transition">
-  Get Your Free Consultation
-      </a>
-  </div>
-</section>
- -->
 
 
 
-<section id="contact" class="bg-gray-100 py-8">
-      <div class="text-center mb-10">
-      <h2 class="text-3xl md:text-4xl font-bold mb-4">
-        Take the First Step Toward Establishing Your Saudi Presence
-      </h2>
-      <p class="!text-gray-800">
-        leave your details and we'll get back to you shortly.
-      </p>
-    </div>
-  <div class="max-w-5xl mx-auto px-4">
-    <div class="bg-white rounded-2xl shadow-xl overflow-hidden md:flex">
-      <div class="md:w-2/5 bg-slate-800 p-10 text-white flex flex-col justify-center">
-          <h2 class="text-3xl font-bold mb-4">Ready to Establish Your Presence in Saudi Arabia?</h3>
-          <p class="!text-gray-300 mb-4">Don't navigate the Kingdom's legal and regulatory landscape without the right partner. Omar Alrashed Law Firm brings together legal expertise, financial clarity, and practical execution so your Saudi entity is built correctly, from the ground up.</p>
-          <p class="!text-gray-300 mb-8">Fill out the form and our legal consultants will get back to you.</p>
-          <div class="flex items-center gap-4 text-gray-300">
-              <!-- <svg class="w-6 h-6 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg> -->
-              <img src="/static/assets/images/icons/email-icon.png" alt="Email Icon" class="w-6 h-6 ">
-              <span>
-                <a class="" href="mailto:info@alrasheedlaw.com">info@alrasheedlaw.com</a>
-                <!-- <a href="tel:+966114646777">+966 11 4646777</a></span> -->
-              </span>
-          </div>
-      </div>
-      <div class="md:w-3/5 p-10 ">
-          <form id="contact-us" class="space-y-6">
-              <div>
-                  <label class="block text-sm font-medium text-gray-700">Full Name</label>
-                  <input type="text" name="full-name" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm border p-3 focus:border-emerald-500 focus:ring-emerald-500" required>
-              </div>
-              <div>
-                  <label class="block text-sm font-medium text-gray-700">Company Name</label>
-                  <input type="text" name="company-name" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm border p-3 focus:border-emerald-500 focus:ring-emerald-500" required>
-              </div>
-              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div>
-                      <label class="block text-sm font-medium text-gray-700">Email</label>
-                      <input type="email" name="email" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm border p-3 focus:border-emerald-500 focus:ring-emerald-500" required>
-                  </div>
-                  <div>
-                      <label class="block text-sm font-medium text-gray-700">Phone</label>
-                      <input type="tel" name="phone" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm border p-3 focus:border-emerald-500 focus:ring-emerald-500">
-                  </div>
-              </div>
-              <!-- <div>
-                  <label class="block text-sm font-medium text-gray-700">Position</label>
-                  <select name="position" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm border p-3 focus:border-emerald-500 focus:ring-emerald-500 bg-white" required>
-                      <option value="" disabled selected>Select your role</option>
-                      <option value="c-suite-executive">C-Suite / Executive</option>
-                      <option value="director-vp">Director / VP</option>
-                      <option value="legal-counsel">Legal / General Counsel</option>
-                      <option value="executive-assistant-secretary">Executive Assistant / Secretary</option>
-                      <option value="other">Other</option>
-                  </select>
-              </div> -->
-
-              <div>
-                  <label class="block text-sm font-medium text-gray-700">Country of Incorporation</label>
-                  <input type="text" name="country-of-incorporation" placeholder="e.g. United Kingdom" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm border p-3 focus:border-emerald-500 focus:ring-emerald-500" required>
-              </div>
-
-              <!-- <div>
-                  <label class="block text-sm font-medium text-gray-700">Worldwide Annual Turnover (USD)</label>
-                  <select name="turnover" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm border p-3 focus:border-emerald-500 focus:ring-emerald-500 bg-white" required>
-                      <option value="" disabled selected>Select turnover range</option>
-                      <option value="under-50m">Less than $50M</option>
-                      <option value="50m-250m">$50M – $250M</option>
-                      <option value="250m-1b">$250M – $1B</option>
-                      <option value="over-1b">More than $1B</option>
-                  </select>
-              </div> -->
-
-              <!-- <div>
-                  <label class="block text-sm font-medium text-gray-700">Total Employee Count</label>
-                  <select name="employee-count" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm border p-3 focus:border-emerald-500 focus:ring-emerald-500 bg-white" required>
-                      <option value="" disabled selected>Select employee count</option>
-                      <option value="1-100">1 – 100</option>
-                      <option value="101-500">101 – 500</option>
-                      <option value="501-1000">501 – 1,000</option>
-                      <option value="1001-5000">1,001 – 5,000</option>
-                      <option value="5001+">5,001+</option>
-                  </select>
-              </div> -->
-
-              <div>
-                  <label class="block text-sm font-medium text-gray-700">Sector / Industry</label>
-                  <select name="sector" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm border p-3 focus:border-emerald-500 focus:ring-emerald-500 bg-white" required>
-                      <option value="" disabled selected>Select your industry</option>
-                      <option value="technology">Technology & Digital Economy</option>
-                      <option value="healthcare">Healthcare & Life Sciences</option>
-                      <option value="defense">Defense & Aerospace</option>
-                      <option value="energy">Energy, Oil & Gas</option>
-                      <option value="manufacturing">Manufacturing & Industrial</option>
-                      <option value="professional-services">Professional Services (Consulting, Legal, Engineering)</option>
-                      <option value="construction">Construction & Infrastructure</option>
-                      <option value="retail-consumer">Retail & Consumer Goods</option>
-                      <option value="logistics">Logistics & Transportation</option>
-                      <option value="other">Other</option>
-                  </select>
-              </div>
-
-              <!-- <div>
-                  <label class="block text-sm font-medium text-gray-700">Audited financial statements for last 2 years?</label>
-                  <select name="audited-financial-statements" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm border p-3 focus:border-emerald-500 focus:ring-emerald-500 bg-white" required>
-                      <option value="" disabled selected>Please select...</option>
-                      <option value="yes">Yes</option>
-                      <option value="no">No</option>
-                      <option value="in-progress">In Progress</option>
-                  </select>
-              </div> -->
-              <div>
-                  <label class="block text-sm font-medium text-gray-700">How can we help?</label>
-                  <textarea rows="4" name="message" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm border p-3 focus:border-emerald-500 focus:ring-emerald-500"></textarea>
-              </div>
-              <button type="submit" class="w-full bg-red-600 text-white font-bold py-3 px-4 rounded-md hover:bg-green-400 transition duration-300">
-                  Submit Inquiry
-              </button>
-          </form>
-      </div>
-    </div>
-  </div>
-</section>
 <!-- FAQ -->
 <section class="bg-gray-800 text-white py-16 px-6">
   <div class="max-w-4xl mx-auto">
@@ -614,7 +392,7 @@ const testimonials = await Promise.all(testimonialList
       <details class="group border-b border-gray-700 pb-4">
         <summary class="flex justify-between items-center cursor-pointer text-lg font-medium list-none">
           Can a foreign investor own 100% of a Saudi company?
-          <span class="transition-transform duration-300 group-open:rotate-180">
+          <span class="rotate-90 transition-transform duration-300 group-open:rotate-180">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
                 <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 15.75 7.5-7.5 7.5 7.5" />
             </svg>
@@ -628,7 +406,7 @@ const testimonials = await Promise.all(testimonialList
       <details class="group border-b border-gray-700 pb-4">
         <summary class="flex justify-between items-center cursor-pointer text-lg font-medium list-none">
           What is the minimum share capital required?
-          <span class="transition-transform duration-300 group-open:rotate-180">
+          <span class="rotate-90 transition-transform duration-300 group-open:rotate-180">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
                 <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 15.75 7.5-7.5 7.5 7.5" />
             </svg>
@@ -643,7 +421,7 @@ const testimonials = await Promise.all(testimonialList
       <details class="group border-b border-gray-700 pb-4">
         <summary class="flex justify-between items-center cursor-pointer text-lg font-medium list-none">
           Do I need to be physically present in Saudi Arabia to register?
-          <span class="transition-transform duration-300 group-open:rotate-180">
+          <span class="rotate-90 transition-transform duration-300 group-open:rotate-180">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
                 <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 15.75 7.5-7.5 7.5 7.5" />
             </svg>
@@ -658,7 +436,7 @@ const testimonials = await Promise.all(testimonialList
       <details class="group border-b border-gray-700 pb-4">
         <summary class="flex justify-between items-center cursor-pointer text-lg font-medium list-none">
           What taxes will my company be subject to?
-          <span class="transition-transform duration-300 group-open:rotate-180">
+          <span class="rotate-90 transition-transform duration-300 group-open:rotate-180">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
                 <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 15.75 7.5-7.5 7.5 7.5" />
             </svg>
@@ -677,7 +455,7 @@ const testimonials = await Promise.all(testimonialList
       <details class="group border-b border-gray-700 pb-4">
         <summary class="flex justify-between items-center cursor-pointer text-lg font-medium list-none">
           In addition, the following obligations apply:
-          <span class="transition-transform duration-300 group-open:rotate-180">
+          <span class="rotate-90 transition-transform duration-300 group-open:rotate-180">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
                 <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 15.75 7.5-7.5 7.5 7.5" />
             </svg>
@@ -700,7 +478,7 @@ const testimonials = await Promise.all(testimonialList
       <details class="group border-b border-gray-700 pb-4">
         <summary class="flex justify-between items-center cursor-pointer text-lg font-medium list-none">
           What is Nitaqat (Saudization) and does it apply to my company?
-          <span class="transition-transform duration-300 group-open:rotate-180">
+          <span class="rotate-90 transition-transform duration-300 group-open:rotate-180">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
                 <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 15.75 7.5-7.5 7.5 7.5" />
             </svg>
@@ -715,7 +493,7 @@ const testimonials = await Promise.all(testimonialList
       <details class="group border-b border-gray-700 pb-4">
         <summary class="flex justify-between items-center cursor-pointer text-lg font-medium list-none">
           Can you help with compliance after setup?
-          <span class="transition-transform duration-300 group-open:rotate-180">
+          <span class="rotate-90 transition-transform duration-300 group-open:rotate-180">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
                 <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 15.75 7.5-7.5 7.5 7.5" />
             </svg>
