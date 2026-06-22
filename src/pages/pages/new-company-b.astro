@@ -1,0 +1,678 @@
+---
+import { defaultLang } from '@/i18n/ui';
+import { useTranslations } from '@/i18n/utils';
+import Layout from '@/layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+import { getEntry } from 'astro:content';
+
+const { slug } = Astro.params;
+const lang = "en"; // Astro.currentLocale || defaultLang;
+const t = useTranslations(lang);
+
+const phaseList = await getCollection("new_company_phases");
+const taskList = await getCollection("new_company_tasks");
+
+const pahseEntryList = phaseList
+	.filter(entry => entry.slug.split("/").includes(lang)).
+	sort((a,b) => a.data.order - b.data.order);
+
+// 3. Filter tasks by language (optional, depending on your folder structure)
+const langTasks = taskList.filter(task => task.slug.split("/").includes(lang));
+
+// 4. Create the nested structure
+const phasesWithTasks = await Promise.all(
+  pahseEntryList.map(async (phase) => {
+    // 1. Find all tasks belonging to this phase
+    const phaseTasks = langTasks
+      .filter(task => phase.slug.split("/").includes(task.data.phase)) 
+      .sort((a, b) => a.data.order - b.data.order);
+
+    // console.log(phase.slug, phaseTasks);
+
+    // 2. Await the render() function for each task to get its Markdown Content
+    const tasksWithContent = await Promise.all(
+      phaseTasks.map(async (task) => {
+        const { Content } = await task.render();
+        return {
+          ...task,
+          Content // Attach the Astro component directly to the task object
+        };
+      })
+    );
+
+    // 3. Return the phase with the injected, fully-rendered tasks array
+    return {
+      ...phase,
+      tasks: tasksWithContent
+    };
+  })
+);
+
+const testimonialList = await getCollection("testimonials");
+
+const testimonials = await Promise.all(testimonialList
+	.filter(entry => entry.slug.split("/").includes(lang) && entry.data.featured)
+	.sort((a,b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime())
+	.map(async entry => {
+		const { Content } = await entry.render()
+		return {
+			data: entry.data,
+			Content: Content,
+		};
+	})
+);
+
+---
+
+<Layout lang={lang} slug=`pages`>
+<div class="bg-gray-50 text-gray-800 antialiased" id="contact">
+    <header class="relative bg-slate-900 md:flex  items-center justify-center text-center p-8">
+      <div class="md:w-1/2">  
+      <div class="absolute inset-0 opacity-30 bg-[url('/static/assets/images/landing_page/landing-page-bg.jpg')] bg-cover bg-center"></div>
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent to-slate-900"></div>
+        
+        <div class="relative z-10 max-w-4xl mx-auto text-white">
+            <span class="text-blue-400 font-semibold tracking-wider uppercase text-sm mb-4 block">Corporate Law & Advisory</span>
+        <h1 class="text-5xl md:text-7xl font-bold mb-6 leading-tight">
+            Start Your Business in
+            <br />
+          <span class="shiny-text">
+            Saudi Arabia with Confidence
+          </span>
+        </h1>
+            <p class="text-xl md:text-2xl !text-gray-300 mb-10 max-w-2xl mx-auto">
+                End-to-end company formation, licensing, tax advisory, and operational setup all under one roof. We don't just register your company. We get it ready to do business.
+            </p>
+        </div>
+        </div>
+        <!-- Contact Form -->
+        <div class="md:w-3/5 p-10 relative z-10 text-white text-start opacity-90">
+          <form id="contact-us" class="text-gray-900 space-y-2 bg-white rounded-xl p-8 shadow-lg border-t-4 border-red-600">
+            <div>
+              <label class="text-sm text-gray-700">Full Name</label>
+              <input type="text" name="full-name" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm border p-3 focus:border-emerald-500 focus:ring-emerald-500" required>
+            </div>
+          <div>
+          <label class="block text-sm font-medium text-gray-700">Company Name</label>
+          <input type="text" name="company-name" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm border p-3 focus:border-emerald-500 focus:ring-emerald-500" required>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div>
+              <label class="block text-sm font-medium text-gray-700">Email</label>
+              <input type="email" name="email" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm border p-3 focus:border-emerald-500 focus:ring-emerald-500" required>
+          </div>
+          <div>
+              <label class="block text-sm font-medium text-gray-700">Phone</label>
+              <input type="tel" name="phone" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm border p-3 focus:border-emerald-500 focus:ring-emerald-500">
+          </div>
+          </div>
+
+          <div>
+          <label class="block text-sm font-medium text-gray-700">Country of Incorporation</label>
+          <input type="text" name="country-of-incorporation" placeholder="e.g. United Kingdom" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm border p-3 focus:border-emerald-500 focus:ring-emerald-500" required>
+          </div>
+
+          <div>
+          <label class="block text-sm font-medium text-gray-700">Sector / Industry</label>
+          <select name="sector" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm border p-3 focus:border-emerald-500 focus:ring-emerald-500 bg-white" required>
+              <option value="" disabled selected>Select your industry</option>
+              <option value="technology">Technology & Digital Economy</option>
+              <option value="healthcare">Healthcare & Life Sciences</option>
+              <option value="defense">Defense & Aerospace</option>
+              <option value="energy">Energy, Oil & Gas</option>
+              <option value="manufacturing">Manufacturing & Industrial</option>
+              <option value="professional-services">Professional Services (Consulting, Legal, Engineering)</option>
+              <option value="construction">Construction & Infrastructure</option>
+              <option value="retail-consumer">Retail & Consumer Goods</option>
+              <option value="logistics">Logistics & Transportation</option>
+              <option value="other">Other</option>
+          </select>
+          </div>
+
+          <div>
+          <label class="block text-sm font-medium text-gray-700">How can we help?</label>
+          <textarea rows="4" name="message" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm border p-3 focus:border-emerald-500 focus:ring-emerald-500"></textarea>
+          </div>
+          <button type="submit" class="w-full bg-red-600 text-white font-bold py-3 px-4 rounded-md hover:bg-green-400 transition duration-300">
+          Submit Inquiry
+          </button>
+          </form>
+        </div>
+    </header>
+
+    <!-- why choose us -->
+    <section class="bg-white py-16 px-6">
+    <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-start">
+
+      <!-- LEFT COLUMN -->
+      <div>
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          Why Foreign Investors Choose Us
+        </h2>
+        <br>
+        <p class="text-gray-600 text-lg leading-relaxed">
+          Navigating the regulatory framework in the Kingdom of Saudi Arabia including obtaining a Ministry of Investment (MISA) license, commercial registration, establishing compliant corporate structures in line with Saudi applicable laws and regulations, meeting the obligations of the Zakat, Tax and Customs Authority (ZATCA), and fulfilling Saudization (Nitaqat) requirements is highly complex. Most firms simply hand you a checklist and step back. We don’t.
+        </p>
+        <br>
+        <p class="text-gray-600 text-lg leading-relaxed">
+          At Omar Alrashed Law Firm, every engagement is handled by senior advisors with deep, practical knowledge of how Saudi regulatory bodies actually operate. We combine legal precision with financial foresight and hands-on execution.
+        </p>
+      </div>
+
+      <!-- RIGHT COLUMN -->
+      <div class="bg-gray-50 p-6 rounded-2xl shadow-sm">
+
+
+          <!-- ITEM 1 -->
+        <div class="flex items-start gap-4 pb-2">
+          <div class="flex-shrink-0 w-10 h-4 flex items-top justify-center text-red-600">
+            ✓
+          </div>
+          <div>
+            <h4 class="font-semibold text-gray-800">End-to-end business setup, from strategic planning to first hire</h4>
+          </div>
+        </div>
+
+        <hr class="my-4  text-red-600 opacity-30 ">
+
+          <!-- ITEM 2 -->
+        <div class="flex items-start gap-4 pb-2">
+          <div class="flex-shrink-0 w-10 h-4 flex items-top justify-center text-red-600">
+            ✓
+          </div>
+          <div>
+            <h4 class="font-semibold text-gray-800">Proven expertise in 100% foreign-owned entities and joint ventures</h4>
+          </div>
+        </div>
+
+        <hr class="my-4  text-red-600 opacity-30 ">
+
+          <!-- ITEM 3 -->
+        <div class="flex items-start gap-4 pb-2">
+          <div class="flex-shrink-0 w-10 h-4 flex items-top justify-center text-red-600">
+            ✓
+          </div>
+          <div>
+            <h4 class="font-semibold text-gray-800">Direct handling of MISA licensing, CR, AOA, and all government registrations</h4>
+          </div>
+        </div>
+
+        <hr class="my-4  text-red-600 opacity-30 ">
+
+                    <!-- ITEM 4 -->
+        <div class="flex items-start gap-4 pb-2">
+          <div class="flex-shrink-0 w-10 h-4 flex items-top justify-center text-red-600">
+            ✓
+          </div>
+          <div>
+            <h4 class="font-semibold text-gray-800">Integrated legal, tax, and financial advisory in one engagement</h4>
+          </div>
+        </div>
+
+        <hr class="my-4  text-red-600 opacity-30 ">
+
+                    <!-- ITEM 5 -->
+        <div class="flex items-start gap-4 pb-2">
+          <div class="flex-shrink-0 w-10 h-4 flex items-top justify-center text-red-600">
+            ✓
+          </div>
+          <div>
+            <h4 class="font-semibold text-gray-800">Ongoing compliance support as your business grows</h4>
+          </div>
+        </div>
+
+        <hr class="my-4  text-red-600 opacity-30 ">
+
+                    <!-- ITEM  -->
+        <div class="flex items-start gap-4 pb-2">
+          <div class="flex-shrink-0 w-10 h-4 flex items-top justify-center text-red-600">
+            ✓
+          </div>
+          <div>
+            <h4 class="font-semibold text-gray-800">Bilingual team Arabic and English advisory throughout</h4>
+          </div>
+        </div>
+
+        <hr class="my-4  text-red-600 opacity-30 ">
+
+                    <!-- ITEM 7 -->
+        <div class="flex items-start gap-4 pb-2">
+          <div class="flex-shrink-0 w-10 h-4 flex items-top justify-center text-red-600">
+            ✓
+          </div>
+          <div>
+            <h4 class="font-semibold text-gray-800">Vision 2030 aligned: current on all regulatory reforms and incentives</h4>
+          </div>
+        </div>
+
+        <hr class="my-4  text-red-600 opacity-30 ">
+
+      
+
+        <!-- BUTTON -->
+        <a href="#contact"
+            class="block text-center mx-5 bg-red-600 text-white font-semibold py-3 rounded-full hover:bg-green-400 transition ">
+          Get Your Free Consultation
+        </a>
+
+      </div>
+
+    </div>
+    </section>
+    <!-- Testimonials -->
+    <section class="relative overflow-hidden bg-gray-900 !text-white py-20">
+      
+      <!-- Background -->
+      <picture class="absolute inset-0">
+        <img src="/static/assets/images/landing_page/testimonial-bg.jpg"
+            alt="Corporate Office"
+            class="w-full h-full object-cover opacity-30">
+      </picture>
+
+      <!-- Content -->
+      <div id="slider" class="flex transition-transform duration-500 ease-in-out">
+        {
+          testimonials.map(entry => (
+            <div class="min-w-full px-4">
+              <div class=" p-8 rounded shadow text-center italic">
+                <!-- Content -->
+                <p class="mb-1">
+                  <entry.Content />
+                </p>
+
+                <!-- Author -->
+                <div class="flex justify-center items-center gap-3 mt-4">
+                <div class="text-sm text-center">
+                    <h5 class="font-semibold text-2xl mb-2">"{entry.data.name}"</h5>
+                    <span class="block text-orange-400">{entry.data.company}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+      
+        <!--TODO: FIX CONTROLS -->
+        <!-- <div class="flex justify-center ">
+          <button onclick="prevSlide()" class="px-4 py-2 text-gray-400 rounded">←</button>
+          <button onclick="nextSlide()" class="px-4 py-2 text-gray-400 rounded">→</button>
+        </div> -->
+    </section>
+
+    <!-- Phases -->
+    <main class="max-w-7xl mx-auto px-4 py-8 md:py-24">
+        
+        <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900">Our Process: Six Steps from Idea to Operation</h2>
+            <p class="!text-gray-600 mt-4 text-lg">We follow a structured, six-phase approach covering every legal, regulatory, and operational requirement. Each phase has a dedicated advisor responsible for execution, coordination, and delivery.</p>
+        </div>
+
+        <div class="flex flex-col md:flex-row gap-8 relative">
+            <div class="md:w-1/4 hidden md:block">
+                <div class="sticky top-8 bg-white md:bg-transparent p-2 md:p-0 z-20 shadow-md md:shadow-none rounded-xl mobile-nav-scroll overflow-x-auto flex flex-row md:flex-col gap-2 md:gap-0">
+                    <!-- {pahseEntryList.map((entry)=>{
+                      return <a href={"#phase-"+entry.data.order} data-target={"phase-"+entry.data.order} bg-color={entry.data.bg_color} text-color={entry.data.text_color} class="phase-tab tab-chevron block w-48 md:w-full flex-shrink-0 bg-gray-200 text-gray-600 font-semibold py-4 px-6 md:mb-2 hover:bg-gray-300">
+                        <span class="block text-xs uppercase tracking-wide opacity-80">Phase {entry.data.order}</span>
+                        {entry.data.name}
+                      </a>
+                    })} -->
+
+                    {pahseEntryList.map((entry) => {
+                        return (
+                            <a 
+                                href={"#phase-" + entry.data.order} 
+                                data-target={"phase-" + entry.data.order} 
+                                bg-color={entry.data.bg_color} 
+                                text-color={entry.data.text_color} 
+                                class="phase-tab tab-chevron block w-48 md:w-full flex-shrink-0 bg-gray-200 text-gray-600 font-semibold py-4 px-6 md:mb-2 hover:bg-gray-300 first:rounded-t-lg last:rounded-b-lg"
+                            >
+                                <span class="block text-xs uppercase tracking-wide opacity-80">
+                                    Phase {entry.data.order}
+                                </span>
+                                {entry.data.name}
+                            </a>
+                        )
+                    })}
+                </div>
+            </div>
+
+            <div class="md:w-3/4 flex flex-col gap-8 opacity-70">
+                {phasesWithTasks.map((entry)=>{
+                  return <section id={"phase-"+entry.data.order} class="phase-section rounded-2xl p-8 md:p-12 shadow-xl scroll-mt-24" style={"background-color:"+entry.data.text_color}>
+                    <h3 class="text-3xl font-bold text-white mb-8 border-b pb-4" style={"border-color:"+entry.data.bg_color+"55"}>Phase {entry.data.order}: {entry.data.name}</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">                
+                        {entry.tasks.map((task)=>{
+                          return <div class="bg-white rounded-xl p-6 shadow-lg border-t-4 hover:-translate-y-1 transition duration-300" style={"border-color:"+entry.data.bg_color}>
+                            <div class="bg-emerald-100 text-emerald-600 w-12 h-12 rounded-lg flex items-center justify-center mb-4">
+                                <img src={task.data.image}></img>
+                            </div>
+                            <h4 class="text-xl font-bold text-gray-900 mb-2">{task.data.name}</h4>
+                            {/* <p class="text-gray-600 text-sm leading-relaxed">
+                              <task.Content />
+                            </p> */}
+                        </div>
+                        })}
+                    </div>
+                </section>
+                })}
+            </div>
+        </div>
+        <div class="text-center mt-10">
+        <!-- <a href="#contact"
+            class="inline-block bg-red-600 text-white font-semibold px-8 py-3 rounded-full hover:bg-red-700 transition">
+            Get Your Free Consultation
+        </a> -->
+        </div>            
+    </main>
+
+
+
+    <!-- FAQ -->
+    <section class="bg-gray-800 text-white py-16 px-6">
+      <div class="max-w-4xl mx-auto">
+
+        <!-- Header -->
+        <div class="text-center mb-10">
+          <h2 class="text-3xl md:text-4xl font-bold mb-4">
+            Frequently Asked Questions
+          </h2>
+          <p class="!text-gray-300">
+            Find answers to common questions about our services, process, and what to expect.
+          </p>
+        </div>
+
+        <!-- FAQ List -->
+        <div class="space-y-4">
+
+          <!-- FAQ Item -->
+          <details class="group border-b border-gray-700 pb-4">
+            <summary class="flex justify-between items-center cursor-pointer text-lg font-medium list-none">
+              Can a foreign investor own 100% of a Saudi company?
+              <span class="rotate-90 transition-transform duration-300 group-open:rotate-180">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 15.75 7.5-7.5 7.5 7.5" />
+                </svg>
+              </span>
+            </summary>
+            <p class="mt-3 ms-6 !text-gray-300 leading-relaxed">
+              Yes — in most sectors. Saudi Arabia opened the majority of commercial activities to full foreign ownership under Vision 2030 reforms. MISA's approved activities list governs eligibility by sector. Some activities still require a Saudi partner; we assess your specific activity at the outset.
+            </p>
+          </details>
+
+          <details class="group border-b border-gray-700 pb-4">
+            <summary class="flex justify-between items-center cursor-pointer text-lg font-medium list-none">
+              What is the minimum share capital required?
+              <span class="rotate-90 transition-transform duration-300 group-open:rotate-180">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 15.75 7.5-7.5 7.5 7.5" />
+                </svg>
+
+              </span>
+            </summary>
+            <p class="mt-3 ms-6 !text-gray-300 leading-relaxed">
+              It varies by activity and entity type. For a standard foreign-owned LLC in commercial or consulting activities, the threshold can start from SAR 100,000, though MISA applies different requirements for industrial, healthcare, or financial services activities. We confirm the applicable figure after reviewing your activity list.
+            </p>
+          </details>
+
+          <details class="group border-b border-gray-700 pb-4">
+            <summary class="flex justify-between items-center cursor-pointer text-lg font-medium list-none">
+              Do I need to be physically present in Saudi Arabia to register?
+              <span class="rotate-90 transition-transform duration-300 group-open:rotate-180">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 15.75 7.5-7.5 7.5 7.5" />
+                </svg>
+
+              </span>
+            </summary>
+            <p class="mt-3 ms-6 !text-gray-300 leading-relaxed">
+              Not necessarily. Many steps can be managed remotely through a legal representative holding a duly authorised Power of Attorney. We advise on any steps that require your in-person presence and help plan accordingly.
+            </p>
+          </details>
+
+          <details class="group border-b border-gray-700 pb-4">
+            <summary class="flex justify-between items-center cursor-pointer text-lg font-medium list-none">
+              What taxes will my company be subject to?
+              <span class="rotate-90 transition-transform duration-300 group-open:rotate-180">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 15.75 7.5-7.5 7.5 7.5" />
+                </svg>
+
+              </span>
+            </summary>
+            <p class="mt-3 ms-8 leading-relaxed">
+              <ul class="list-disc ms-8 !text-gray-300">
+                <li>A 20% corporate income tax is imposed on the share of profits attributable to foreign investors </li>
+                <li>The share of Saudi and GCC shareholders is subject to Zakat at 2.5% of the Zakat base </li>            
+              </ul>
+              <br>
+            </p>
+          </details>
+
+          <details class="group border-b border-gray-700 pb-4">
+            <summary class="flex justify-between items-center cursor-pointer text-lg font-medium list-none">
+              In addition, the following obligations apply:
+              <span class="rotate-90 transition-transform duration-300 group-open:rotate-180">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 15.75 7.5-7.5 7.5 7.5" />
+                </svg>
+
+              </span>
+            </summary>
+            <p class="mt-3 !text-gray-300 leading-relaxed">
+              <ul class="list-disc ms-8 !text-gray-300">
+                <li>Value Added Tax (VAT) at 15% on most transactions </li>
+                <li>Withholding tax on certain cross-border payments</li>            
+                <li>Social insurance contributions for employees </li>
+              </ul>
+              <br>
+              <strong class="!text-gray-300" >
+                Understanding these obligations from the outset enables proper financial planning and helps avoid unexpected liabilities in the future.
+              </strong>
+            </p>
+          </details>
+
+          <details class="group border-b border-gray-700 pb-4">
+            <summary class="flex justify-between items-center cursor-pointer text-lg font-medium list-none">
+              What is Nitaqat (Saudization) and does it apply to my company?
+              <span class="rotate-90 transition-transform duration-300 group-open:rotate-180">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 15.75 7.5-7.5 7.5 7.5" />
+                </svg>
+
+              </span>
+            </summary>
+            <p class="mt-3 ms-6 !text-gray-300 leading-relaxed">
+              The Nitaqat programme requires companies to employ a minimum percentage of Saudi nationals, with ratios varying by sector and company size. Non-compliance affects your ability to issue work visas for foreign employees. We build the appropriate Saudization strategy into your HR framework from inception.
+            </p>
+          </details>
+
+          <details class="group border-b border-gray-700 pb-4">
+            <summary class="flex justify-between items-center cursor-pointer text-lg font-medium list-none">
+              Can you help with compliance after setup?
+              <span class="rotate-90 transition-transform duration-300 group-open:rotate-180">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 15.75 7.5-7.5 7.5 7.5" />
+                </svg>
+
+              </span>
+            </summary>
+            <p class="mt-3 ms-6 !text-gray-300 leading-relaxed">
+              Yes ongoing support is one of our core offerings. We provide advisory covering license renewals, regulatory changes, AOA amendments, ZATCA filings, employment matters, and any other requirements that arise as your business develops.
+            </p>
+          </details>
+        </div>
+        <!-- View All Link
+        <div class="text-center mt-10">
+          <a href="#"
+            class="inline-flex items-center gap-2 text-gray-300 hover:text-white font-medium transition">
+            View All FAQs
+            <span class="transition-transform group-hover:translate-x-1">→</span>
+          </a>
+        </div> -->
+      </div>
+    </section>
+
+    <!-- floating button -->
+    <a
+      href="#contact"
+      class="fixed bottom-6 right-6 z-50 inline-flex items-center gap-2 overflow-hidden rounded-full bg-gradient-to-r from-red-600 via-red-500 to-orange-500 px-6 py-3 font-semibold text-white shadow-xl transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:shadow-2xl floating-cta hover:bg-gradient-to-r hover:from-green-700 hover:via-green-600 hover:to-sky-600"
+    >
+      Take the First Step
+      
+    </a>
+</div>
+
+  <script>
+  
+  let current = 0;
+
+  function updateSlider() {
+    const slider = document.getElementById("slider");
+    if (slider) {
+      slider.style.transform = `translateX(-${current * 100}%)`;
+    }
+  }
+
+  function nextSlide() {
+    const slider = document.getElementById("slider");
+    if (!slider) return;
+    const total = slider.children.length;
+    current = (current + 1) % total;
+    updateSlider();
+  }
+
+  function prevSlide() {
+    const slider = document.getElementById("slider");
+    if (!slider) return;
+    const total = slider.children.length;
+    current = (current - 1 + total) % total;
+    updateSlider();
+  }
+
+  // AUTO PLAY (optional)
+  setInterval(nextSlide, 7500);  
+  </script>
+
+    <script is:inline>
+        document.addEventListener('DOMContentLoaded', () => {
+            const sections = document.querySelectorAll('.phase-section');
+            const navItems = document.querySelectorAll('.phase-tab');
+
+            // Define the active color palettes mapped to the data-color attribute
+            // const colorMap = {
+            //     'phase-1': { bg: 'bg-emerald-100', text: 'text-emerald-900' },
+            //     'phase-2': { bg: 'bg-blue-100', text: 'text-blue-900' },
+            //     'phase-3': { bg: 'bg-purple-100', text: 'text-purple-900' },
+            //     'phase-4': { bg: 'bg-orange-100', text: 'text-orange-900' },
+            //     'phase-5': { bg: 'bg-teal-100', text: 'text-teal-900' }
+            // };
+
+            // Set up the Intersection Observer
+            const observerOptions = {
+                root: null,
+                // Triggers when the section is roughly in the middle of the screen
+                rootMargin: '-30% 0px -50% 0px', 
+                threshold: 0
+            };
+
+            // const observer = new IntersectionObserver((entries) => {
+            //     entries.forEach(entry => {
+            //         if (entry.isIntersecting) {
+                        
+            //             // 1. Reset all tabs to default state
+            //             navItems.forEach(item => {
+            //                 const bgKey = item.getAttribute('bg-color');
+            //                 const textKey = item.getAttribute('text-color');
+                            
+            //                 // Remove active colors
+            //                 item.classList.remove(`bg-[${bgKey}]`, `text-[${textKey}]`, 'pl-8');
+                            
+            //                 // Add default colors
+            //                 item.classList.add('bg-gray-200', 'text-gray-600');
+            //             });
+
+            //             // 2. Highlight the active tab
+            //             const activeId = entry.target.id;
+            //             const activeTab = document.querySelector(`.phase-tab[data-target="${activeId}"]`);
+                        
+            //             if (activeTab) {
+            //               const bgKey = activeTab.getAttribute('bg-color');
+            //               const textKey = activeTab.getAttribute('text-color');
+
+            //               // Remove default colors
+            //               activeTab.classList.remove('bg-gray-200', 'text-gray-600');
+                          
+            //               // Apply active colors and a slight indentation for desktop
+            //               activeTab.classList.add(`bg-[${bgKey}]`, `text-[${textKey}]`, 'md:pl-8');
+                          
+            //               // On mobile, scroll the horizontal nav to show the active tab
+            //               if(window.innerWidth <= 768) {
+            //                   activeTab.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+            //               }
+            //             }
+            //         }
+            //     });
+            // }, observerOptions);
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        
+                        // 1. Reset all tabs to default state
+                        navItems.forEach(item => {
+                            // Clear the dynamic inline colors
+                            item.style.backgroundColor = '';
+                            item.style.color = '';
+                            
+                            // Remove active indentation (Fixed: changed 'pl-8' to 'md:pl-8')
+                            item.classList.remove('md:pl-8');
+                            
+                            // Add default Tailwind colors back
+                            item.classList.add('bg-gray-200', 'text-gray-600');
+                        });
+
+                        // 2. Highlight the active tab
+                        const activeId = entry.target.id;
+                        const activeTab = document.querySelector(`.phase-tab[data-target="${activeId}"]`);
+                        
+                        if (activeTab) {
+                            const bgKey = activeTab.getAttribute('bg-color');
+                            const textKey = activeTab.getAttribute('text-color');
+
+                            // Remove default Tailwind colors so they don't conflict
+                            activeTab.classList.remove('bg-gray-200', 'text-gray-600');
+                            
+                            // Apply dynamic CMS colors via inline styles
+                            activeTab.style.backgroundColor = bgKey;
+                            activeTab.style.color = textKey;
+                            
+                            // Apply active indentation
+                            activeTab.classList.add('md:pl-8');
+                            
+                            // On mobile, scroll the horizontal nav to show the active tab
+                            if (window.innerWidth <= 768) {
+                                activeTab.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+                            }
+                        }
+                    }
+                });
+            }, observerOptions);
+
+            // Start observing each section
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+        });
+
+        document.addEventListener("DOMContentLoaded", () => {
+            webform('#contact-us', {
+                callback: () => {
+                    gtag('event', 'generate_lead', {
+                    form_name: 'Contact Page Form'
+                    });
+                }
+            })});
+    </script>
+    <script is:inline src="/static/assets/js/webform.js"></script>
+</Layout>
