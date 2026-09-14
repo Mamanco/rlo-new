@@ -75,30 +75,46 @@ const clients = await Promise.all(entry.data.clients!
 );
 ---
 <Layout lang={lang} slug=`team/${slug}`>
-	<div class="flex justify-center gap-14 flex-wrap dark p-6 lg:p-12">
+  <div class="flex justify-center gap-14 flex-wrap dark p-6 lg:p-12">
+    <!-- LEFT COLUMN (Stacks on top for mobile) -->
     <div class="w-full md:w-3/12 space-y-10">
-        <!-- Back button -->
+      
+      <!-- Back button -->
       <button onclick="history.back()" class="text-red-400 hover:brightness-200 hover:text-red-400">
         <div class="flex gap-3 items-center mb-8">
-          <img class="h-4  w-10 rotate-180" src="/static/assets/images/arrow.svg" alt=""> 
-        <span class="text-base">{t("Back")}</span>
+          <img class="h-4 w-10 rotate-180" src="/static/assets/images/arrow.svg" alt="" /> 
+          <span class="text-base">{t("Back")}</span>
         </div>
       </button>
-      <!-- Avatar -->
-      <img class="order-1 col-span-4 row-span-auto" src={entry.data.image} alt="" />
+
+      <!-- 1. MOBILE ONLY: Name & Title -->
+      <div class="block md:hidden py-3">
+        <h3 class="text-3xl">{entry.data.name}</h3>
+        <h5 class="text-xl">{entry.data.job_title}</h5>
+      </div>
+
+      <!-- 2. Avatar / Photo -->
+      <img class="order-1 col-span-4 row-span-auto w-full" src={entry.data.image} alt="" />
+
+      <!-- 3. MOBILE ONLY: Bio -->
+      <div class="block md:hidden bio-left text-white">
+        <Content />
+      </div>
+
+      <!-- 4. Practices, Education, Bars & Courts -->
       <div class="order-3 col-span-3 row-span-auto">
         <!-- Practices -->
         <div class="order-5 col-span-4 mb-8 space-y-3">
           <h4 class="uppercase text-[24px] font-light">Practices</h4>
           {
             practices.map(entry => (
-              // TODO: fix link to practice page
               <a class="flex gap-x-3 items-center" href=`/practices/${entry.slug}`>
                 <img class="invert h-6 w-6 " src="/static/assets/images/icons/chevron-right.svg" alt="" />{entry.data.name}
               </a>
             ))
           }
         </div>
+        
         <!-- Education -->
         <div class="order-6 col-span-4 my-4">
           <h4 class="uppercase text-[24px] font-light">Education</h4>
@@ -110,26 +126,29 @@ const clients = await Promise.all(entry.data.clients!
             }
           </div>
         </div>
+
         <!-- Qualification -->
-        <!-- hides Bars & Courts id Qualification is empty -->
-          {
-            bars.length == 0
-            ? ""
-            : <div class="order-7 col-span-4 my-4 space-y-3">
-                <h4 class="uppercase text-[24px] font-light">Bars & Courts</h4>
-                <div class="bio-left text-white text-xl">
-                  {
-                    bars.map(entry => (
-                      <p>{entry.data.name}</p>
-                    ))
-                  }
-                </div>
+        {
+          bars.length == 0
+          ? ""
+          : <div class="order-7 col-span-4 my-4 space-y-3">
+              <h4 class="uppercase text-[24px] font-light">Bars & Courts</h4>
+              <div class="bio-left text-white text-xl">
+                {
+                  bars.map(entry => (
+                    <p>{entry.data.name}</p>
+                  ))
+                }
               </div>
-          }
+            </div>
+        }
       </div>
     </div>
+
+    <!-- RIGHT COLUMN (Moves to the right on desktop, stacks at the bottom on mobile) -->
     <div class="w-full md:w-6/12">
-      <!-- Description -->
+      
+      <!-- DESKTOP ONLY: Name, Title & Bio (Hidden on mobile to prevent duplicates) -->
       <div class="order-2 hidden md:block col-span-7 row-span-3">
         <div class="py-3">
           <h3 class="text-3xl">{entry.data.name}</h3>
@@ -140,8 +159,8 @@ const clients = await Promise.all(entry.data.clients!
         </div>
       </div>
 
+      <!-- Representative matters -->
       <div class="order-4 col-span-7 my-10 space-y-3">
-        <!-- Sector -->
         <h4 class="uppercase text-[24px] font-light">{t("Representative matters include")}:</h4>
         <div class="clients">
           <ul>
@@ -153,27 +172,6 @@ const clients = await Promise.all(entry.data.clients!
           </ul>
         </div>
       </div>
-
-      <!-- Blog -->
-      <!-- <div class="order-4 col-span-7 my-10 space-y-3">
-        <div class="flex gap-x-3">
-          <img class="h-12 w-12 rounded-full" src="/static/assets/images/2.png" alt="" />
-          <div class="">
-            <h5 class="uppercase font-light">CBB MEDIA</h5>
-            <h6 class="font-light">1d</h6>
-          </div>
-        </div>
-        <p class="text-white">
-          Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet
-          sint. Velit officia consequat duis enim velit mollit. Exercitation
-          veniam consequat sunt nostrud amet.Proin sit amet condimentum orci.
-        </p>
-        <a href="/#" class="flex gap-x-3 items-center text-[#FA636B]">
-          <img class="h-2 rounded-full" src="/static/assets/images/arrow.svg" alt="" />
-          Read more
-        </a>
-        <img class="w-full" src="/static/assets/images/blog-1.png" alt="" />
-      </div> -->
     </div>
   </div>
 
