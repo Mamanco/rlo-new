@@ -34,9 +34,12 @@ const langSlug = slugParts.length == 1
 ?	`${lang}/`
 : slug;
 
-const arSlug = "/" + langSlug.replace(`${lang}/`, "ar/", 1); 
-const enSlug = "/" + langSlug.replace(`${lang}/`, "en/", 1);
-
+// const arSlug = "/" + langSlug.replace(`${lang}/`, "ar/", 1); 
+// const enSlug = "/" + langSlug.replace(`${lang}/`, "en/", 1);
+let arSlug = "/" + langSlug.replace(`${lang}/`, "ar/", 1);
+let enSlug = "/" + langSlug.replace(`${lang}/`, "en/", 1);
+enSlug = enSlug.replace("articles/", "updates/");
+arSlug = arSlug.replace("articles/", "updates/");
 ---
 <!DOCTYPE html>
 <html class="scroll-smooth" lang={lang} dir={direction}>
